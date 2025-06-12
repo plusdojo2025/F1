@@ -14,7 +14,11 @@ public class Account {
     private Timestamp loginAt;		// ログイン日時
     private int consecutiveLogins;	// 連続ログイン
 
-    // セッタ・ゲッタ
+    // コンストラクタ
+	public Account() {
+	}
+	
+	// セッタ・ゲッタ
 	public int getAccountId() {
 		return accountId;
 	}

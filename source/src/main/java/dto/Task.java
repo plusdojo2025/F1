@@ -15,7 +15,11 @@ public class Task {
     private Mood mood;				// 気分オブジェクト
     private Category category;		// 作業カテゴリオブジェクト
 
-    // セッタ・ゲッタ
+    // コンストラクタ
+	public Task() {
+	}
+
+	// セッタ・ゲッタ
 	public int getTaskId() {
 		return taskId;
 	}
@@ -65,10 +69,10 @@ public class Task {
 		this.createdAt = createdAt;
 	}
 	
-	public boolean isPrivate() {
+	public boolean getIsPrivate() {
 		return isPrivate;
 	}
-	public void setPrivate(boolean isPrivate) {
+	public void setIsPrivate(boolean isPrivate) {
 		this.isPrivate = isPrivate;
 	}
 	

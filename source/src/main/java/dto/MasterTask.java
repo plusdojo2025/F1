@@ -8,7 +8,20 @@ public class MasterTask {
     private int moodId;			// 気分ID
     private int categoryId;		// カテゴリID
     
-    // セッタ・ゲッタ
+    public MasterTask() {
+    	
+    }
+    
+    // コンストラクタ
+    public MasterTask(int masterTaskId, String title, int timeSpan, int moodId, int categoryId) {
+		super();
+		this.masterTaskId = masterTaskId;
+		this.title = title;
+		this.timeSpan = timeSpan;
+		this.moodId = moodId;
+		this.categoryId = categoryId;
+	}
+	// セッタ・ゲッタ
 	public int getMasterTaskId() {
 		return masterTaskId;
 	}

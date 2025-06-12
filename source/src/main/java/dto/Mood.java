@@ -5,7 +5,15 @@ public class Mood {
     private int moodId;			// 気分ID
     private String moodTitle;	// 気分タイトル
     
-    // セッタ・ゲッタ
+    // コンストラクタ
+    public Mood(int moodId, String moodTitle) {
+		super();
+		this.moodId = moodId;
+		this.moodTitle = moodTitle;
+	}
+	public Mood() {
+	}
+	// セッタ・ゲッタ
 	public int getMoodId() {
 		return moodId;
 	}

@@ -5,16 +5,18 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-import dto.Mood;
+import dto.MasterTask;
 
-public class MoodDAO {
+public class MasterTaskDAO {
 	
-	public Mood getMood(int mood_id){
+	public List<MasterTask> selectAll(){
 		
 		Connection conn = null;
 		// リストを作成
-		Mood mood = new Mood();
+		List<MasterTask> list = new ArrayList<>();
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -25,22 +27,27 @@ public class MoodDAO {
 		
 		
 			// 実行SQL
-			String sql = "SELECT * FROM mood WHERE mood_id = ?;";
+			String sql = "SELECT * FROM master_tasks";
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setInt(1, mood_id);
 			ResultSet rs = ps.executeQuery();
 		
-			// SQLの結果をdtoにセット
-			rs.next();
-			mood.setMoodTitle(rs.getString("mood_title"));
-			mood.setMoodId(rs.getInt("mood_id"));
+			// SQLの結果をbeanにセット
+			while (rs.next()) {
+				MasterTask mt = new MasterTask();
+				mt.setTitle(rs.getString("title"));
+				mt.setTimeSpan(rs.getInt("time_span"));
+				mt.setMoodId(rs.getInt("mood_id"));
+				mt.setCategoryId(rs.getInt("category_id"));
+				// リストに追加
+				list.add(mt);
+			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-			mood = null;
+			list = null;
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			mood = null;
+			list = null;
 		} finally {
 			// データベースを切断
 			if (conn != null) {
@@ -48,13 +55,11 @@ public class MoodDAO {
 					conn.close();
 				} catch (SQLException e) {
 					e.printStackTrace();
-					mood = null;
+					list = null;
 				}
 			}
 		}
 		
-	return mood;
-		
+	return list;
 	}
-	
 }

@@ -5,7 +5,11 @@ public class Category {
     private int categoryId;			// カテゴリID
     private String categoryTitle;	// カテゴリタイトル
     
-    // セッタ・ゲッタ
+    // コンストラクタ
+	public Category() {
+	}
+
+	// セッタ・ゲッタ
 	public int getCategoryId() {
 		return categoryId;
 	}
