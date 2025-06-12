@@ -1,6 +1,10 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -70,10 +74,43 @@ public class LoginServlet extends HttpServlet {
             Account account = accountDAO.getAccount(email, password);
 
             if (account != null) {
-                // ログイン成功→セッション登録＆リダイレクト
+                // 今日の日付を取得
+                LocalDate today = LocalDate.now();
+            	
+                // 前回ログイン日時（DBに保存されていた日時）を取得
+                Timestamp lastLoginTimestamp = account.getLoginAt();
+                LocalDate lastLoginDate = null;
+                
+                if (lastLoginTimestamp != null) {
+                	// Timestamp型をLocalDate型に変換
+                    lastLoginDate = lastLoginTimestamp.toLocalDateTime().toLocalDate();
+                }
+                
+                // 差分を計算
+                if (lastLoginDate != null) {
+                	// 何日ぶりのログインかの計算処理
+                    long daysBetween = ChronoUnit.DAYS.between(lastLoginDate, today);
+                    
+                    // 昨日の場合
+                    if (daysBetween == 1) {
+                        account.setConsecutiveLogins(account.getConsecutiveLogins() + 1);
+                    } else if (daysBetween > 1) {
+                        account.setConsecutiveLogins(1);	// リセット
+                    }
+                } else {
+                    account.setConsecutiveLogins(1); 		// 初回ログイン
+                }
+
+                // ログイン日時を現在に更新
+                account.setLoginAt(Timestamp.valueOf(LocalDateTime.now()));
+
+                // DBにアカウント情報を反映
+                accountDAO.updateAccount(account);
+                
+                // セッション登録＆リダイレクト
                 HttpSession session = request.getSession();
                 session.setAttribute("login_user", account);
-                response.sendRedirect("IndexServlet");
+                response.sendRedirect("TopPageServlet");
             } else {
                 // ログイン失敗（ユーザー情報がnull）
                 request.setAttribute("loginErrorMassage", "入力内容が間違っています。");
