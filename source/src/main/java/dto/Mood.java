@@ -1,4 +1,4 @@
-package bean;
+package dto;
 
 public class Mood {
 	// フィールド定義

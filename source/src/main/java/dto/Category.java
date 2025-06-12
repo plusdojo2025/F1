@@ -1,10 +1,11 @@
-package bean;
+package dto;
 
 public class Category {
 	// フィールド定義
-    private int categoryId;
-    private String categoryTitle;
+    private int categoryId;			// カテゴリID
+    private String categoryTitle;	// カテゴリタイトル
     
+    // セッタ・ゲッタ
 	public int getCategoryId() {
 		return categoryId;
 	}

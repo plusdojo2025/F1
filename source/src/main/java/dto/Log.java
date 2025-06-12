@@ -1,15 +1,15 @@
-package bean;
+package dto;
 
 import java.sql.Timestamp;
 
 public class Log {
 	// フィールド定義
-    private int logId;
-    private int accountId;
-    private int taskId;
-    private Timestamp logTime;
-    private int duration;
-    private Integer satisfactionLevel; // NULL許容のためラッパークラス
+    private int logId;					// ログID
+    private int accountId;				// アカウントID
+    private int taskId;					// タスクID
+    private Timestamp logTime;			// タスク開始日時
+    private int duration;				// タスク実行時間
+    private Integer satisfactionLevel; 	// 満足度（NULL許容のためラッパークラス）
 	
  // セッタ・ゲッタ
     public int getLogId() {

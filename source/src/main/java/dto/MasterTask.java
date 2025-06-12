@@ -1,4 +1,4 @@
-package bean;
+package dto;
 
 public class MasterTask {
 	// フィールド定義

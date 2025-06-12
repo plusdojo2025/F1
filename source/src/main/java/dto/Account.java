@@ -1,4 +1,4 @@
-package bean;
+package dto;
 
 import java.sql.Timestamp;
 
