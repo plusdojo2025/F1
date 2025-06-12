@@ -57,10 +57,10 @@ public class LoginServlet extends HttpServlet {
         // 未入力チェック処理
         if (email == null || email.trim().isEmpty() || password == null || password.trim().isEmpty()) {
             if (email == null || email.trim().isEmpty()) {
-                request.setAttribute("emailErrorMassage", "この項目を入力してください。");
+                request.setAttribute("emailErrorMessage", "この項目を入力してください。");
             }
             if (password == null || password.trim().isEmpty()) {
-                request.setAttribute("passwordErrorMassage", "この項目を入力してください。");
+                request.setAttribute("passwordErrorMessage", "この項目を入力してください。");
             }
 
             request.setAttribute("beforeEmail", email);
@@ -113,7 +113,7 @@ public class LoginServlet extends HttpServlet {
                 response.sendRedirect("TopPageServlet");
             } else {
                 // ログイン失敗（ユーザー情報がnull）
-                request.setAttribute("loginErrorMassage", "入力内容が間違っています。");
+                request.setAttribute("loginErrorMessage", "入力内容が間違っています。");
                 request.setAttribute("beforeEmail", email);
                 request.setAttribute("beforePassword", password);
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
@@ -121,7 +121,7 @@ public class LoginServlet extends HttpServlet {
             }
         } catch (Exception e) {
             // DB例外・その他予期しないエラー時
-            request.setAttribute("loginErrorMassage", "ユーザー情報の確認中にエラーが発生しました");
+            request.setAttribute("loginErrorMessage", "ユーザー情報の確認中にエラーが発生しました");
             request.setAttribute("beforeEmail", email);
             request.setAttribute("beforePassword", password);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");

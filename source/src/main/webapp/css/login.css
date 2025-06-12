@@ -1,1 +1,77 @@
 @charset "UTF-8";
+
+body {
+  background: #f0f2f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ログインボックス */
+.login-container {
+  background: white;
+  padding: 60px 70px;
+  border-radius: 10px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+  width: 400px;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  text-align: left;
+  font-weight: 600;
+  margin-bottom: 3px;
+  color: #333;
+}
+
+input[type="text"],
+input[type="password"] {
+  background-color: #fef2e7;
+  padding: 12px 15px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 25px;
+  transition: border-color 0.3s ease;
+  outline: none;
+}
+h1{
+	font-size:60px;
+}
+
+.green-btn {
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+  width: 230px;
+  height: 70px;
+  margin: 0 auto;
+  background-color: #006432;
+  font-size: 25px;
+  font-weight: bold;
+  color: white;
+}
+
+.orange-btn {
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+  width: 230px;
+  height: 70px;
+  margin: 0 auto;
+  background-color: #FFA500;
+  font-size: 23px;
+  font-weight: bold;
+  color: white;
+}
+
