@@ -95,7 +95,7 @@ public class LoginServlet extends HttpServlet {
                     if (daysBetween == 1) {
                         account.setConsecutiveLogins(account.getConsecutiveLogins() + 1);
                     } else if (daysBetween > 1) {
-                        account.setConsecutiveLogins(1);	// リセット
+                        account.setConsecutiveLogins(1);	// 再スタート
                     }
                 } else {
                     account.setConsecutiveLogins(1); 		// 初回ログイン
@@ -103,14 +103,24 @@ public class LoginServlet extends HttpServlet {
 
                 // ログイン日時を現在に更新
                 account.setLoginAt(Timestamp.valueOf(LocalDateTime.now()));
-
+                
+                // 初回ログイン判定（前回ログイン日時がnullなら初回）
+                boolean isFirstLogin = (lastLoginTimestamp == null);
+                
                 // DBにアカウント情報を反映
                 accountDAO.updateAccount(account);
                 
-                // セッション登録＆リダイレクト
+                // セッション登録
                 HttpSession session = request.getSession();
                 session.setAttribute("login_user", account);
-                response.sendRedirect("TopPageServlet");
+                
+                // 初回ログインならチュートリアル画面へ
+                if (isFirstLogin) {
+                    session.setAttribute("show_tutorial", true);
+                    response.sendRedirect("TutorialServlet");
+                } else {
+                    response.sendRedirect("TopPageServlet");
+                }
             } else {
                 // ログイン失敗（ユーザー情報がnull）
                 request.setAttribute("loginErrorMassage", "入力内容が間違っています。");
