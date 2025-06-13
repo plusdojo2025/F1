@@ -1,1 +1,120 @@
 @charset "UTF-8";
+
+/*統計*/
+.statistics{
+    display: flex;
+    justify-content: space-around;
+}
+.sumDuration, .mostCategory, .mostMood{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 0 20px 0 20px;
+    border: 2px solid orange;
+    border-radius: 0.5em;
+    height: 10%;
+    width: 25%;
+    background-color: rgb(255, 253, 240);
+}
+p{
+    color:  rgb(29, 95, 46);
+    
+}
+.statisticsCategory{
+    font-size: 20px;
+    text-align: left;
+     margin: 5px auto 5px auto
+}
+.statisticsData{
+    text-align: center;
+    font-size: 40px;
+    margin: 5px auto 5px auto;
+}
+
+
+
+/*実績一覧*/
+.logList{
+    height: 500px;
+    width: 95%;
+    overflow-y: auto;
+    border: 2px solid rgb(29, 95, 46);
+    border-radius: 0.5em;
+    margin: 5px auto 5px auto;
+}
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+th{
+    color: aliceblue;
+    background-color: rgb(29, 95, 46);
+    border-bottom: solid 3px rgb(201, 201, 201);
+    text-align: center;
+    font-weight: normal;
+    border-right: solid 1px rgb(255, 255, 255);
+    border-left: solid 1px rgb(255, 255, 255);
+    position: sticky;
+
+    
+}
+td{
+    color:  rgb(29, 95, 46);
+    text-align: center;
+   border-bottom: solid 1px rgb(201, 201, 201);
+   border-right: solid 1px rgb(241, 241, 241);
+    border-left: solid 1px rgb(241, 241, 241);
+}
+th, td{
+    border-top: solid 1px rgb(201, 201, 201);
+    padding: 10px;
+    height: 50px;
+    
+}
+
+
+.taskTitle{
+    width: 30%;
+}
+.taskName{
+    border: 1px solid rgb(29, 95, 46);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 0.3em;
+    display: inline-block;
+    width: 450px;
+    background-color: rgb(255, 253, 240);
+}
+
+.duration{
+    width: 10%;
+}
+.mood{
+    width: 20%;
+}
+.category{
+    width: 20%;
+}
+.satisfactionLevel{
+    width: 20%;
+}
+.rate{
+position: relative;
+z-index: 0;
+display: inline-block;
+white-space: nowrap;
+font-size: 20px;
+}
+.rate::before{
+    content: '★★★★★';
+    color: aliceblue;
+}
+.rate::after{
+    content: '★★★★★';
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #ffcf32; 
+    width: var(--percent, 0%);
+}
