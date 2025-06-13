@@ -1,7 +1,10 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,7 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.CategoryDAO;
 import dto.Account;
+import dto.Category;
 
 /**
  * 新規登録２画面を表示するサーブレット
@@ -18,21 +23,6 @@ import dto.Account;
 @WebServlet("/Signup2Servlet")
 public class Signup2Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-    /**
-     * GETリクエスト時の処理
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-        // 文字コード・コンテンツタイプを設定
-        request.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html; charset=UTF-8");
-
-        // ログインページへフォワード
-        request.getRequestDispatcher("/WEB-INF/jsp/signup2.jsp").forward(request, response);
-    }
        
     /**
      * POSTリクエスト時の処理
@@ -73,10 +63,28 @@ public class Signup2Servlet extends HttpServlet {
         // 入力情報をセット
         account.setEmail(email);
         account.setPassword(password);
+        
+        // リストの生成
+        List<Category> categoryList = new ArrayList<>();
+        // DAOの生成
+        CategoryDAO categoryDAO = new CategoryDAO();
+	    try {
+	    	categoryList = categoryDAO.getCategoryList();
+	    	
+		} catch (Exception e) {
+			e.printStackTrace();
+            request.setAttribute("errorMessage", "アカウント情報の取得中にエラーが発生しました。");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/error.jsp");
+            dispatcher.forward(request, response);
+            return;
+		}
 
         HttpSession session = request.getSession();
         session.setAttribute("signup_user", account);
-        response.sendRedirect("Signup2Servlet");
+        request.setAttribute("categoryList", categoryList);
+        // JSPへフォワード
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/signup2.jsp");
+        dispatcher.forward(request, response);
             
     }
         
