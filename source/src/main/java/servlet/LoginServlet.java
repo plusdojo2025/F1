@@ -55,14 +55,6 @@ public class LoginServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
         
-        String loginBtn = request.getParameter("login");
-        String signupBtn = request.getParameter("signup");
-
-        
-        if(signupBtn != null) {
-        	response.sendRedirect(request.getContextPath() + "/SignupServlet");
-        	return;
-        }
         
         String email = request.getParameter("email");
         String password = request.getParameter("password");

@@ -46,7 +46,7 @@ public class Signup2Servlet extends HttpServlet {
 
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        String passwordConf = request.getParameter("passwordConf");
+        String passwordConf = request.getParameter("passwordConfirm");
         
         // 未入力チェック処理
         if (email == null || email.trim().isEmpty() || password == null || password.trim().isEmpty() || passwordConf == null || passwordConf.trim().isEmpty()) {

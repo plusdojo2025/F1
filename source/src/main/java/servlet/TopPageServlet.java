@@ -18,6 +18,7 @@ import dao.LogDAO;
 import dao.MoodDAO;
 import dto.Account;
 import dto.Category;
+import dto.Log;
 import dto.Mood;
 
 /**
@@ -33,15 +34,22 @@ public class TopPageServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
         
-        // ログインチェック
+        // セッション取得・セッション内のデータを取得
         HttpSession session = request.getSession();
         Account login_user = (Account) session.getAttribute("login_user");
+	    Log currentLog = (Log) session.getAttribute("currentLog");
+	    
         if (login_user == null) {
             // 未ログインはログイン画面へリダイレクト
             response.sendRedirect("LoginServlet");
             return; // ここで処理終了
         }
 
+	    // セッションに実行中ログ情報がある場合
+	    if (currentLog != null) {
+	    	session.removeAttribute("currentLog");
+	    }
+	    
         // リストの生成
         List<Mood> moodList = new ArrayList<>();
         List<Category> categoryList = new ArrayList<>();

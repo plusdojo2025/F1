@@ -42,7 +42,7 @@ public class SuggestExecuteServlet extends HttpServlet {
 	   	    response.sendRedirect("LoginServlet");
 	   	    return;
 	    }
-	     
+	    
 	    // リクエストパラメーターの取得
 	    int taskId;
 	    try {
@@ -54,9 +54,9 @@ public class SuggestExecuteServlet extends HttpServlet {
 	        return;
 	    }
 	    
-        // taskオブジェクトの生成
+        // タスクオブジェクト・実行中ログオブジェクトの生成
 	    Task task = new Task();
-	    Log log = new Log();
+	    Log currentLog = new Log();
         
 		// DAOの生成
 		TasksDAO tasksDAO = new TasksDAO();
@@ -73,13 +73,13 @@ public class SuggestExecuteServlet extends HttpServlet {
 		}
 		
 		// logオブジェクトにデータをセット
-		log.setAccountId(loginAccount.getAccountId());
-		log.setTaskId(task.getTaskId());
-		log.setLogTime(Timestamp.valueOf(LocalDateTime.now()));
-		log.setTask(task);
+		currentLog.setAccountId(loginAccount.getAccountId());
+		currentLog.setTaskId(task.getTaskId());
+		currentLog.setLogTime(Timestamp.valueOf(LocalDateTime.now()));
+		currentLog.setTask(task);
 		
-	    // リクエストスコープにLogオブジェクトをセット
-	    request.setAttribute("log", log);
+	    // セッションスコープにLogオブジェクトをセット
+		session.setAttribute("currentLog", currentLog);
 
 	    // 提案実行画面へフォワード
         request.getRequestDispatcher("/WEB-INF/jsp/execute.jsp").forward(request, response);

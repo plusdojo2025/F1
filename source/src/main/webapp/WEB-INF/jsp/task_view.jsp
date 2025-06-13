@@ -34,24 +34,26 @@
 	 <th></th>
 	 </tr>
 	</thead><!-- テーブルトップ -->
-	<c:forEach var="e" items="${Tasks}" ><!-- 出力繰り返し -->
-	<input type="hidden" name="" value="${e.number}">
-	<tr>
-	<th><input type="text" name="title" value="${e.title}"></th><!-- タスク名 -->
-	<th><input type="text" name="timeSpan" value="${e.timeSpan}"></th><!-- 所要時間 -->
-	<th><input type="text" name="categoryTitle" value="${category_title}"></th><!-- 気分 -->
-	<th><input type="text" name="moodTitle" value="${e.mood_title}"></th><!-- 作業ジャンル -->
-	<th>
-	<c:if test="${ e.satisfaction_level == true }" >
-		check
-	</c:if>
-	</th><!-- 公開判定チェックマーク -->
-	<th>
-	<input type="submit" class="green-btn" name="chengeButton" value="変更">
-	<input type="submit" class="orange-btn" name="deleteButton" value="削除">
-	</th><!-- 変更・削除ボタン -->
-	</tr>
-	</c:forEach>
+	<tbody>
+		<c:forEach var="e" items="${Tasks}" ><!-- 出力繰り返し -->
+		<input type="hidden" name="" value="${e.number}">
+		<tr>
+		<td><input type="text" name="title" value="${e.title}"></td><!-- タスク名 -->
+		<td><input type="text" name="timeSpan" value="${e.timeSpan}"></td><!-- 所要時間 -->
+		<td><input type="text" name="categoryTitle" value="${category_title}"></td><!-- 気分 -->
+		<td><input type="text" name="moodTitle" value="${e.mood_title}"></td><!-- 作業ジャンル -->
+		<td>
+		<c:if test="${ e.satisfaction_level == true }" >
+			check
+		</c:if>
+		</td><!-- 公開判定チェックマーク -->
+		<td>
+		<input type="submit" class="green-btn" name="chengeButton" value="変更">
+		<input type="submit" class="orange-btn" name="deleteButton" value="削除">
+		</td><!-- 変更・削除ボタン -->
+		</tr>
+		</c:forEach>
+	</tbody>
 </table>
 <form action="/webapp/TopPageServlet"><!-- トップに戻るボタン -->
 <input type="submit" class="light-orange-btn" name="goTopButton" value="トップへ戻る">

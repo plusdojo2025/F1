@@ -25,10 +25,10 @@
 		
 		<label for="pw">パスワード</label>
 		<input type="password" name="password" id="password" autocomplete="new-password" value="<%= request.getAttribute("beforePassword") != null ? request.getAttribute("beforPassword") : ""%>">
-
+		<a style="font-size: 0.8em;">【条件】8文字以上、英小文字・英小文字、数字を含める</a>
 		
-		<label for="passwordConfirm">パスワード（確認用）</label>
-		<input type="password" name="passwordConfirm" id="passwordConfirm" autocomplete="new-password" value="<%= request.getAttribute("beforePasswordConfirm") != null ? request.getAttribute("beforePasswordConfirm") : "" %>">
+		<label for="passwordConf">パスワード（確認用）</label>
+		<input type="password" name="passwordConf" id="passwordConf" autocomplete="new-password" value="<%= request.getAttribute("beforePasswordConf") != null ? request.getAttribute("beforePasswordConf") : "" %>">
 		
 		<div id="formError" class="error"></div>
 		
@@ -46,7 +46,7 @@
 			
 			let email = document.getElementById("email").value.trim();
 			let password = document.getElementById("password").value.trim();
-			let passwordConfirm = document.getElementById("passwordConfirm").value.trim();
+			let passwordConf = document.getElementById("passwordConf").value.trim();
 			
 			let formError = document.getElementById("formError")
 
@@ -56,20 +56,22 @@
 			
 			
 			//空欄チェック
-			if (!email || !password || !passwordConfirm){
+			if (!email || !password || !passwordConf){
 				formError.textContent = "すべての項目を入力してください";
 				event.preventDefault();
+				return;
 			}
 			
 			//パスワード確認
-			if (password !== passwordConfirm){
+			if (password !== passwordConf){
 				formError.textContent = "パスワードが一致しません";
 				event.preventDefault();
+				return;
 			}
 			
-			if (hasError){
-				event.preventDefault();
-			}
+			//パスワードの強度
+			const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
+			
 		});
 	</script>
 </body>
