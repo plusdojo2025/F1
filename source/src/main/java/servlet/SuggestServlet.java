@@ -41,12 +41,22 @@ public class SuggestServlet extends HttpServlet {
 	   	    response.sendRedirect("LoginServlet");
 	   	    return;
 	    }
-	     
-	    // リクエストパラメーターの取得
-	    int spanTime = Integer.parseInt(request.getParameter("spanTime"));
-	    int moodId = Integer.parseInt(request.getParameter("moodId"));
-	    int categoryId = Integer.parseInt(request.getParameter("categoryId"));
-	     
+	    
+	    // 変数定義
+	    int spanTime;
+	    int moodId;
+	    int categoryId;
+	    
+	    try {
+	    	// リクエストパラメーターの取得
+	        spanTime = Integer.parseInt(request.getParameter("spanTime"));
+	        moodId = Integer.parseInt(request.getParameter("moodId"));
+		    categoryId = Integer.parseInt(request.getParameter("categoryId"));
+	    } catch (NumberFormatException e) {
+	        request.setAttribute("errorMessage", "数値の形式が正しくありません。");
+	        request.getRequestDispatcher("/WEB-INF/jsp/error.jsp").forward(request, response);
+	        return;
+	    }
         // リストの生成
         List<Task> suggestTaskList = new ArrayList<>();
         List<Task> suggestOtherTaskList = new ArrayList<>();

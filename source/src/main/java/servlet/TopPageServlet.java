@@ -3,6 +3,7 @@ package servlet;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -54,7 +55,8 @@ public class TopPageServlet extends HttpServlet {
 		
 	    try {
 	    	// １日の総合計すきま活用時間の取得
-	    	sumDuration = logDAO.sumDuration(login_user.getAccountId());
+	    	// sumDurationのnullチェック（nullだったら0を代入）
+	    	sumDuration = Optional.ofNullable(logDAO.sumDuration(login_user.getAccountId())).orElse(0);
 	    	moodList = moodDAO.getMoodList();
 	    	categoryList = categoryDAO.getCategoryList();
 	    	
