@@ -21,7 +21,7 @@ public class MoodDAO {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/output?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sukima?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 		
@@ -60,7 +60,7 @@ public class MoodDAO {
 	}
 	
 	// Moodテーブルから全件取得
-	public List<Mood> getMoodList() throws Exception {
+	public List<Mood> getMoodList(){
 		
 		Connection conn = null;
 		// リストを作成
@@ -69,7 +69,7 @@ public class MoodDAO {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/output?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sukima?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 		
@@ -89,13 +89,25 @@ public class MoodDAO {
 			}
 
 			
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+		} catch (SQLException e) {
+			e.printStackTrace();
+			list = null;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			list = null;
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					list = null;
+				}
+			}
+		}
 		
-        conn.close();
-
-        return list;
+	return list;
 		
 	}
 

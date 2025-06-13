@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import dao.TasksDAO;
 import dto.Task;
+import dto.TaskList;
 
 public class TasksDAOTest {
 	public static void showAllData(List<Task> taskList) {
@@ -20,6 +21,19 @@ public class TasksDAOTest {
 			System.out.println();
 		}
 	}
+	
+	public static void showAll(List<TaskList> taskList) {
+		for (TaskList task : taskList) {
+			System.out.println("タスクID：" + task.getTaskId());
+			System.out.println("アカウントID：" + task.getAccountId());
+			System.out.println("タスクタイトル：" + task.getTitle());
+			System.out.println("所要時間：" + task.getTimeSpan());
+			System.out.println("気分名：" + task.getMoodTitle());
+			System.out.println("作業カテゴリ名：" + task.getCategoryTitle());
+			System.out.println("公開設定：" + task.getIsPrivate());
+			System.out.println();
+		}
+	}
 
 	public static void main(String[] args) {
 		TasksDAO tdao = new TasksDAO();
@@ -30,8 +44,8 @@ public class TasksDAOTest {
 		System.out.print("アカウントID:");
 		int accountId = scn.nextInt();
 
-		List<Task> TaskList1 = tdao.selectAll(accountId);
-		TasksDAOTest.showAllData(TaskList1);
+		List<TaskList> TaskList = tdao.selectAll(accountId);
+		TasksDAOTest.showAll(TaskList);
 
 		// suggestTask()のテスト
 		System.out.println("---------- suggestTask()のテスト ----------");
@@ -80,7 +94,7 @@ public class TasksDAOTest {
 		
 		if (tdao.registTask(regRec)) {
 			System.out.println("登録成功！");
-			TasksDAOTest.showAllData(tdao.selectAll(accountId));
+			TasksDAOTest.showAll(tdao.selectAll(accountId));
 		} else {
 			System.out.println("登録失敗！");
 		}
@@ -111,7 +125,7 @@ public class TasksDAOTest {
 		
 		if (tdao.updateTask(upRec)) {
 			System.out.println("更新成功！");
-			TasksDAOTest.showAllData(tdao.selectAll(accountId));
+			TasksDAOTest.showAll(tdao.selectAll(accountId));
 		} else {
 			System.out.println("更新失敗！");
 		}
@@ -127,7 +141,7 @@ public class TasksDAOTest {
 		
 		if (tdao.deleteTask(delRec)) {
 			System.out.println("削除成功！");
-			TasksDAOTest.showAllData(tdao.selectAll(accountId));
+			TasksDAOTest.showAll(tdao.selectAll(accountId));
 		} else {
 			System.out.println("削除失敗！");
 		}

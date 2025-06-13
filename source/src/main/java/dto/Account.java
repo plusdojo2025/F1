@@ -14,7 +14,7 @@ public class Account {
     private Timestamp loginAt;		// ログイン日時
     private int consecutiveLogins;	// 連続ログイン
 
-    // コンストラクタ
+	// コンストラクタ
 	public Account() {
 	}
 	

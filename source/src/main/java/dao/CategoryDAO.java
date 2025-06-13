@@ -20,7 +20,7 @@ public class CategoryDAO {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/output?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sukima?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 		
@@ -31,9 +31,10 @@ public class CategoryDAO {
 			ResultSet rs = ps.executeQuery();
 			
 			// SQLの結果をdtoにセット
-			rs.next();
+			while(rs.next()) {
 			category.setCategoryTitle(rs.getString("category_title"));
 			category.setCategoryId(rs.getInt("category_id"));
+			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -57,7 +58,7 @@ public class CategoryDAO {
 	}
 	
 	// Categoryテーブルから全件取得
-	public List<Category> getCategoryList() throws Exception {
+	public List<Category> getCategoryList(){
 		
 		Connection conn = null;
 		// リストを作成
@@ -66,7 +67,7 @@ public class CategoryDAO {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/output?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sukima?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 		
@@ -86,13 +87,25 @@ public class CategoryDAO {
 			}
 
 			
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+		} catch (SQLException e) {
+			e.printStackTrace();
+			list = null;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			list= null;
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					list = null;
+				}
+			}
+		}
 		
-        conn.close();
-
-        return list;
+	return list;
 		
 	}
 
