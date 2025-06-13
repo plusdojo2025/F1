@@ -18,7 +18,7 @@
 <body>
 	<div class="login-container">
 		<h1>まにまに</h1>
-		<form id="loginForm" method="POST" action="/F1/Signup2Servlet" autocomplete="off">
+		<form id="loginForm" method="POST" action="<%= request.getContextPath() %>/Signup2Servlet" autocomplete="off">
 		<label for="email">メールアドレス</label>
 		<input type="text" name="email" id="email" autocomplete="off" value="<%= request.getAttribute("beforeEmail") != null ? request.getAttribute("beforeEmail") : ""%>">
 		
