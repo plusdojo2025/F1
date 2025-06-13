@@ -39,9 +39,13 @@
 	<tr>
 	<th><input type="text" name="title" value="${e.title}"></th><!-- タスク名 -->
 	<th><input type="text" name="timeSpan" value="${e.timeSpan}"></th><!-- 所要時間 -->
-	<th></th><!-- 気分 -->
-	<th></th><!-- 作業ジャンル -->
-	<th></th><!-- 公開判定チェックマーク -->
+	<th><input type="text" name="categoryTitle" value="${category_title}"></th><!-- 気分 -->
+	<th><input type="text" name="moodTitle" value="${e.mood_title}"></th><!-- 作業ジャンル -->
+	<th>
+	<c:if test="${ e.satisfaction_level == true }" >
+		check
+	</c:if>
+	</th><!-- 公開判定チェックマーク -->
 	<th>
 	<input type="submit" class="green-btn" name="chengeButton" value="変更">
 	<input type="submit" class="orange-btn" name="deleteButton" value="削除">
