@@ -42,6 +42,13 @@
 	</div>
 	<script >
 		document.getElementById("loginForm").addEventListener("submit", function(event){
+			
+			const clickedBtn = docment.getElemntById("clickedBtn").value;
+			
+			if (clickedBtn === "signup"){
+				return;
+			}
+			
 			let hasError = false;
 			
 			const email = document.getElementById("email").value.trim();

@@ -75,3 +75,21 @@ h1{
   color: white;
 }
 
+.light-orange-btn{
+	border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+  width: 230px;
+  height: 70px;
+  margin: 0 auto;
+  background-color: #FFA500;
+  font-size: 23px;
+  font-weight: bold;
+  color: white;
+}
+
+
+
+
+
