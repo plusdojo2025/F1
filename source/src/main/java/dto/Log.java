@@ -10,8 +10,12 @@ public class Log {
     private Timestamp logTime;			// タスク開始日時
     private int duration;				// タスク実行時間
     private Integer satisfactionLevel; 	// 満足度（NULL許容のためラッパークラス）
-	
- // セッタ・ゲッタ
+    
+    // コンストラクタ
+	public Log() {
+	}
+
+	// セッタ・ゲッタ
     public int getLogId() {
 		return logId;
 	}

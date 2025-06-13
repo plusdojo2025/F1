@@ -1,6 +1,10 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -53,10 +57,10 @@ public class LoginServlet extends HttpServlet {
         // 未入力チェック処理
         if (email == null || email.trim().isEmpty() || password == null || password.trim().isEmpty()) {
             if (email == null || email.trim().isEmpty()) {
-                request.setAttribute("emailErrorMassage", "この項目を入力してください。");
+                request.setAttribute("emailErrorMessage", "この項目を入力してください。");
             }
             if (password == null || password.trim().isEmpty()) {
-                request.setAttribute("passwordErrorMassage", "この項目を入力してください。");
+                request.setAttribute("passwordErrorMessage", "この項目を入力してください。");
             }
 
             request.setAttribute("beforeEmail", email);
@@ -70,13 +74,56 @@ public class LoginServlet extends HttpServlet {
             Account account = accountDAO.getAccount(email, password);
 
             if (account != null) {
-                // ログイン成功→セッション登録＆リダイレクト
+                // 今日の日付を取得
+                LocalDate today = LocalDate.now();
+            	
+                // 前回ログイン日時（DBに保存されていた日時）を取得
+                Timestamp lastLoginTimestamp = account.getLoginAt();
+                LocalDate lastLoginDate = null;
+                
+                if (lastLoginTimestamp != null) {
+                	// Timestamp型をLocalDate型に変換
+                    lastLoginDate = lastLoginTimestamp.toLocalDateTime().toLocalDate();
+                }
+                
+                // 差分を計算
+                if (lastLoginDate != null) {
+                	// 何日ぶりのログインかの計算処理
+                    long daysBetween = ChronoUnit.DAYS.between(lastLoginDate, today);
+                    
+                    // 昨日の場合
+                    if (daysBetween == 1) {
+                        account.setConsecutiveLogins(account.getConsecutiveLogins() + 1);
+                    } else if (daysBetween > 1) {
+                        account.setConsecutiveLogins(1);	// 再スタート
+                    }
+                } else {
+                    account.setConsecutiveLogins(1); 		// 初回ログイン
+                }
+
+                // ログイン日時を現在に更新
+                account.setLoginAt(Timestamp.valueOf(LocalDateTime.now()));
+                
+                // 初回ログイン判定（前回ログイン日時がnullなら初回）
+                boolean isFirstLogin = (lastLoginTimestamp == null);
+                
+                // DBにアカウント情報を反映
+                accountDAO.updateAccount(account);
+                
+                // セッション登録
                 HttpSession session = request.getSession();
                 session.setAttribute("login_user", account);
-                response.sendRedirect("IndexServlet");
+                
+                // 初回ログインならチュートリアル画面へ
+                if (isFirstLogin) {
+                    session.setAttribute("show_tutorial", true);
+                    response.sendRedirect("TutorialServlet");
+                } else {
+                    response.sendRedirect("TopPageServlet");
+                }
             } else {
                 // ログイン失敗（ユーザー情報がnull）
-                request.setAttribute("loginErrorMassage", "入力内容が間違っています。");
+                request.setAttribute("loginErrorMessage", "入力内容が間違っています。");
                 request.setAttribute("beforeEmail", email);
                 request.setAttribute("beforePassword", password);
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
@@ -84,7 +131,7 @@ public class LoginServlet extends HttpServlet {
             }
         } catch (Exception e) {
             // DB例外・その他予期しないエラー時
-            request.setAttribute("loginErrorMassage", "ユーザー情報の確認中にエラーが発生しました");
+            request.setAttribute("loginErrorMessage", "ユーザー情報の確認中にエラーが発生しました");
             request.setAttribute("beforeEmail", email);
             request.setAttribute("beforePassword", password);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
