@@ -71,6 +71,58 @@ public class TasksDAO {
 		
 	}
 	
+	// taskIDをもとに、1件のタスクを取得
+	public Task getTask(int task_id) throws Exception {
+		Connection conn = null;
+		
+		// DAOの生成
+		MoodDAO mdao = new MoodDAO();
+		CategoryDAO cdao = new CategoryDAO();
+		
+		// taskインスタンスの生成
+		Task task = new Task();
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/output?"
+					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+					"root", "password");
+			
+			//アカウント取得SQL文を準備
+			String sqlSelect = "SELECT * FROM tasks WHERE task_id = ?;";
+			
+			PreparedStatement pStmtSelect = conn.prepareStatement(sqlSelect);
+			pStmtSelect.setInt(1, task_id);
+			
+			ResultSet rsSelect = pStmtSelect.executeQuery();
+			
+			if (rsSelect.next()) {
+				task.setTaskId(rsSelect.getInt("task_id"));
+				task.setAccountId(rsSelect.getInt("account_id"));
+				task.setTitle(rsSelect.getString("title"));
+				task.setTimeSpan(rsSelect.getInt("time_span"));
+				task.setMoodId(rsSelect.getInt("mood_id"));
+				task.setCategoryId(rsSelect.getInt("category_id"));
+				task.setCreatedAt(rsSelect.getTimestamp("created_at"));
+				task.setIsPrivate(rsSelect.getBoolean("is_private"));
+				task.setMood(mdao.getMood(rsSelect.getInt("mood_id")));
+				task.setCategory(cdao.getCategory(rsSelect.getInt("category_id")));
+			}
+            
+			rsSelect.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+		conn.close();
+
+		// 結果を返す
+		return task;
+		
+	}
+	
 	// 提案時のフィルター（自分のタスク）
 	public List<Task> suggestTask(int account_id,int time_span,int mood_id,int category_id){
 		Connection conn = null;

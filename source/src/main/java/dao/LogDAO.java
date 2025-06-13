@@ -15,7 +15,7 @@ import dto.Mood;
 public class LogDAO {
 	
 	// 取得
-	public List<Log> selectLogs(int account_id){
+	public List<Log> selectLogs(int account_id) throws Exception {
 		
 		Connection conn = null;
 		List<Log> logs = new ArrayList<Log>();
@@ -35,6 +35,9 @@ public class LogDAO {
 			
 			ResultSet rsSelect = pStmtSelect.executeQuery();
 			
+			// DAOの生成
+			TasksDAO tasksDAO = new TasksDAO();
+			
 			while(rsSelect.next()) {
 				Log log = new Log();
 				log.setLogId(rsSelect.getInt("log_id"));
@@ -43,8 +46,11 @@ public class LogDAO {
 				log.setLogTime(rsSelect.getTimestamp("log_time"));
 				log.setDuration(rsSelect.getInt("duration"));
 				log.setSatisfactionLevel(rsSelect.getInt("satisfaction_level"));
+				log.setTask(tasksDAO.getTask(rsSelect.getInt("task_id")));
 				logs.add(log);
 			}
+			
+			rsSelect.close();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

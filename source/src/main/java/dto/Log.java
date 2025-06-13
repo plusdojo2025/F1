@@ -10,6 +10,7 @@ public class Log {
     private Timestamp logTime;			// タスク開始日時
     private int duration;				// タスク実行時間
     private Integer satisfactionLevel; 	// 満足度（NULL許容のためラッパークラス）
+    private Task task;					// taskオブジェクト
     
     // コンストラクタ
 	public Log() {
@@ -53,4 +54,10 @@ public class Log {
 		this.satisfactionLevel = satisfactionLevel;
 	}
 
+	public Task getTask() {
+		return task;
+	}
+	public void setTask(Task task) {
+		this.task = task;
+	}
 }
