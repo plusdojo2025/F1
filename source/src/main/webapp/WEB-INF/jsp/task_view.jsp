@@ -48,8 +48,8 @@
 		</c:if>
 		</td><!-- 公開判定チェックマーク -->
 		<td>
-		<input type="submit" class="green-btn" name="chengeButton" value="変更">
-		<input type="submit" class="orange-btn" name="deleteButton" value="削除">
+		<input type="submit" class="green-btn" id="ChengePostModal" name="chengeButton" value="変更">
+		<input type="submit" class="orange-btn" id="DeletePostModal" name="deleteButton" value="削除">
 		</td><!-- 変更・削除ボタン -->
 		</tr>
 		</c:forEach>
