@@ -61,11 +61,12 @@ public class SignupConfServlet extends HttpServlet {
 	     
 	     // 未入力チェック処理
 	     if (nickname == null || nickname.trim().isEmpty()) {
-	         request.setAttribute("errorMassage", "全ての項目を入力してください。");
+	         request.setAttribute("errorMessage", "全ての項目を入力してください。");
 	
 	         request.setAttribute("beforeNickname", nickname);
 	         request.setAttribute("beforeCategoryId", categoryId);
 	         request.setAttribute("beforeGoalDetail", goalDetail);
+	         request.setAttribute("signup_user", signupAccount);
 	         request.getRequestDispatcher("/WEB-INF/jsp/signup2.jsp").forward(request, response);
 	         return;
 	     }
