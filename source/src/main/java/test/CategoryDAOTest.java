@@ -32,9 +32,12 @@ public class CategoryDAOTest {
 
 		// getCategory()のテスト
 		System.out.println("---------- getCategory()のテスト----------");
+		
+		//テスト情報を入力
 		System.out.print("作業ジャンルID:");
 		int categoryId = scn.nextInt();
-
+		
+		//実行
 		Category category = cdao.getCategory(categoryId);
 		CategoryDAOTest.showAllData(category);
 

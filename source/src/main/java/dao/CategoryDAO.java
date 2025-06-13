@@ -36,6 +36,7 @@ public class CategoryDAO {
 			category.setCategoryId(rs.getInt("category_id"));
 			}
 			
+		//エラー処理
 		} catch (SQLException e) {
 			e.printStackTrace();
 			category = null;

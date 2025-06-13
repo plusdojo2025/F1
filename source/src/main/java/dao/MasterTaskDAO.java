@@ -21,7 +21,7 @@ public class MasterTaskDAO {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/output?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sukima?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 		

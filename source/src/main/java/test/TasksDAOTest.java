@@ -21,7 +21,7 @@ public class TasksDAOTest {
 			System.out.println();
 		}
 	}
-	
+
 	public static void showAll(List<TaskList> taskList) {
 		for (TaskList task : taskList) {
 			System.out.println("タスクID：" + task.getTaskId());
@@ -38,114 +38,168 @@ public class TasksDAOTest {
 	public static void main(String[] args) {
 		TasksDAO tdao = new TasksDAO();
 		Scanner scn = new Scanner(System.in);
+		boolean judge = true;
 
-		// selectAll()のテスト
-		System.out.println("---------- selectAll()のテスト----------");
-		System.out.print("アカウントID:");
-		int accountId = scn.nextInt();
+		while (judge) {
 
-		List<TaskList> TaskList = tdao.selectAll(accountId);
-		TasksDAOTest.showAll(TaskList);
+			System.out.print(
+					"行うメソッドを入力(s-selectAll(),g-suggestTask()2つ,r-registTask(),u-updateTask(),d-deleteTask(),end-テストを終了)");
+			String test = scn.next();
 
-		// suggestTask()のテスト
-		System.out.println("---------- suggestTask()のテスト ----------");
+			switch (test) {
+			
+			case "s":
+				
+				// selectAll()のテスト
+				System.out.println("---------- selectAll()のテスト----------");
 
-		System.out.print("アカウントID:");
-		accountId = scn.nextInt();
-		System.out.print("所要時間(分):");
-		int timeSpan = scn.nextInt();
-		System.out.print("気分ID:");
-		int moodId = scn.nextInt();
-		System.out.print("作業ジャンルID:");
-		int categoryId = scn.nextInt();
+				// テスト情報を入力
+				System.out.print("アカウントID:");
+				int accountId = scn.nextInt();
 
-		List<Task> TaskList2 = tdao.suggestTask(accountId, timeSpan, moodId, categoryId);
-		TasksDAOTest.showAllData(TaskList2);
+				// 実行
+				List<TaskList> TaskList = tdao.selectAll(accountId);
+				TasksDAOTest.showAll(TaskList);
 
-		// suggestOtherTask()のテスト
-		System.out.println("---------- suggestOtherTask()のテスト ----------");
+			case "g":
+				
+				// suggestTask()のテスト
+				System.out.println("---------- suggestTask()のテスト ----------");
 
-		List<Task> TaskList3 = tdao.suggestOtherTask(accountId, timeSpan, moodId, categoryId);
-		TasksDAOTest.showAllData(TaskList3);
+				// テスト情報を入力
+				System.out.print("アカウントID:");
+				accountId = scn.nextInt();
+				System.out.print("所要時間(分):");
+				int timeSpan = scn.nextInt();
+				System.out.print("気分ID:");
+				int moodId = scn.nextInt();
+				System.out.print("作業ジャンルID:");
+				int categoryId = scn.nextInt();
 
-		// registTask()のテスト
-		System.out.println("---------- registTask()のテスト ----------");
+				// 実行
+				List<Task> TaskList2 = tdao.suggestTask(accountId, timeSpan, moodId, categoryId);
+				TasksDAOTest.showAllData(TaskList2);
 
-		System.out.print("更新アカウントID:");
-		accountId = scn.nextInt();
-		System.out.print("タイトル:");
-		String title = scn.next();
-		System.out.print("所要時間(分):");
-		timeSpan = scn.nextInt();
-		System.out.print("気分ID:");
-		moodId = scn.nextInt();
-		System.out.print("作業ジャンルID:");
-		categoryId = scn.nextInt();
-		System.out.print("公開設定:");
-		boolean isPrivate = scn.nextBoolean();
+				// suggestOtherTask()のテスト
+				System.out.println("---------- suggestOtherTask()のテスト ----------");
 
-		Task regRec = new Task();
-		regRec.setAccountId(accountId);
-		regRec.setTitle(title);
-		regRec.setTimeSpan(timeSpan);
-		regRec.setMoodId(moodId);
-		regRec.setCategoryId(categoryId);
-		regRec.setIsPrivate(isPrivate);
-		
-		if (tdao.registTask(regRec)) {
-			System.out.println("登録成功！");
-			TasksDAOTest.showAll(tdao.selectAll(accountId));
-		} else {
-			System.out.println("登録失敗！");
+				// 前項目で入力した内容で十個う
+				List<Task> TaskList3 = tdao.suggestOtherTask(accountId, timeSpan, moodId, categoryId);
+				TasksDAOTest.showAllData(TaskList3);
+
+			case "r":
+				
+				// registTask()のテスト
+				System.out.println("---------- registTask()のテスト ----------");
+
+				// テスト情報を入力
+				System.out.print("登録アカウントID:");
+				accountId = scn.nextInt();
+				System.out.print("タイトル:");
+				String title = scn.next();
+				System.out.print("所要時間(分):");
+				timeSpan = scn.nextInt();
+				System.out.print("気分ID:");
+				moodId = scn.nextInt();
+				System.out.print("作業ジャンルID:");
+				categoryId = scn.nextInt();
+				System.out.print("公開設定:");
+				boolean isPrivate = scn.nextBoolean();
+
+				// テスト情報をクラスに格納
+				Task regRec = new Task();
+				regRec.setAccountId(accountId);
+				regRec.setTitle(title);
+				regRec.setTimeSpan(timeSpan);
+				regRec.setMoodId(moodId);
+				regRec.setCategoryId(categoryId);
+				regRec.setIsPrivate(isPrivate);
+
+				// 実行
+				if (tdao.registTask(regRec)) {
+					System.out.println("登録成功！");
+					TasksDAOTest.showAll(tdao.selectAll(accountId));
+				} else {
+					System.out.println("登録失敗！");
+				}
+
+			case "u":
+				
+				// updatetask
+				System.out.println("---------- updateTask()のテスト ----------");
+
+				// テスト情報を入力
+				System.out.print("アカウントID:");
+				accountId = scn.nextInt();
+
+				// 実行
+				List<TaskList> TaskList4 = tdao.selectAll(accountId);
+				TasksDAOTest.showAll(TaskList4);
+
+				// テスト情報を入力
+				System.out.print("タスクID:");
+				int taskId = scn.nextInt();
+				System.out.print("タイトル:");
+				title = scn.next();
+				System.out.print("所要時間(分):");
+				timeSpan = scn.nextInt();
+				System.out.print("気分ID:");
+				moodId = scn.nextInt();
+				System.out.print("作業ジャンルID:");
+				categoryId = scn.nextInt();
+				System.out.print("公開設定:");
+				isPrivate = scn.nextBoolean();
+
+				// テスト情報をクラスに格納
+				Task upRec = new Task();
+				upRec.setTaskId(taskId);
+				upRec.setTitle(title);
+				upRec.setTimeSpan(timeSpan);
+				upRec.setMoodId(moodId);
+				upRec.setCategoryId(categoryId);
+				upRec.setIsPrivate(isPrivate);
+
+				// 実行
+				if (tdao.updateTask(upRec)) {
+					System.out.println("更新成功！");
+					TasksDAOTest.showAll(tdao.selectAll(accountId));
+				} else {
+					System.out.println("更新失敗！");
+				}
+
+			case "d":
+				
+				// deleteTask()のテスト
+				System.out.println("---------- deleteTask()のテスト ----------");
+
+				// テスト情報を入力
+				System.out.print("アカウントID:");
+				accountId = scn.nextInt();
+
+				// 実行
+				List<TaskList> TaskList5 = tdao.selectAll(accountId);
+				TasksDAOTest.showAll(TaskList5);
+
+				// テスト情報を入力
+				System.out.print("タスクID:");
+				taskId = scn.nextInt();
+
+				// テスト情報をクラスに格納
+				Task delRec = new Task();
+				delRec.setTaskId(taskId);
+
+				// 実行
+				if (tdao.deleteTask(delRec)) {
+					System.out.println("削除成功！");
+					TasksDAOTest.showAll(tdao.selectAll(accountId));
+				} else {
+					System.out.println("削除失敗！");
+				}
+
+			default:
+				judge = false;
+			}
 		}
-
-		// updatetask
-		System.out.println("---------- updateTask()のテスト ----------");
-
-		System.out.print("タスクID:");
-		int taskId = scn.nextInt();
-		System.out.print("タイトル:");
-		title = scn.next();
-		System.out.print("所要時間(分):");
-		timeSpan = scn.nextInt();
-		System.out.print("気分ID:");
-		moodId = scn.nextInt();
-		System.out.print("作業ジャンルID:");
-		categoryId = scn.nextInt();
-		System.out.print("公開設定:");
-		isPrivate = scn.nextBoolean();
-
-		Task upRec = new Task();
-		upRec.setTaskId(taskId);
-		upRec.setTitle(title);
-		upRec.setTimeSpan(timeSpan);
-		upRec.setMoodId(moodId);
-		upRec.setCategoryId(categoryId);
-		upRec.setIsPrivate(isPrivate);
-		
-		if (tdao.updateTask(upRec)) {
-			System.out.println("更新成功！");
-			TasksDAOTest.showAll(tdao.selectAll(accountId));
-		} else {
-			System.out.println("更新失敗！");
-		}
-
-		// deleteTask()のテスト
-		System.out.println("---------- deleteTask()のテスト ----------");
-		
-		System.out.print("タスクID:");
-		taskId = scn.nextInt();
-		
-		Task delRec = new Task();
-		delRec.setTaskId(taskId);
-		
-		if (tdao.deleteTask(delRec)) {
-			System.out.println("削除成功！");
-			TasksDAOTest.showAll(tdao.selectAll(accountId));
-		} else {
-			System.out.println("削除失敗！");
-		}
-		
 		scn.close();
 
 	}

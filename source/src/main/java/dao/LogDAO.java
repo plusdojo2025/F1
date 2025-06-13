@@ -28,10 +28,10 @@ public class LogDAO {
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 			
-			//アカウント取得SQL文を準備
+			//ログ取得SQL文を準備
 			String sqlSelect = "SELECT "
-					+ "log_id, tsk.title, log.duration, m.mood_title, c.category_title "
-					+ "FROM log"
+					+ "log_id, tsk.title, log.duration, m.mood_title, c.category_title, satisfaction_level "
+					+ "FROM log "
 					+ "JOIN tasks AS tsk ON tsk.task_id = log.task_id "
                     + "JOIN mood AS m ON m.mood_id = tsk.mood_id "
                     + "JOIN category AS c "
@@ -139,7 +139,7 @@ public class LogDAO {
 					"root", "password");
 			
 			//アカウント取得SQL文を準備
-			String sqlSum = "SELECT SUM(duration) AS sum_durationFROM log "
+			String sqlSum = "SELECT SUM(duration) AS sum_duration FROM log "
 					+ "WHERE account_id = ?;";
 			
 			PreparedStatement pStmtSum = conn.prepareStatement(sqlSum);

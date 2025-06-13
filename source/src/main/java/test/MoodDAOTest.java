@@ -32,9 +32,12 @@ public class MoodDAOTest {
 
 		// getMood()のテスト
 		System.out.println("---------- getMood()のテスト----------");
+		
+		//テスト情報を入力
 		System.out.print("気分ID:");
 		int moodId = scn.nextInt();
-
+		
+		//実行
 		Mood mood = mdao.getMood(moodId);
 		MoodDAOTest.showAllData(mood);
 
