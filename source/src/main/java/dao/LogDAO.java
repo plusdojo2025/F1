@@ -16,7 +16,7 @@ import dto.Mood;
 public class LogDAO {
 	
 	// 取得
-	public List<LogList> selectLogs(int account_id) throws Exception {
+	public List<LogList> selectLogs(int account_id) {
 		
 		Connection conn = null;
 		List<LogList> logs = new ArrayList<LogList>();
@@ -24,7 +24,7 @@ public class LogDAO {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/output?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sukima?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 			
@@ -88,7 +88,7 @@ public class LogDAO {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/output?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sukima?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 
@@ -134,7 +134,7 @@ public class LogDAO {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/output?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sukima?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 			
@@ -181,7 +181,7 @@ public class LogDAO {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/output?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sukima?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 			
@@ -244,7 +244,7 @@ public class LogDAO {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/output?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sukima?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 			
