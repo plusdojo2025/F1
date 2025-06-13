@@ -53,6 +53,7 @@ public class LogDAOTest {
 		regRec.setDuration(duration);
 		regRec.setSatisfactionLevel(satisfactionLevel);
 		
+		
 		if (ldao.registLog(regRec)) {
 			System.out.println("登録成功！");
 			LogDAOTest.showAllData(ldao.selectLogs(accountId));
