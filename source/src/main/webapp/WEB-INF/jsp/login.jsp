@@ -36,7 +36,7 @@
 		
 		<input type="submit" class="green-btn" name="login" value="ログイン">
 		<p >or</p>
-		<input type="submit" class="orange-btn" name="signup" value="新規作成">
+		<a  href="/F1/SignupServlet" type="submit" class="orange-btn" name="signup" >新規作成</a>
 	
 	</form>
 	</div>

@@ -34,7 +34,8 @@ label {
 }
 
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+select {
   background-color: #fef2e7;
   padding: 12px 15px;
   border: 2px solid #ddd;
@@ -83,11 +84,39 @@ h1{
   width: 230px;
   height: 70px;
   margin: 0 auto;
-  background-color: #FFA500;
+  background-color: #ffcc6f;
   font-size: 23px;
   font-weight: bold;
   color: white;
 }
+
+.button-wrapper{
+	display: flex;
+	justify-content: center;
+	gap: 100px;
+}
+
+#categoryy{
+	background-color: #fef2e7;
+  padding: 12px 15px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 25px;
+  transition: border-color 0.3s ease;
+  outline: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
