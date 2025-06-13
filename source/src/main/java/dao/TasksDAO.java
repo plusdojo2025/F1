@@ -9,24 +9,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dto.Task;
+import dto.TaskList;
 
 public class TasksDAO {
 	
 	// アカウントIDをもとに、タスクを全件取得
-	public List<Task> selectAll(int account_id){
+	public List<TaskList> selectAll(int account_id){
 		Connection conn = null;
-		List<Task> tasks = new ArrayList<Task>();
-		MoodDAO mdao = new MoodDAO();
-		CategoryDAO cdao = new CategoryDAO();
+		List<TaskList> taskList = new ArrayList<TaskList>();
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/output?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sukima?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 			
-			//アカウント取得SQL文を準備
-			String sqlSelect = "SELECT * FROM tasks WHERE account_id = ?;";
+			//タスク全件取得SQL文を準備
+			String sqlSelect = "SELECT task_id,account_id,title,time_span,mood_title,category_title,is_private "
+					+ "FROM tasks AS t "
+					+ "INNER JOIN mood As m ON t.mood_id = m.mood_id "
+					+ "INNER JOIN category As c ON t.category_id = c.category_id "
+					+ "WHERE account_id = ?;";
 			
 			PreparedStatement pStmtSelect = conn.prepareStatement(sqlSelect);
 			pStmtSelect.setInt(1, account_id);
@@ -34,26 +37,23 @@ public class TasksDAO {
 			ResultSet rsSelect = pStmtSelect.executeQuery();
 			
 			while(rsSelect.next()) {
-				Task task = new Task();
+				TaskList task = new TaskList();
 				task.setTaskId(rsSelect.getInt("task_id"));
 				task.setAccountId(rsSelect.getInt("account_id"));
 				task.setTitle(rsSelect.getString("title"));
 				task.setTimeSpan(rsSelect.getInt("time_span"));
-				task.setMoodId(rsSelect.getInt("mood_id"));
-				task.setCategoryId(rsSelect.getInt("category_id"));
-				task.setCreatedAt(rsSelect.getTimestamp("created_at"));
+				task.setMoodTitle(rsSelect.getString("mood_title"));
+				task.setCategoryTitle(rsSelect.getString("category_title"));
 				task.setIsPrivate(rsSelect.getBoolean("is_private"));
-				task.setMood(mdao.getMood(rsSelect.getInt("mood_id")));
-				task.setCategory(cdao.getCategory(rsSelect.getInt("category_id")));
-				tasks.add(task);
+				taskList.add(task);
 			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-			tasks = null;
+			taskList = null;
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			tasks = null;
+			taskList = null;
 		} finally {
 			// データベースを切断
 			if (conn != null) {
@@ -61,18 +61,18 @@ public class TasksDAO {
 					conn.close();
 				} catch (SQLException e) {
 					e.printStackTrace();
-					tasks = null;
+					taskList = null;
 				}
 			}
 		}
 
 		// 結果を返す
-		return tasks;
+		return taskList;
 		
 	}
 	
 	// taskIDをもとに、1件のタスクを取得
-	public Task getTask(int task_id) throws Exception {
+	public Task getTask(int task_id){
 		Connection conn = null;
 		
 		// DAOの生成
@@ -85,11 +85,11 @@ public class TasksDAO {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/output?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sukima?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 			
-			//アカウント取得SQL文を準備
+			//1件のタスクを取得するSQL
 			String sqlSelect = "SELECT * FROM tasks WHERE task_id = ?;";
 			
 			PreparedStatement pStmtSelect = conn.prepareStatement(sqlSelect);
@@ -112,15 +112,26 @@ public class TasksDAO {
             
 			rsSelect.close();
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-		conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			task = null;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			task = null;
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					task = null;
+				}
+			}
+		}
 
 		// 結果を返す
 		return task;
-		
 	}
 	
 	// 提案時のフィルター（自分のタスク）
@@ -133,7 +144,7 @@ public class TasksDAO {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/output?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sukima?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 			
@@ -142,7 +153,7 @@ public class TasksDAO {
 					+ "WHERE account_id = ? "
 					+ "AND mood_id = ? "
 					+ "AND category_id = ? "
-					+ "AND time_span BETWEEN ? - 5 AND ? "
+					+ "AND time_span BETWEEN (? - 5) AND ? "
 					+ "ORDER BY RANDOM();";
 			
 			PreparedStatement pStmtSuggest1 = conn.prepareStatement(sqlSuggest1);
@@ -174,7 +185,7 @@ public class TasksDAO {
 					+ "WHERE account_id = ? "
 					+ "AND mood_id <> ? "
 					+ "AND category_id = ? "
-					+ "AND time_span BETWEEN ? - 5 AND ? "
+					+ "AND time_span BETWEEN (? - 5) AND ? "
 					+ "ORDER BY RANDOM();";
 			
 			PreparedStatement pStmtSuggest2 = conn.prepareStatement(sqlSuggest2);
@@ -234,7 +245,7 @@ public class TasksDAO {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/output?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sukima?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 			
@@ -243,7 +254,7 @@ public class TasksDAO {
 					+ "WHERE account_id <> ? "
 					+ "AND mood_id = ? "
 					+ "AND category_id = ? "
-					+ "AND time_span BETWEEN ? - 5 AND ? "
+					+ "AND time_span BETWEEN (? - 5) AND ? "
 					+ "ORDER BY RANDOM();";
 			
 			PreparedStatement pStmtSuggest1 = conn.prepareStatement(sqlSuggest1);
@@ -275,7 +286,7 @@ public class TasksDAO {
 					+ "WHERE account_id <> ? "
 					+ "AND mood_id <> ? "
 					+ "AND category_id = ? "
-					+ "AND time_span BETWEEN ? - 5 AND ? "
+					+ "AND time_span BETWEEN (? - 5) AND ? "
 					+ "ORDER BY RANDOM();";
 			
 			PreparedStatement pStmtSuggest2 = conn.prepareStatement(sqlSuggest2);
@@ -332,7 +343,7 @@ public class TasksDAO {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/output?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sukima?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 
@@ -379,7 +390,7 @@ public class TasksDAO {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/output?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sukima?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 
@@ -432,7 +443,7 @@ public class TasksDAO {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/output?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sukima?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 
