@@ -10,15 +10,16 @@ import java.util.List;
 
 import dto.Category;
 import dto.Log;
+import dto.LogList;
 import dto.Mood;
 
 public class LogDAO {
 	
 	// 取得
-	public List<Log> selectLogs(int account_id) throws Exception {
+	public List<LogList> selectLogs(int account_id) throws Exception {
 		
 		Connection conn = null;
-		List<Log> logs = new ArrayList<Log>();
+		List<LogList> logs = new ArrayList<LogList>();
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -28,26 +29,30 @@ public class LogDAO {
 					"root", "password");
 			
 			//アカウント取得SQL文を準備
-			String sqlSelect = "SELECT * FROM log WHERE account_id = ? ORDER BY log_time DESC;";
-			
+			String sqlSelect = "SELECT "
+					+ "log_id, tsk.title, log.duration, m.mood_title, c.category_title "
+					+ "FROM log"
+					+ "JOIN tasks AS tsk ON tsk.task_id = log.task_id "
+                    + "JOIN mood AS m ON m.mood_id = tsk.mood_id "
+                    + "JOIN category AS c "
+                    + "ON c.category_id = tsk.category_id "
+					+ "WHERE log.account_id = ? "
+					+ "ORDER BY log_time DESC;";
+
 			PreparedStatement pStmtSelect = conn.prepareStatement(sqlSelect);
 			pStmtSelect.setInt(1, account_id);
 			
 			ResultSet rsSelect = pStmtSelect.executeQuery();
 			
-			// DAOの生成
-			TasksDAO tasksDAO = new TasksDAO();
-			
 			while(rsSelect.next()) {
-				Log log = new Log();
+				LogList log = new LogList();
 				log.setLogId(rsSelect.getInt("log_id"));
-				log.setAccountId(rsSelect.getInt("account_id"));
-				log.setTaskId(rsSelect.getInt("task_id"));
-				log.setLogTime(rsSelect.getTimestamp("log_time"));
+				log.setTitle(rsSelect.getString("title"));
 				log.setDuration(rsSelect.getInt("duration"));
-				log.setSatisfactionLevel(rsSelect.getInt("satisfaction_level"));
-				log.setTask(tasksDAO.getTask(rsSelect.getInt("task_id")));
-				logs.add(log);
+		        log.setMoodTitle(rsSelect.getString("mood_title"));
+		        log.setCategoryTitle(rsSelect.getString("category_title"));
+		        log.setSatisfactionLevel((Integer)rsSelect.getObject("satisfaction_level"));
+		        logs.add(log);
 			}
 			
 			rsSelect.close();

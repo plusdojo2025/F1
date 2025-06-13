@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import dao.LogDAO;
 import dto.Account;
 import dto.Category;
-import dto.Log;
+import dto.LogList;
 import dto.Mood;
 
 /**
@@ -52,13 +52,24 @@ public class RecordServlet extends HttpServlet {
 		int durationSum = ldao.sumDuration(account.getAccountId());
 		Category mostCategory = ldao.getMaxCategory(account.getAccountId());
 		Mood mostMood = ldao.getMaxMood(account.getAccountId());
-		List<Log> Loglist = ldao.selectLogs(account.getAccountId());
+		
+		// JSPに渡すlogList変数の定義
+		List<LogList> logList = null;
+		try {
+			logList = ldao.selectLogs(account.getAccountId());
+		} catch (Exception e) {
+			e.printStackTrace();
+            request.setAttribute("errorMessage", "データベース接続中にエラーが発生しました。");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/error.jsp");
+            dispatcher.forward(request, response);
+            return;
+		}
 		
 		//リクエストスコープにそれぞれデータを格納
 		request.setAttribute("durationSum",durationSum);
 		request.setAttribute("mostCategory",mostCategory);
 		request.setAttribute("mostMood",mostMood);
-		request.setAttribute("history", Loglist);
+		request.setAttribute("history", logList);
 		
 		//実績画面にフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/record.jsp");
