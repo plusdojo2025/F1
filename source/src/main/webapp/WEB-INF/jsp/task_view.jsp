@@ -42,7 +42,8 @@
 	<th><input type="text" name="categoryTitle" value="${category_title}"></th><!-- 気分 -->
 	<th><input type="text" name="moodTitle" value="${e.mood_title}"></th><!-- 作業ジャンル -->
 	<th>
-	<c:if check="${  }">
+	<c:if test="${ e.satisfaction_level == true }" >
+		check
 	</c:if>
 	</th><!-- 公開判定チェックマーク -->
 	<th>
