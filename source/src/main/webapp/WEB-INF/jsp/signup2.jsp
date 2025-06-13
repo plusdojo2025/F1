@@ -18,24 +18,24 @@
 <body>
 	<div class="login-container">
 		<h1>まにまに</h1>
-		<form id="name" method="POST" action="/F1/TopPageServlet" autocomplete="off">
+		<form id="name" method="POST" action="<%= request.getContextPath() %>/SignupConfServlet" autocomplete="off">
 		<label for="name">ニックネーム</label>
-		<input type="text" name="name" id="name" autocomplete="off" value="<%= request.getAttribute("beforeName") != null ? request.getAttribute("beforeName") : ""%>">
+		<input type="text" name="nickname" id="name" autocomplete="off" value="<%= request.getAttribute("beforeName") != null ? request.getAttribute("beforeName") : ""%>">
 		
 		
 		<label for="category">目標ジャンル</label>
-		<select id="categoryy">
-			<option value="運動・ストレッチ" <%= "運動・ストレッチ".equals(request.getAttribute("beforeCategory")) ? "selected" : ""%>>運動・ストレッチ</option>
-			<option value="セルフケア" <%= "セルフケア".equals(request.getAttribute("beforeCategory")) ? "selected" : ""%>>セルフケア</option>
-			<option value="スキルアップ" <%= "スキルアップ".equals(request.getAttribute("beforeCategory")) ? "selected" : ""%>>スキルアップ</option>
-			<option value="環境リセット" <%= "環境リセット".equals(request.getAttribute("beforeCategory")) ? "selected" : ""%>>環境リセット</option>
-			<option value="趣味" <%= "運動・ストレッチ".equals(request.getAttribute("beforeCategory")) ? "selected" : ""%>>趣味</option>
-			<option value="キャリアアップ" <%= "運動・ストレッチ".equals(request.getAttribute("beforeCategory")) ? "selected" : ""%>>キャリアアップ</option>
+		<select id="category" name="categoryId">
+			<option value="1" <%= "運動・ストレッチ".equals(request.getAttribute("beforeCategory")) ? "selected" : ""%>>運動・ストレッチ</option>
+			<option value="2" <%= "セルフケア".equals(request.getAttribute("beforeCategory")) ? "selected" : ""%>>セルフケア</option>
+			<option value="3" <%= "スキルアップ".equals(request.getAttribute("beforeCategory")) ? "selected" : ""%>>スキルアップ</option>
+			<option value="4" <%= "環境リセット".equals(request.getAttribute("beforeCategory")) ? "selected" : ""%>>環境リセット</option>
+			<option value="5" <%= "運動・ストレッチ".equals(request.getAttribute("beforeCategory")) ? "selected" : ""%>>趣味</option>
+			<option value="6" <%= "運動・ストレッチ".equals(request.getAttribute("beforeCategory")) ? "selected" : ""%>>キャリアアップ</option>
 		</select>
 		
 		
 		<label for="goal">目標詳細（２５文字以内）</label>
-		<input type="text" name="goal" id="goal" autocomplete="off" value="<%= request.getAttribute("beforeGoal") != null ? request.getAttribute("beforeGoal") : "" %>">
+		<input type="text" name="goalDetail" id="goal" autocomplete="off" value="<%= request.getAttribute("beforeGoal") != null ? request.getAttribute("beforeGoal") : "" %>">
 		
 		<div id="formError" class="error"></div>
 		
