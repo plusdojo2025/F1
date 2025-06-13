@@ -81,7 +81,7 @@ public class AccountDAO {
 
 			if(existsAccount(account.getEmail())) {
 				
-				String sqlRegist = "INSERT INTO account (account_id,email,password,nickname,category_id,goal_detail,consecutive_logins) VALUES(0,?,?,?,?,1);";
+				String sqlRegist = "INSERT INTO account (account_id,email,password,nickname,category_id,goal_detail,login_at,consecutive_logins) VALUES(0,?,?,?,?,null,1);";
 				
 				PreparedStatement pStmtRegist = conn.prepareStatement(sqlRegist);
 				

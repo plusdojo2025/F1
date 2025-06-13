@@ -87,7 +87,7 @@ public class LogDAO {
 				
 			pStmtRegist.setInt(1,log.getAccountId());
 			pStmtRegist.setInt(2,log.getTaskId());
-			pStmtRegist.setDatetime(3,log.getLogTime());
+			pStmtRegist.setTimestamp(3,log.getLogTime());
 			pStmtRegist.setInt(4,log.getDuration());
 			pStmtRegist.setInt(5,log.getSatisfactionLevel());
 				

@@ -1,11 +1,21 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import dao.LogDAO;
+import dto.Account;
+import dto.Category;
+import dto.Log;
+import dto.Mood;
 
 /**
  * Servlet implementation class RecordServlet
@@ -25,9 +35,34 @@ public class RecordServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		HttpSession session = request.getSession();
+		if (session.getAttribute("login_user") == null) {
+			response.sendRedirect("/webapp/LoginServlet");
+			return;
+		}
+		
+		//文字コード設定
+		request.setCharacterEncoding("UTF-8");
+		Account account = (Account)session.getAttribute("account");
+		
+		//集計処理を行う
+		LogDAO ldao = new LogDAO();
+		int durationSum = ldao.sumDuration(account.getAccountId());
+		Category mostCategory = ldao.getMaxCategory(account.getAccountId());
+		Mood mostMood = ldao.getMaxMood(account.getAccountId());
+		List<Log> Loglist = ldao.selectLogs(account.getAccountId());
+		
+		//リクエストスコープにそれぞれデータを格納
+		request.setAttribute("durationSum",durationSum);
+		request.setAttribute("mostCategory",mostCategory);
+		request.setAttribute("mostMood",mostMood);
+		request.setAttribute("history", Loglist);
+		
+		//実績画面にフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/record.jsp");
+	    dispatcher.forward(request, response);
 	}
 
 	/**
