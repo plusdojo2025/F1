@@ -1,30 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>manimani/タスク新規作製</title>
-</head>
-<body>
-<!-- ヘッダー -->
-<header><!-- グローバルナビ -->
-<h1>
-<a href="/webapp/TopPageServlet">まにまにLOGO</a>
-</h1>
-<ul>	
-    <li><a href="/webapp/TaskRegistServlet">タスクの新規作成</a></li>
-    <li><a href="/webapp/TaskViewServlet">タスク一覧</a></li>
-    <li><a href="/webapp/RecordServlet">実績</a></li>
-    <li><a href="/webapp/AccountServlet">アカウント</a></li>
-    <li><a href="/webapp/TopPageServlet">ヘルプ</a></li>
-</ul>
-</header><!-- グローバルナビ -->
+<%@ include file="header.jsp" %><!-- ヘッダー＆グローバルナビ -->
 
 <!-- メイン -->
 <main>
 <form><!-- 外側の枠 -->
-	<p>タスクの新規作成</p>
+	<p class="green-label">タスクの新規作成</p>
 	<table>
 	<tr>
 	<td colspan="2" class="leftAlert">ここにアラートを表示</td>
