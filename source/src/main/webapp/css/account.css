@@ -1,1 +1,197 @@
 @charset "UTF-8";
+
+/* 全てのページに適用される設定 ===============================*/
+html {
+    font-size: 16px;
+    font-family: sans-serif;
+    color: #333;
+}
+* {
+    box-sizing: border-box;
+    /* border: 1px solid #333; */
+}
+body {
+    margin: 0 0 0 0;
+    background-color: #F4F4F4;
+    color: #0B6446;
+}
+
+h1 {
+    margin: 0;
+}
+p, li, td {
+    line-height: 1.7;
+}
+img {
+    max-width: 100%;
+}
+a {
+    text-decoration: none;
+}
+
+.button {
+    border: none;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    padding: 5px 20px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+/* account */
+
+.account-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.account-body {
+    background-color: #ffffff;
+    width: 60%;
+    border: solid #0B6446;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* account-title */
+.green-title-section {
+    background-color: #0B6446;
+    color: #ffffff;
+    width: 100%;
+    text-align: center;
+}
+.green-title {
+    margin: 10px;
+}
+
+/* account-view-section */
+.account-view-section {
+    width: 90%;
+    font-size: 1.3rem;
+}
+.account-section {
+    display: flex;
+}
+.under-line {
+    border-bottom: solid #FFE1A7;
+}
+.account-view-title {
+    width: 20%;
+}
+
+/* account-button-section */
+.account-button-section {
+    width: 55%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.back-to-top-button {
+    background-color: #FFDC99;
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+.account-update-button {
+    background-color: #FFAF2D;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.account-update-text {
+    margin: unset;
+    margin-left: 5px;
+}
+.logout-button {
+    background-color: #ffffff;
+    color: #0B6446;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pencil-back-ground {
+    background-color: #ffffff;
+    border-radius: 100px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
+/* popup styles */
+.delete-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 99999;
+    justify-content: center;
+    align-items: center;
+    
+}
+.logout-wrapper {
+    background-color: white;
+    width: 50%;
+    height: 40%;
+    display: flex;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    margin: auto;
+    letter-spacing: 2px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+.logout-wrapper p {
+    margin: 5% 0;
+}
+.modal-button-wrapper {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+}
+.cansel-button {
+	width: 42%;
+    border: none;
+    background-color: #FFAF2D;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 5px 20px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.delete-modal .delete-popup-botton {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    width: 42%;
+}
+.delete-modal .delete-exec-button {
+	width: 100%;
+    border: none;
+    background-color: #FFDC99;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 5px 20px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+.cansel-button:hover {
+    background-color: #fbd40e;
+}
+.delete-exec-button:hover {
+    background-color: #ff624a;
+}

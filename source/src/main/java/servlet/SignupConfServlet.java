@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.CategoryDAO;
 import dto.Account;
+import dto.Category;
 
 /**
  * アカウント新規登録時の登録内容確認画面を表示するサーブレット
@@ -71,11 +74,26 @@ public class SignupConfServlet extends HttpServlet {
 	         return;
 	     }
 	     
+	     Category category = new Category();
+	     
+       CategoryDAO categoryDAO = new CategoryDAO();
+	    try {
+	    	category = categoryDAO.getCategory(categoryId);
+	    	
+		} catch (Exception e) {
+			e.printStackTrace();
+            request.setAttribute("errorMessage", "アカウント情報の取得中にエラーが発生しました。");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/error.jsp");
+            dispatcher.forward(request, response);
+            return;
+		}
 	
 	     // 入力情報を更新
 	     signupAccount.setNickname(nickname);
 	     signupAccount.setCategoryId(categoryId);
 	     signupAccount.setGoalDetail(goalDetail);
+	     session.setAttribute("signupCategory", category);
+	     
 	     // 自身のサーブレットにリダイレクト
 	     session.setAttribute("signup_user", signupAccount);
 	     response.sendRedirect("SignupConfServlet");

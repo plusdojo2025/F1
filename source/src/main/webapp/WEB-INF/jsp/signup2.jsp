@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +12,7 @@
 	.error {
 		color: red;
 		font-size: 0.85em;
-		margin-top: 5px;s
+		margin-top: 5px;
 	}
 
 </style>
@@ -19,23 +21,20 @@
 	<div class="login-container">
 		<h1>まにまに</h1>
 		<form id="name" method="POST" action="<%= request.getContextPath() %>/SignupConfServlet" autocomplete="off">
-		<label for="name">ニックネーム</label>
-		<input type="text" name="nickname" id="name" autocomplete="off" value="<%= request.getAttribute("beforeName") != null ? request.getAttribute("beforeName") : ""%>">
+		<label for="nickname">ニックネーム</label>
+		<input type="text" name="nickname" id="nicname" autocomplete="off" value="<%= request.getAttribute("beforeName") != null ? request.getAttribute("beforeName") : ""%>">
 		
 		
 		<label for="category">目標ジャンル</label>
-		<select id="category" name="categoryId">
-			<option value="1" <%= "運動・ストレッチ".equals(request.getAttribute("beforeCategory")) ? "selected" : ""%>>運動・ストレッチ</option>
-			<option value="2" <%= "セルフケア".equals(request.getAttribute("beforeCategory")) ? "selected" : ""%>>セルフケア</option>
-			<option value="3" <%= "スキルアップ".equals(request.getAttribute("beforeCategory")) ? "selected" : ""%>>スキルアップ</option>
-			<option value="4" <%= "環境リセット".equals(request.getAttribute("beforeCategory")) ? "selected" : ""%>>環境リセット</option>
-			<option value="5" <%= "運動・ストレッチ".equals(request.getAttribute("beforeCategory")) ? "selected" : ""%>>趣味</option>
-			<option value="6" <%= "運動・ストレッチ".equals(request.getAttribute("beforeCategory")) ? "selected" : ""%>>キャリアアップ</option>
-		</select>
+            <select name="categoryId" id="category" class="company-select" required>
+      			<c:forEach var="category" items="${categoryList}">
+					<option value="${category.categoryId}">${category.categoryTitle}</option>
+				</c:forEach>
+            </select>			
+			
 		
-		
-		<label for="goal">目標詳細（２５文字以内）</label>
-		<input type="text" name="goalDetail" id="goal" autocomplete="off" value="<%= request.getAttribute("beforeGoal") != null ? request.getAttribute("beforeGoal") : "" %>">
+		<label for="goalDetail">目標詳細（２５文字以内）</label>
+		<input type="text" name="goalDetail" id="goalDetail" autocomplete="off" value="<%= request.getAttribute("beforeGoal") != null ? request.getAttribute("beforeGoal") : "" %>">
 		
 		<div id="formError" class="error"></div>
 		
