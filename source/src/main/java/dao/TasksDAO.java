@@ -456,7 +456,7 @@ public class TasksDAO {
 	}
 	
 	// 削除
-	public boolean deleteTask(Task task){
+	public boolean deleteTask(int task_id){
 		Connection conn = null;
 		boolean result = false;
 		
@@ -472,7 +472,7 @@ public class TasksDAO {
 			PreparedStatement pStmtDelete = conn.prepareStatement(sqlDelete);
 				
 			//タスク削除SQLに挿入するプリペアードステートメント
-			pStmtDelete.setInt(1,task.getTaskId());
+			pStmtDelete.setInt(1,task_id);
 			
 			//タスク削除SQLを実行
 			if (pStmtDelete.executeUpdate() == 1) {

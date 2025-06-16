@@ -116,7 +116,7 @@ public class TaskRegistServlet extends HttpServlet {
 		boolean result = false;
 		
 		try {
-	    	// アカウント情報をDBに登録
+	    	// タスク情報をDBに登録
 			result = tasksDAO.registTask(newTask);
 	    
 			if (result) {
