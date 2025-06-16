@@ -39,11 +39,19 @@
 			  <td>${signup_user.goalDetail}</td>
 			</tr>
 		</table>
-		
-	<div class="button-wrapper">
-		<button type="button" id="back2" class="light-orange-btn">戻る</button>
-		<input type="submit" id="check2" class="orange-btn" name="login" value="この内容で登録">
-	</div>
+	<form action="<%= request.getContextPath() %>/LoginServlet" method="post">
+	    <input type="hidden" name="action" value="signup_complete">
+	    <input type="hidden" name="nickname" value="${signup_user.nickname}">
+	    <input type="hidden" name="email" value="${signup_user.email}">
+	    <input type="hidden" name="password" value="${signup_user.password}">
+	    <input type="hidden" name="categoryId" value="${signup_user.categoryId}">
+	    <input type="hidden" name="goalDetail" value="${signup_user.goalDetail}">
+	
+	    <div class="button-wrapper">
+	        <button type="button" id="back2" class="light-orange-btn">戻る</button>
+	        <input type="submit" id="check2" class="orange-btn" value="この内容で登録">
+	    </div>
+	</form>
 	</div>
 	
 	<script >
