@@ -184,12 +184,8 @@ public class TasksDAOTest {
 				System.out.print("タスクID:");
 				taskId = scn.nextInt();
 
-				// テスト情報をクラスに格納
-				Task delRec = new Task();
-				delRec.setTaskId(taskId);
-
 				// 実行
-				if (tdao.deleteTask(delRec)) {
+				if (tdao.deleteTask(taskId)) {
 					System.out.println("削除成功！");
 					TasksDAOTest.showAll(tdao.selectAll(accountId));
 				} else {
