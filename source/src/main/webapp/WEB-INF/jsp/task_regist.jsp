@@ -27,15 +27,17 @@
 	<p>タスクの新規作成</p>
 	<table>
 	<tr>
-	<td class="leftAlert">ここにアラートを表示</td>
-	</tr>
+	<td colspan="2" class="leftAlert">ここにアラートを表示</td>
+	</tr>														<!-- 1行目(未入力時アラート) -->
 	<tr>
-	<td><input type="text" name="title"></td>
-	</tr>
+	<td　colspan="2"><input type="text" name="title"></td>
+	</tr>														<!-- 2行目 -->
 	<tr>
+	<td>所要時間</td>
 	<td><input type="number" name="timeSpan"></td>
-	</tr>
+	</tr>														<!-- 3行目 -->
 	<tr>
+	<td>気分</td>
 	<td>
 		<SELECT name="mood" id="moodId">
 			<option value=0>リラックス</option>
@@ -45,8 +47,9 @@
 			<option value=4>悲しい</option>
 		</SELECT>
 	</td>
-	</tr>
+	</tr>														<!-- 4行目 -->
 	<tr>
+	<td>作業ジャンル</td>
 	<td>
 		<SELECT name="category" id="categoryId">
 			<option value=0>運動・ストレッチ</option>
@@ -57,13 +60,14 @@
 			<option value=5>キャリアアップ</option>
 		</SELECT>
 	</td>
-	</tr>
+	</tr>														<!-- 5行目 -->
 	<tr>
+	<td>公開設定</td>
 	<td><input type="checkbox" name="isPrivate" value="isPrivate">公開する</td>
-	</tr>
+	</tr>														<!-- 6行目 -->
 	<tr>
-	<td>チェックすると他のユーザーに<br>タスク内容が公開されます。</td>
-	</tr>
+	<td colspan="2" class="rightAlert">チェックすると他のユーザーに<br>タスク内容が公開されます。</td>
+	</tr>														<!-- 5行目（常時表示警告文） -->
 	</table>
 	<input type="submit" class="light-orange-btn" name="registBotton" value="リセット">
 	<input type="submit" class="orange-btn" name="resetBotton" value="登録">
