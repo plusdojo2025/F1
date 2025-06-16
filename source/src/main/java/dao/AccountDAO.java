@@ -53,7 +53,7 @@ public class AccountDAO {
 				account.setGoalDetail(rs.getString("goal_detail"));
 				account.setCreatedAt(rs.getTimestamp("created_at"));
 				account.setLoginAt(rs.getTimestamp("login_at"));
-				account.setConsecutiveLogins(rs.getInt("consecutive_Logins"));
+				account.setConsecutiveLogins(rs.getInt("consecutive_logins"));
 			}
 		
 		//エラー処理
