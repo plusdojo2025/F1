@@ -28,6 +28,25 @@ body {
   text-align: center;
 }
 
+.login-container2 table {
+  width: 90%;
+  margin: 0 auto;
+  table-layout: fixed;
+}
+
+.login-container2 table th {
+  width: 30%;
+  text-align: right;   
+  padding-right: 10px;
+  white-space: nowrap;
+}
+
+.login-container2 table td {
+  text-align: left;
+  padding-left: 10px;
+}
+
+
 form {
   display: flex;
   flex-direction: column;
@@ -59,8 +78,9 @@ h1{
 table{
   width: 90%;
   border-collapse: separate;
-  border-spacing: 0 20px;
+  border-spacing: 0 15px;
   margin: 0 auto;
+  margin-bottom: 20px;
 }
 
 th, td {
@@ -78,6 +98,12 @@ th {
   color: #555;
   font-weight: 600;
 }
+
+td.colom {
+  padding-left: 0;
+  padding-right: 0;          /* ← 余白をなくす */
+}
+
 
 td {
   color: #333;
@@ -158,11 +184,23 @@ td {
   outline: none;
 }
 
-.login-container2 table th,
-.login-container2 table td {
+.login-container2 table th {
     font-size: 20px; /* テーブルの文字サイズ */
     padding: 15px 10px;
-    padding-left: 20px;
+    border-bottom: 3px solid #ccc;
+    text-align: center;
+}
+
+.login-container2 table td {
+    font-size: 20px; /* テーブルの文字サイズ */
+    padding: 10px 5px;
+    border-bottom: 3px solid #ccc;
+    text-align: left;
+}
+
+.login-container2 table td.colom {
+    font-size: 20px; /* テーブルの文字サイズ */
+    padding: 10px 5px;
     border-bottom: 3px solid #ccc;
     text-align: center;
 }
@@ -173,7 +211,7 @@ td {
   border-bottom: none;
 }
 
-#back{
+#back2{
 		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 	border: none;
 	border-top-left-radius: 40px;
@@ -187,11 +225,10 @@ td {
   font-size: 23px;
   font-weight: bold;
   color: white;
-  margin-bottom: 20px;
 	
 }
 
-#check{
+#check2{
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   border: none;
   border-top-left-radius: 40px;
@@ -205,7 +242,7 @@ td {
   font-size: 21px;
   font-weight: bold;
   color: white;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 

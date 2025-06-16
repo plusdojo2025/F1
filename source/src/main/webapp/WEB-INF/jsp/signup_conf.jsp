@@ -13,18 +13,46 @@
 		<h2 class="card-label">登録内容の確認</h2>
 		
 		<table>
-			<tr><th>ニックネーム:</th><td>${signup_user.nickname}</td></tr>
-			<tr><th>メールアドレス:</th><td>${signup_user.email}</td></tr>
-			<tr><th>パスワード:</th><td>${signup_user.password}</td></tr>
-			<tr><th>目標ジャンル:</th><td>${signup_user.categoryId}</td></tr>
-			<tr><th>目標内容:</th><td>${signup_user.goalDetail}</td></tr>
+			<tr>
+			  <th>ニックネーム</th>
+			  <td class="colon">:</td>
+			  <td>${signup_user.nickname}</td>
+			</tr>
+			<tr>
+			  <th>メールアドレス</th>
+			  <td class="colon">:</td>
+			  <td>${signup_user.email}</td>
+			</tr>
+			<tr>
+			  <th>パスワード</th>
+			  <td class="colon">:</td>
+			  <td>${signup_user.password}</td>
+			</tr>
+			<tr>
+			  <th>目標ジャンル</th>
+			  <td class="colon">:</td>
+			  <td>${signup_user.categoryId}</td>
+			</tr>
+			<tr>
+			  <th>目標内容</th>
+			  <td class="colon">:</td>
+			  <td>${signup_user.goalDetail}</td>
+			</tr>
 		</table>
 		
 	<div class="button-wrapper">
-		<button type="button" id="back" class="light-orange-btn">戻る</button>
-		<input type="submit" id="check" class="orange-btn" name="login" value="この内容で登録">
+		<button type="button" id="back2" class="light-orange-btn">戻る</button>
+		<input type="submit" id="check2" class="orange-btn" name="login" value="この内容で登録">
 	</div>
 	</div>
+	
+	<script >
+		
+		document.getElementById("back2").addEventListener("click", function (){
+			window.location.href = "<%= request.getContextPath() %>/Signup2Servlet";
+		});
+	
+	</script>
 </body>
 </html>
 

@@ -24,6 +24,19 @@ import dto.Category;
 public class Signup2Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+
+	    // GETメソッド：戻るボタンでここに来る
+	    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	        throws ServletException, IOException {
+
+	        request.setCharacterEncoding("UTF-8");
+	        response.setContentType("text/html; charset=UTF-8");
+
+	        // 前回入力された情報をセッションなどから渡すならここで行う
+	        request.getRequestDispatcher("/WEB-INF/jsp/signup2.jsp").forward(request, response);
+	    }
+
+
     /**
      * POSTリクエスト時の処理
      */
