@@ -30,7 +30,7 @@
 	<td colspan="2" class="leftAlert">ここにアラートを表示</td>
 	</tr>														<!-- 1行目(未入力時アラート) -->
 	<tr>
-	<td　colspan="2"><input type="text" name="title"></td>
+	<td colspan="2"><input type="text" name="title"></td>
 	</tr>														<!-- 2行目 -->
 	<tr>
 	<td>所要時間</td>
