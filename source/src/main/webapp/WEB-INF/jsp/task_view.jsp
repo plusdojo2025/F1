@@ -1,26 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>manimani/タスク一覧</title>
-</head>
-<body>
-<!-- ヘッダー -->
-<header><!-- グローバルナビ -->
-<h1>
-<a href="/webapp/TopPageServlet">まにまにLOGO</a>
-</h1>
-<ul>	
-    <li><a href="/webapp/TaskRegistServlet">タスクの新規作成</a></li>
-    <li><a href="/webapp/TaskViewServlet">タスク一覧</a></li>
-    <li><a href="/webapp/RecordServlet">実績</a></li>
-    <li><a href="/webapp/AccountServlet">アカウント</a></li>
-    <li><a href="/webapp/TopPageServlet">ヘルプ</a></li>
-</ul>
-</header><!-- グローバルナビ -->
+
+<%@ include file="header.jsp" %><!-- ヘッダー＆グローバルナビ -->
 
 <main>
 <table>
@@ -35,23 +17,24 @@
 	 </tr>
 	</thead><!-- テーブルトップ -->
 	<tbody>
-		<c:forEach var="e" items="${Tasks}" ><!-- 出力繰り返し -->
-		<input type="hidden" name="" value="${e.number}">
-		<tr>
-		<td><input type="text" name="title" value="${e.title}"></td><!-- タスク名 -->
-		<td><input type="text" name="timeSpan" value="${e.timeSpan}"></td><!-- 所要時間 -->
-		<td><input type="text" name="categoryTitle" value="${category_title}"></td><!-- 気分 -->
-		<td><input type="text" name="moodTitle" value="${e.mood_title}"></td><!-- 作業ジャンル -->
-		<td>
-		<c:if test="${ e.satisfaction_level == true }" >
-			check
-		</c:if>
-		</td><!-- 公開判定チェックマーク -->
-		<td>
-		<input type="submit" class="green-btn" id="ChengePostModal" name="chengeButton" value="変更">
-		<input type="submit" class="orange-btn" id="DeletePostModal" name="deleteButton" value="削除">
-		</td><!-- 変更・削除ボタン -->
-		</tr>
+		<c:forEach var="e" items="${tasks}" ><!-- 出力繰り返し -->
+				<input type="hidden" name="" value="${e.task_id}">
+				<tr>
+				<td>${e.title}</td><!-- タスク名 -->
+				<td>${e.timeSpan}</td><!-- 所要時間 -->
+				<td>${e.category_title}</td><!-- 気分 -->
+				<td>"${e.mood_title}</td><!-- 作業ジャンル -->
+				<td>
+				<c:if test="${ e.satisfaction_level == true }" >
+					check
+				</c:if>
+				</td><!-- 公開判定チェックマーク -->
+				<td>
+				<button type="button" class="reist-button" onclick="openRegistModal(${e.taskId}, '${e.timeSpan}', ${e.title}, 
+				'${e.moodId}', '${e.categoryId}', '${e.isPrivate}')">変更</button>
+				<button type="button" class="delete-button" onclick="openDeleteModal(${e.taskId}, '${e.title}')">削除</button>
+				</td><!-- 変更・削除ボタン -->
+				</tr>
 		</c:forEach>
 	</tbody>
 </table>
