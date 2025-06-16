@@ -1,14 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="../../css/record.css">
-</head>
-<body>
+<%@ include file="header.jsp" %>
 	<div>
 		<p>
 			これまでに活用した合計時間 <img src="../../images/time.svg">
@@ -54,6 +47,6 @@
 				</tr>
 			</c:forEach>
 	</table>
-	<input type="button" onclick="" value="TOP画面へ戻る">
+	<a href="/F1/SuggestServlet.java"> TOP画面へ戻る</a>>
 </body>
 </html>

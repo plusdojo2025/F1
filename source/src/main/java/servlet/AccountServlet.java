@@ -35,7 +35,7 @@ public class AccountServlet extends HttpServlet {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
 		if (session.getAttribute("login_user") == null) {
-			response.sendRedirect("/webapp/LoginServlet");
+			response.sendRedirect("/F1/LoginServlet");
 			return;
 		}
 		

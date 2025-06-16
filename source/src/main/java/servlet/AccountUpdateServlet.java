@@ -58,7 +58,7 @@ public class AccountUpdateServlet extends HttpServlet {
 		
 		}catch (Exception e) {
             // DB例外・その他予期しないエラー時
-            request.setAttribute("loginErrorMassage", "ユーザー情報の変更中にエラーが発生しました");
+            request.setAttribute("AccountUpdateErrorMassage", "ユーザー情報の変更中にエラーが発生しました");
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
             dispatcher.forward(request, response);
         }
