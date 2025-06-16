@@ -31,7 +31,7 @@
 			<tr>
 			  <th>目標ジャンル</th>
 			  <td class="colon">:</td>
-			  <td>${signup_user.categoryId}</td>
+			  <td>${signupCategory.categoryTitle}</td>
 			</tr>
 			<tr>
 			  <th>目標内容</th>

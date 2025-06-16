@@ -28,7 +28,7 @@
 		<label for="category">目標ジャンル</label>
             <select name="categoryId" id="category" class="company-select" required>
       			<c:forEach var="category" items="${categoryList}">
-					<option value="${category.category_id}">${category.category_title}</option>
+					<option value="${category.categoryId}">${category.categoryTitle}</option>
 				</c:forEach>
             </select>			
 			
