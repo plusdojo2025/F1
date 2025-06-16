@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.CategoryDAO;
+import dto.Account;
+import dto.Category;
 
 /**
  * Servlet implementation class AccountServlet
@@ -39,10 +42,18 @@ public class AccountServlet extends HttpServlet {
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 		int flag =  Integer.parseInt(request.getParameter("flag"));
+		Account  login_user= (Account)session.getAttribute("login_user");
+		int categoryId = login_user.getCategoryId();
 		
+		//変更画面から遷移した場合、accountのセッションスコープを消去する
 		if(flag == 2) {
 			session.removeAttribute("account");
 		}		
+		
+		//リクエストスコープにカテゴリーを格納する
+		CategoryDAO cDao = new CategoryDAO();
+		Category category = cDao.getCategory(categoryId);
+		request.setAttribute("category", category);
 		
 		// アカウント管理画面へフォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/account.jsp");
