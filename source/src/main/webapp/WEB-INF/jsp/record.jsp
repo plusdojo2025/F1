@@ -4,7 +4,7 @@
 <%@ include file="header.jsp" %>
 	<div>
 		<p>
-			これまでに活用した合計時間 <img src="../../images/time.svg">
+			これまでに活用した合計時間<img src="<c:url value='/images/time.svg' />">
 		</p>
 		<p>
 			<c:out value="${durationSum}" />
@@ -12,7 +12,7 @@
 	</div>
 	<div>
 		<p>
-			よく行う気分<img src="../../images/smile.svg">
+			よく行う気分<img src="<c:url value='/images/smile.svg' />">
 		</p>
 		<p>
 			<c:out value="${mostCategory}" />
@@ -22,7 +22,7 @@
 	</div>
 	<div>
 		<p>
-			よく行う作業ジャンル <img src="../../images/work.svg">
+			よく行う作業ジャンル <img src="<c:url value='/images/work.svg' />">
 		</p>
 		<p>
 			<c:out value="${mostMood}" />
@@ -46,6 +46,9 @@
 						style="--percent: ${log.satisfactionLevel / 5 * 100}%;"></span></td>
 				</tr>
 			</c:forEach>
+			<c:if test="${empty history}">
+		<p>指定された条件に一致するデータはありません。</p>
+	</c:if>
 	</table>
 	<a href="/F1/SuggestServlet" class="light-orange-btn"> TOP画面へ戻る</a>
 </body>
