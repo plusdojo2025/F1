@@ -24,7 +24,7 @@ public class LogDAO {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sukima?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f1?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 			
@@ -88,7 +88,7 @@ public class LogDAO {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sukima?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f1?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 
@@ -134,7 +134,7 @@ public class LogDAO {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sukima?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f1?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 			
@@ -181,7 +181,7 @@ public class LogDAO {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sukima?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f1?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 			
@@ -244,7 +244,7 @@ public class LogDAO {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sukima?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f1?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 			
