@@ -17,9 +17,9 @@
 			<span id="minutes"></span>分<span id="seconds"></span>秒
 		</div>
 		
-		<form method="POST" action="">
+		<form method="POST" action="/F1/ToResultServlet">
 			<input id="duration" type="hidden" name="duration">
-			<input type="button" class="orange-btn" id="completeButton" onclick="" value="完了">
+			<input type="submit" class="orange-btn" id="completeButton" value="完了">
 		</form>
 	</div>
 	

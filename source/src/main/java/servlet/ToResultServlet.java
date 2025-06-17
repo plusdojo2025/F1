@@ -2,7 +2,6 @@ package servlet;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,23 +9,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.LogDAO;
 import dto.Account;
 import dto.Log;
 
 /**
- * タスク完了後のDB登録処理用。
- * 成功時はトップページにリダイレクト。
+ * 結果画面表示用。
+ * タスク結果画面(タスク名、所要時間を表示)へリダイレクト。
  */
-@WebServlet("/ResultServlet")
-public class ResultServlet extends HttpServlet {
+@WebServlet("/ToResultServlet")
+public class ToResultServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	/**
 	 * POSTリクエスト時の処理
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    // 文字コード設定
 	    request.setCharacterEncoding("UTF-8");
 	    response.setContentType("text/html; charset=UTF-8");
@@ -49,46 +46,26 @@ public class ResultServlet extends HttpServlet {
 	    }
 	    
 	    // リクエストパラメーターの取得	    
-	    int satisfactionLevel;
+	    int duration;
 	    try {
-	    	satisfactionLevel = Integer.parseInt(request.getParameter("satisfactionLevel"));
+	    	duration = Integer.parseInt(request.getParameter("duration"));
 	    } catch (NumberFormatException e) {
 	        // 数字でなかった場合の処理
+	    	e.printStackTrace();
 	        request.setAttribute("errorMessage", "不正なデータが送信されました。");
 	        request.getRequestDispatcher("/WEB-INF/jsp/error.jsp").forward(request, response);
 	        return;
 	    }
 	    
-	    // DAOの生成
- 		LogDAO logDAO = new LogDAO();
-	    
- 		// データをセット
- 		currentLog.setSatisfactionLevel(satisfactionLevel);
-	    
-	    // 結果用の変数定義
-	    boolean result = false;
-	    
-	    // DBに内容を反映
-		try {
-			// 実行中ログ情報をDBに登録
-			result = logDAO.registLog(currentLog);
-		} catch (Exception e) {
-			e.printStackTrace();
-            request.setAttribute("errorMessage", "エラーが発生しました。");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/error.jsp");
-            dispatcher.forward(request, response);
-            return;
-		}
+		// データをセット
+ 		currentLog.setDuration(duration);
+
+	    // セッションスコープのLogオブジェクトを更新
+		session.setAttribute("currentLog", currentLog);
 		
-		if (result) {
-		    // 登録成功：TOPページへリダイレクト
-		    response.sendRedirect("TopPageServlet");
-		} else {
-			// 登録失敗:エラー画面
-			request.setAttribute("errorMessage", "登録に失敗しました。もう一度お試しください。");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/error.jsp");
-			dispatcher.forward(request, response);
-		}
-	}
+		// 提案実行画面へフォワード
+        request.getRequestDispatcher("/WEB-INF/jsp/result.jsp").forward(request, response);
+	
+    }
 
 }
