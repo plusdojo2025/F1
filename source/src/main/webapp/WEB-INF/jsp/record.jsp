@@ -47,6 +47,6 @@
 				</tr>
 			</c:forEach>
 	</table>
-	<a href="/F1/SuggestServlet.java" class="light-orange-btn"> TOP画面へ戻る</a>
+	<a href="/F1/SuggestServlet" class="light-orange-btn"> TOP画面へ戻る</a>
 </body>
 </html>

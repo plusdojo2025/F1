@@ -10,6 +10,6 @@
         <br>再度やり直しをお願いします</p>
     </div>
 
-    <a href="/F1/SuggestServlet.java"> TOP画面へ戻る</a>
+    <a href="/F1/SuggestServlet"> TOP画面へ戻る</a>
 </body>
 </html>
