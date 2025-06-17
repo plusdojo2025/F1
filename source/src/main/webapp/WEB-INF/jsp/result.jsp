@@ -14,7 +14,7 @@
 			<input type="range" min="0" max="6" step ="1">
 		</div>
 	
-		<input type="button" class="orange-btn" id="registButton" onclick="" value="満足度を登録">
+		<input type="submit" class="orange-btn" id="registButton" onclick="" value="満足度を登録">
 	</form>
 </body>
 
