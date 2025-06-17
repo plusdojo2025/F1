@@ -19,10 +19,10 @@
 </body>
 
 <script>
-const second = parseInt(${duration});
+const second = parseInt(<c:out value="${currentLog.duration}"/>);
 
 window.onload = function onLoad(){
-	 document.getElementById('seconds').innerHTML = pad(++second % 60);
+	 document.getElementById('seconds').innerHTML = pad(second % 60);
 	 document.getElementById('minutes').innerHTML = pad(parseInt(second / 60, 10));
 }
 
