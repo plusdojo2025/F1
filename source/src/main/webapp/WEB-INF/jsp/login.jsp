@@ -28,6 +28,10 @@
 		<input type="password" name="password" id="password" value="<%= request.getAttribute("beforePassword") != null ? request.getAttribute("beforPassword") : ""%>">
 		<div id="passwordError" class="error">
 			<%= request.getAttribute("passwordErrorMessage") != null  ? request.getAttribute("passwordErrorMessage") : "" %>
+			<button type="button" id="togglePassword" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer;">
+              👁
+            </button>
+			
 		</div>
 		
 		<div  class="error">
@@ -78,6 +82,13 @@
 				event.preventDefault();
 			}
 		});
+		
+		document.getElementById("togglePassword").addEventListener("click", function () {
+		    const pwField = document.getElementById("password");
+		    const isHidden = pwField.type === "password";
+		    pwField.type = isHidden ? "text" : "password";
+		    this.textContent = isHidden ? "🙈" : "👁"; // アイコンを切り替える
+		  });
 	</script>
 </body>
 </html>
