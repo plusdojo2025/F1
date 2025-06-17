@@ -11,30 +11,52 @@
 
 	<table id="mineTasks">
 		<caption>${login_user.nickname}さんの登録したタスク</caption>
-		<c:forEach var="task" items="suggestTaskList">
+		<c:choose>
+		<c:when test="${not empty suggestTaskList}">
+			<c:forEach var="task" items="suggestTaskList">
 				<tr>
-				<td>
-					<form method="POST" action="/F1/SuggestExecuteServlet">
-						<input type="hidden" name="taskId" value="${task.taskId}">
-						<input type="submit" value="${task.Title}">
-					</form>
-				</td>
+					<td>
+						<form method="POST" action="/F1/SuggestExecuteServlet">
+							<input type="hidden" name="taskId" value="${task.taskId}">
+							<input type="submit" value="${task.Title}">
+						</form>
+					</td>
 				</tr>
-		</c:forEach>
+			</c:forEach>
+		</c:when>
+		<c:otherwise>
+			<tr>
+				<td>
+					<p>該当するタスクがありませんでした。</p>
+				</td>
+			</tr>
+		</c:otherwise>
+		</c:choose>
 	</table>
 	
 	<table id="otherTasks">
 		<caption>他のユーザからの提案</caption>
-		<c:forEach var="task" items="suggestOtherTaskList">
+		<c:choose>
+		<c:when test="${not empty suggestTaskList}">
+			<c:forEach var="task" items="suggestOtherTaskList">
 				<tr>
-				<td>
-					<form method="POST" action="/F1/SuggestExecuteServlet">
-						<input type="hidden" name="taskId" value="${task.taskId}">
-						<input type="submit" value="${task.Title}">
-					</form>
-				</td>
+					<td>
+						<form method="POST" action="/F1/SuggestExecuteServlet">
+							<input type="hidden" name="taskId" value="${task.taskId}">
+							<input type="submit" value="${task.Title}">
+						</form>
+					</td>
 				</tr>
-		</c:forEach>
+			</c:forEach>
+		</c:when>
+		<c:otherwise>
+			<tr>
+				<td>
+					<p>該当するタスクがありませんでした。</p>
+				</td>
+			</tr>
+		</c:otherwise>
+		</c:choose>
 	</table>
 	
 	<form method="GET" action="/F1/TopPageServlet">
