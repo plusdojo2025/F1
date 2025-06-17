@@ -16,7 +16,7 @@
 	
 	<form id="suggestForm" method="POST" action="/F1/SuggestServlet">
 	 	<label for="timeSpan">今のすきま時間は？</label>
-	 	<input type="number" id="timeSpan" name="timeSpan" min="1" value="1"/>
+	 	<input type="number" id="spanTime" name="spanTime" min="1" value="1"/>
 	 	
 	 	<label for="mood">今の気分</label>
 	 	<select name="moodId">
