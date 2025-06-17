@@ -17,21 +17,21 @@
 	 </tr>
 	</thead><!-- テーブルトップ -->
 	<tbody>
-		<c:forEach var="e" items="${tasks}" ><!-- 出力繰り返し -->
-				<input type="hidden" name="" value="${e.task_id}">
+		<c:forEach var="e" items="${taskList}" ><!-- 出力繰り返し -->
+				<input type="hidden" name="" value="${e.taskId}">
 				<tr>
 				<td>${e.title}</td><!-- タスク名 -->
 				<td>${e.timeSpan}</td><!-- 所要時間 -->
-				<td>${e.category_title}</td><!-- 気分 -->
-				<td>"${e.mood_title}</td><!-- 作業ジャンル -->
+				<td>${e.moodTitle}</td><!-- 気分 -->
+				<td>"${e.categoryTitle}</td><!-- 作業ジャンル -->
 				<td>
-				<c:if test="${ e.satisfaction_level == true }" >
+				<c:if test="${ e.isPrivate == true }" >
 					check
 				</c:if>
 				</td><!-- 公開判定チェックマーク -->
 				<td>
 				<button type="button" class="reist-button" onclick="openRegistModal(${e.taskId}, '${e.timeSpan}', ${e.title}, 
-				'${e.moodId}', '${e.categoryId}', '${e.isPrivate}')">変更</button>
+				'${e.moodTitle}', '${e.categoryTitle}', '${e.isPrivate}')">変更</button>
 				<button type="button" class="delete-button" onclick="openDeleteModal(${e.taskId}, '${e.title}')">削除</button>
 				</td><!-- 変更・削除ボタン -->
 				</tr>
