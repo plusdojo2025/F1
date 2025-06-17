@@ -22,7 +22,7 @@
 		<h1>まにまに</h1>
 		<form id="name" method="POST" action="<%= request.getContextPath() %>/SignupConfServlet" autocomplete="off">
 		<label for="nickname">ニックネーム</label>
-		<input type="text" name="nickname" id="nicname" autocomplete="off" value="<%= request.getAttribute("beforeName") != null ? request.getAttribute("beforeName") : ""%>">
+		<input type="text" name="nickname" id="nickname" autocomplete="off" value="<%= request.getAttribute("beforeName") != null ? request.getAttribute("beforeName") : ""%>">
 		
 		
 		<label for="category">目標ジャンル</label>
@@ -51,6 +51,23 @@
 	</div>
 	
 	<script >
+		document.getElementById("name").addEventListener("submit", function(event){
+			
+			// 入力値を取得
+		    let nickname = document.getElementById("nickname").value.trim();
+		    let category = document.getElementById("category").value.trim();
+		    let goalDetail = document.getElementById("goalDetail").value.trim();
+
+		    // エラーメッセージ表示領域
+		    let formError = document.getElementById("formError");
+		    formError.textContent = "";
+
+		    // 未入力チェック
+		    if (!nickname || !category || !goalDetail) {
+		      formError.textContent = "すべての項目を入力してください";
+		      event.preventDefault(); // フォーム送信中止
+		    }
+		  });
 		
 		document.getElementById("back").addEventListener("click", function (){
 			window.location.href = "<%= request.getContextPath() %>/SignupServlet";
