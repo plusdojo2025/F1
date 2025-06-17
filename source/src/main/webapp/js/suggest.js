@@ -5,6 +5,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const secondsEl = document.getElementById("seconds");
     const minutesEl = document.getElementById("minutes");
     const durationInput = document.getElementById("duration");
+    const modal = document.getElementById("confirmModal");
+	const yesBtn = document.getElementById("confirmYes");
+	const noBtn = document.getElementById("confirmNo");
 
     function pad(value) {
         return value > 9 ? value : '0' + value;
@@ -41,4 +44,21 @@ document.addEventListener("DOMContentLoaded", function () {
             e.returnValue = '';
         }
     });
+    
+    // 中止ボタン押下時
+	document.getElementById("cancelButton").addEventListener("click", () => {
+	    modal.classList.remove("hidden");
+	});
+	
+	// 「はい」選択時
+	yesBtn.addEventListener("click", () => {
+	    preventUnload = false;
+	    clearInterval(timer);
+	    window.location.href = "/F1/TopPageServlet";
+	});
+	
+	// 「いいえ」選択時
+	noBtn.addEventListener("click", () => {
+	    modal.classList.add("hidden");
+	});
 });
