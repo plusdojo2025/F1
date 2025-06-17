@@ -45,12 +45,12 @@
 		    <div class="account-button-section">
 		    	<a href="/F1/TopPageServlet" class="button back-to-top-button">TOPへ戻る</a>
 		    	<a href="/F1/AccountUpdateServlet" class="button account-update-button">
-                    <div class="pencil-back-ground">
+                    <span class="pencil-back-ground">
                         <img src="images/pencil.svg" alt="">
-                    </div>
-                    <p class="account-update-text">
+                    </span>
+                    <span class="account-update-text">
                         内容を変更する
-                    </p>
+                    </span>
                 </a>
 				<button type="button" class="button logout-button" onclick="openLoguotModal()">
         			
