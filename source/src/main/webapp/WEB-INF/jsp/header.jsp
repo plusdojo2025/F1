@@ -15,15 +15,15 @@
 	<header>
 		<a href="/F1/TopPageServlet.java">まにまに</a>
 		<ul>
-			<li><a href="/F1/TaskRegistServlet.java">タスクの新規登録 
+			<li><a href="/F1/TaskRegistServlet">タスクの新規登録 
 				<img src="../../images/plus.svg"></a></li>
-			<li><a href="/F1/TaskViewServlet.java">タスク一覧 
+			<li><a href="/F1/TaskViewServlet">タスク一覧 
 				<img src="../../images/task-list.svg"></a></li>
-			<li><a href="/F1/RecordServlet.java">実績 
+			<li><a href="/F1/RecordServlet">実績 
 				<img src="../../images/medal.svg"></a></li>
-			<li><a href="/F1/AccountServlet.java">アカウント 
+			<li><a href="/F1/AccountServlet">アカウント 
 				<img src="../../images/account.svg"></a></li>
-			<li><a href="/F1/HelpServlet.java">ヘルプ 
+			<li><a href="/F1/HelpServlet">ヘルプ 
 				<img src="../../images/question.svg"></a></li>
 		</ul>
 
