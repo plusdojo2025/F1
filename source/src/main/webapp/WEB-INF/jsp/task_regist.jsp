@@ -13,23 +13,23 @@
 			<div class="task-regist-formbody">
 				<div class="task-formsection task-regist-title-form">
 					<span class="account-error-msg">ここにアラートを表示</span>
-					<input type="text" class="account-input" name="title">
+					<input type="text" class="account-input w-form" name="title">
 				</div>
-				<div class="task-formsection">
-					<p>所要時間</p>
-					<input type="number" name="timeSpan">
+				<div class="task-formsection align-i-c">
+					<p class="task-title-tips">所要時間</p>
+					<input type="number" class="account-input task-regist-input" name="timeSpan">
 				</div>
-				<div class="task-formsection">
-					<p>気分</p>
-					<SELECT name="moodId" id="moodId">
+				<div class="task-formsection align-i-c">
+					<p class="task-title-tips">気分</p>
+					<SELECT name="moodId" id="moodId" class="account-input task-select task-regist-input">
 				 		<c:forEach var="mood" items="${moodList}">
 				 			<option value="${mood.moodId}">${mood.moodTitle}</option>
 				 		</c:forEach>
 					</SELECT>
 				</div>
-				<div class="task-formsection">
-					<p>作業ジャンル</p>
-					<SELECT name="categoryId" id="categoryId">
+				<div class="task-formsection align-i-c">
+					<p class="task-title-tips">作業ジャンル</p>
+					<SELECT name="categoryId" id="categoryId" class="account-input task-select task-regist-input">
 				 		<c:forEach var="category" items="${categoryList}">
 				 			<c:choose>
 				 				<c:when test="${category.categoryId == login_user.categoryId}">
@@ -43,15 +43,15 @@
 					</SELECT>
 				</div>
 				<div class="task-formsection">
-					<p>公開設定</p>
+					<p class="task-title-tips">公開設定</p>
 					<div>
-						<input type="checkbox" name="isPrivate" value="isPrivate">公開する
+						<input type="checkbox" name="isPrivate" value="true">公開する
 					</div>
-					<p>チェックすると他のユーザーに<br>タスク内容が公開されます。</p>
+					<p class="account-error-msg">チェックすると他のユーザーに<br>タスク内容が公開されます。</p>
 				</div>
 			</div>
-			<button type="submit" class="light-orange-btn" name="registBotton">リセット</button>
-			<input type="submit" class="orange-btn" name="resetBotton" value="登録">
+			<button type="submit" class="light-orange-btn" name="resetBotton">リセット</button>
+			<input type="submit" class="orange-btn" name="registBotton" value="登録">
 		</form>
 	</div>
 </div>

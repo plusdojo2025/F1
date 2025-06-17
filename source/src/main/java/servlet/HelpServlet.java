@@ -31,7 +31,7 @@ public class HelpServlet extends HttpServlet {
         request.setAttribute("helpMessage", "アプリケーションの説明");
 
         // help.jsp へフォワード
-        request.getRequestDispatcher("/help.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/jsp/help.jsp").forward(request, response);
     }
 
     @Override

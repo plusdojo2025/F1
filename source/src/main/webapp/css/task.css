@@ -12,11 +12,39 @@
 
 .task-formsection {
 	display: flex;
+	justify-content: space-between;
 }
 .task-regist-formbody {
-    background-color: #ffffff;
+    background-color: #FEF8E2;
+   	padding: 30px 50px;
+    border-radius: 5px;
+    border: 1px solid #0B6446;
+    margin: 30px;
 }
 .task-regist-title-form {
 	display: flex;
     flex-direction: column;
+}
+.task-title-tips {
+	color: #FFFFFF;
+	background-color: #0B6446;
+	border-radius: 50px;
+	width: 100px;
+	text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.task-select {
+	height: 40px;
+}
+
+.align-i-c {
+	align-items: center;
+}
+.task-regist-input {
+	width: 220px;
+}
+.w-form {
+	width: 100%;
 }
