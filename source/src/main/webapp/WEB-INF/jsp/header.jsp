@@ -13,7 +13,7 @@
 </head>
 <body>
 	<header>
-		<a href="/F1/TopPageServlet.java">まにまに</a>
+		<a href="/F1/TopPageServlet">まにまに</a>
 		<ul>
 			<li><a href="/F1/TaskRegistServlet">タスクの新規登録 
 				<img src="../../images/plus.svg"></a></li>
