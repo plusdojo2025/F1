@@ -5,16 +5,16 @@
 <main class="suggest-main">
 	<div class="topPage-goalDetail top-record">
 		<p>目標</p>
-        <p><c:out value="${goalDetail}"/>1</p>
+        <p><c:out value="${goalDetail}"/></p>
 	</div>
 	<div class="topPage-record">
 		<div class="topPage-sumDuration top-record">
 			<p>１日の隙間活用時間</p>
-			<p><c:out value="${sumDuration}"/>2</p>
+			<p><c:out value="${sumDuration}"/></p>
 		</div>
 	</div>
 	<div class="topPage-consecutiveLogins top-record">
-		<p>連続ログイン<c:out value="${consecutiveLogins}"/>日</p>
+		<p>連続ログイン<c:out value="${login_user.consecutiveLogins}"/>日</p>
 	</div>
 	
 	<form id="suggestForm" method="POST" action="/F1/SuggestServlet">

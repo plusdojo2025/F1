@@ -64,7 +64,7 @@ public class TopPageServlet extends HttpServlet {
 	    try {
 	    	// １日の総合計すきま活用時間の取得
 	    	// sumDurationのnullチェック（nullだったら0を代入）
-	    	sumDuration = Optional.ofNullable(logDAO.sumDuration(login_user.getAccountId())).orElse(0);
+	    	sumDuration = Optional.ofNullable(logDAO.sumDayDuration(login_user.getAccountId())).orElse(0);
 	    	moodList = moodDAO.getMoodList();
 	    	categoryList = categoryDAO.getCategoryList();
 	    	
