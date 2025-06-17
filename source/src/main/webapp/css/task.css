@@ -1,5 +1,22 @@
 @charset "UTF-8";
 
-/*アラート右寄せ・左寄せ*/
+.task-regist-body {
+    background-color: #ffffff;
+    width: 55%;
+    border: solid #0B6446;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-/**/
+.task-formsection {
+	display: flex;
+}
+.task-regist-formbody {
+    background-color: #ffffff;
+}
+.task-regist-title-form {
+	display: flex;
+    flex-direction: column;
+}
