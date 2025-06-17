@@ -2,6 +2,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="header.jsp" %>
 
+	<dialog id="execute-checkModal" >
+		<p>現在の内容は削除されますがよろしいですか?<p>
+		
+		<button class="orange-btn" id="reCancelButton">キャンセル</button>
+		<form>
+			<input type="submit" class="light-orange-btn" id="deleteButton" value="削除する">
+		</form>
+	</dialog>
+
 	<div class="execute-container">
 		<h2><c:out value="${currentlog.task.Title}"/></h2>
 		<div id="timer">
@@ -28,6 +37,15 @@ setInterval(function() {
   document.getElementById('minutes').innerHTML = pad(parseInt(second / 60, 10));
   document.getElementById('duration').innerHTML= second;
 }, 1000);
+
+cancelButton.addEventListener('click', function () {
+    dialog.show();
+  });
+  
+reCancelButton.addEventListener('click', function () {
+    dialog.close();
+  });
+
 </script>
 
 </html>

@@ -1,14 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="/webapp/css/suggest.css">
-</head>
-<body>
-	<form>
+<%@ include file="header.jsp" %>
+	<form method="POST" action="/F1/SuggestServlet">
 		<div class="execute-container">
 			<h2><c:out value="${currentlog.task.Title}"/></h2>
 			
@@ -18,7 +11,7 @@
 			</div>
 			
 			<label for="satisfactionLevel">満足度の登録</label>
-			<input type="range">
+			<input type="range" min="0" max="6" step ="1">
 		</div>
 	
 		<input type="button" class="orange-btn" id="registButton" onclick="" value="満足度を登録">

@@ -13,12 +13,12 @@
 		<caption>${login_user.nickname}さんの登録したタスク</caption>
 		<c:choose>
 		<c:when test="${not empty suggestTaskList}">
-			<c:forEach var="task" items="suggestTaskList">
+			<c:forEach var="task" items="${suggestTaskList}">
 				<tr>
 					<td>
 						<form method="POST" action="/F1/SuggestExecuteServlet">
 							<input type="hidden" name="taskId" value="${task.taskId}">
-							<input type="submit" value="${task.Title}">
+							<input type="submit" value="${task.title}">
 						</form>
 					</td>
 				</tr>
@@ -38,12 +38,12 @@
 		<caption>他のユーザからの提案</caption>
 		<c:choose>
 		<c:when test="${not empty suggestTaskList}">
-			<c:forEach var="task" items="suggestOtherTaskList">
+			<c:forEach var="task" items="${suggestOtherTaskList}">
 				<tr>
 					<td>
 						<form method="POST" action="/F1/SuggestExecuteServlet">
 							<input type="hidden" name="taskId" value="${task.taskId}">
-							<input type="submit" value="${task.Title}">
+							<input type="submit" value="${task.title}">
 						</form>
 					</td>
 				</tr>
