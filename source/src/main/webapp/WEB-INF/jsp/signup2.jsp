@@ -34,7 +34,7 @@
 			
 		
 		<label for="goalDetail">目標詳細（２５文字以内）</label>
-		<input type="text" name="goalDetail" id="goalDetail" autocomplete="off" value="<%= request.getAttribute("beforeGoal") != null ? request.getAttribute("beforeGoal") : "" %>">
+		<input type="text" name="goalDetail" id="goalDetail" maxlength="25" autocomplete="off" placeholder="例：　目指せ-5kg" value="<%= request.getAttribute("beforeGoal") != null ? request.getAttribute("beforeGoal") : "" %>">
 		
 		<div id="formError" class="error"></div>
 		

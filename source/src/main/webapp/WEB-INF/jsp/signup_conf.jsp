@@ -39,7 +39,7 @@
 			  <td>${signup_user.goalDetail}</td>
 			</tr>
 		</table>
-	<form action="<%= request.getContextPath() %>/LoginServlet" method="post">
+	<form action="<%= request.getContextPath() %>/SignupExecuteServlet" method="post">
 	    <input type="hidden" name="action" value="signup_complete">
 	    <input type="hidden" name="nickname" value="${signup_user.nickname}">
 	    <input type="hidden" name="email" value="${signup_user.email}">
