@@ -45,7 +45,7 @@ public class RecordServlet extends HttpServlet {
 		
 		//文字コード設定
 		request.setCharacterEncoding("UTF-8");
-		Account account = (Account)session.getAttribute("account");
+		Account account = (Account)session.getAttribute("login_user");
 		
 		//集計処理を行う
 		LogDAO ldao = new LogDAO();
