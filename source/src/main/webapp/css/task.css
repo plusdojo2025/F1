@@ -12,7 +12,12 @@
 
 .task-formsection {
 	display: flex;
-	justify-content: space-between;
+	gap: 10px;
+}
+.task-regist-form {
+	display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .task-regist-formbody {
     background-color: #FEF8E2;
@@ -47,4 +52,12 @@
 }
 .w-form {
 	width: 100%;
+}
+.task-regist-button-section {
+   	display: flex;
+    justify-content: space-between;
+    width: 90%;
+}
+.is-privae-msg {
+	margin: unset;
 }
