@@ -1,1 +1,29 @@
 @charset "UTF-8";
+.help{
+    height: 750px;
+    width: 95%;
+    overflow-y: auto;
+    border: 2px solid rgb(29, 95, 46);
+    border-radius: 0.5em;
+    margin: 5px auto 5px auto;
+    word-break: break-word;
+    
+    
+}
+.explain{
+    color: aliceblue;
+    background-color: rgb(29, 95, 46);
+    border-bottom: solid 3px rgb(201, 201, 201);
+    text-align: center;
+    font-weight: normal;
+    margin: 0 0 0 0;
+    position: sticky;
+    top: 0;
+}
+ol{
+    width: fit-content;
+    margin: 20px auto;
+}
+section{
+    text-align: center;
+}
