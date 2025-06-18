@@ -3,18 +3,34 @@
 <%@ include file="header.jsp" %>
 	<form method="POST" action="/F1/ResultServlet">
 		<div class="execute-container">
-			<h2><c:out value="${currentlog.task.Title}"/></h2>
+			<h2><c:out value="${currentLog.task.title}"/></h2>
 			
 			<div class="result-time">
-				<p>今回の実行時間</p>
-				<span id="minutes"></span>分<span id="seconds"></span>秒
+				<p id="sp" style="font-size: 30px">今回の実行時間</p>
+				<span id="minutes"></span>
+				<span id="unit">分</span>
+				<span id="seconds"></span>
+				<span id="unit">秒</span>
 			</div>
 			
-			<label for="satisfactionLevel">満足度の登録</label>
-			<input type="range" name="satisfactionLevel" min="0" max="6" step ="1">
+			<div class="range-wrapper">
+				<label class="range-label" id="result-label" for="satisfactionLevel">満足度の登録</label><br>
+			</div>
+			
+			<div class="slider-with-labels">
+				<input type="range" name="satisfactionLevel" min="0" max="5" step ="1">
+			</div>
+			
+			<div class="labels">
+				<span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+			</div>
+			
 		</div>
-	
-		<input type="submit" class="orange-btn" id="registButton" onclick="" value="満足度を登録">
+		
+		<div class="result-orange-button">
+			<input type="submit" class="orange-btn " id="registButton" onclick="" value="満足度を登録">
+		</div>
+		
 	</form>
 </body>
 
