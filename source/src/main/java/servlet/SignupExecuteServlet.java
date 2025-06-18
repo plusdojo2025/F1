@@ -39,13 +39,13 @@ public class SignupExecuteServlet extends HttpServlet {
 		
 		// アカウントDAOの生成
 		AccountDAO accountDAO = new AccountDAO();
-		boolean result = false;
+		int result = 0;
 
 	    try {
 	    	// アカウント情報をDBに登録
 	    	result = accountDAO.registAccount(signupAccount);
 	    	
-			if (result) {
+			if (result != 0) {
 				// マスタータスクを取得
 				MasterTaskDAO masterTaskDAO = new MasterTaskDAO();
 				List<MasterTask> masterTasks = masterTaskDAO.selectAll();
@@ -55,7 +55,7 @@ public class SignupExecuteServlet extends HttpServlet {
 				for (MasterTask masterTask : masterTasks) {
 					// 複製用のタスクインスタンスを作成
 					Task userTask = new Task();
-					userTask.setAccountId(signupAccount.getAccountId());
+					userTask.setAccountId(result);
 					userTask.setTitle(masterTask.getTitle());
 					userTask.setTimeSpan(masterTask.getTimeSpan());
 					userTask.setMoodId(masterTask.getMoodId());

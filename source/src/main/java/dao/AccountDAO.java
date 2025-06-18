@@ -80,41 +80,51 @@ public class AccountDAO {
 	}
 		
 	// 1件のアカウントを新規登録
-	public boolean registAccount(Account account){
+	public int registAccount(Account account){
 		Connection conn = null;
-		boolean result = false;
-		
+		int result = 0;
+			
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			
+				
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f1?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
-			
+				
 			//入力されたメールアドレスが存在しなければ新規登録
 			if(existsAccount(account.getEmail())) {
-				
+					
 				//パスワードのハッシュ化
 				String password = hashPassword(account.getPassword());	
-				
+					
 				//新規登録SQLの準備
 				String sqlRegist = "INSERT INTO account (account_id,email,password,nickname,category_id,goal_detail,login_at,consecutive_logins) VALUES(0,?,?,?,?,?,null,1);";
 				PreparedStatement pStmtRegist = conn.prepareStatement(sqlRegist);
-				
+					
 				//新規登録SQLに挿入するプリペアードステートメント
 				pStmtRegist.setString(1,account.getEmail());
 				pStmtRegist.setString(2,password);
 				pStmtRegist.setString(3,account.getNickname());
 				pStmtRegist.setInt(4,account.getCategoryId());
 				pStmtRegist.setString(5,account.getGoalDetail());
-				
+					
 				//新規登録SQLの実行
 				if (pStmtRegist.executeUpdate() == 1) {
-				result = true;
+						
+					//アカウントID取得SQL
+					String sqlGetId = "SELECT LAST_INSERT_ID();";
+					PreparedStatement pStmtGetId = conn.prepareStatement(sqlGetId);
+					//アカウントID取得SQLを実行
+					ResultSet rs = pStmtGetId.executeQuery();
+						
+					//accountにSQL実行結果を挿入
+					while(rs.next()) {
+						result = rs.getInt("LAST_INSERT_ID()");
+					}
 				}
-				
+					
 			}
-			
+				
 		//エラー処理
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -130,11 +140,10 @@ public class AccountDAO {
 				}
 			}
 		}
-
-		// 結果を返す
+			
 		return result;
-	// 重複があった場合：return false;
 	}
+		
 		
 	// アカウント情報の更新
 	public boolean updateAccount(Account account, Boolean emailCheck){
