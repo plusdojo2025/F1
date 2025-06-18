@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.TasksDAO;
 import dto.Account;
+import dto.Task;
 
 /**
  * Servlet implementation class TaskEditServlet
@@ -19,25 +21,7 @@ import dto.Account;
 public class TaskEditServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public TaskEditServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//UTF-8設定
 	     request.setCharacterEncoding("UTF-8");
@@ -58,11 +42,43 @@ public class TaskEditServlet extends HttpServlet {
 	     int getCategoryId = Integer.parseInt(request.getParameter("getCategoryId"));
 	     Boolean getIsPrivate = Boolean.parseBoolean(request.getParameter("getIsPrivate"));
 	     int getTaskId = Integer.parseInt(request.getParameter("getTaskId"));
+
+	     //変更内容用のオブジェクト生成
+	     Task editTask = new Task();
+	     
+	     //引数をオブジェクトに
+	     editTask.setTitle(getTitle);
+	     editTask.setTimeSpan(getTimeSpan);
+	     editTask.setCategoryId(getCategoryId);
+	     editTask.setMoodId(getMoodId);
+	     editTask.setIsPrivate(getIsPrivate);
+	     editTask.setTaskId(getTaskId);
 	     
 	     //更新処理内容
 	     TasksDAO tasksDAO = new TasksDAO();
 	     
 	     boolean result = false;
+	     
+	     try{
+	    	 //更新後のタスク情報をDBに登録
+	    	result = tasksDAO.updateTask(editTask);
+	    	
+	    	if(result == true) {
+	    		//更新が正常終了すればタスク一覧に戻る	
+	    		response.sendRedirect("TaskViewServlet");
+	    	}else {
+	    		//何らかの要因で更新処理が行われなかった場合、エラー画面へ
+	    		request.setAttribute("errorMessage", "登録に失敗しました。もう一度お試しください。");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/error.jsp");
+				dispatcher.forward(request, response);
+	    	}
+	     }catch (Exception e) {		//コピペの為詳しい挙動は不明（コピー元：TaskRegistServlet）
+			e.printStackTrace();
+	        request.setAttribute("errorMessage", "情報の登録中にエラーが発生しました。");
+	        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/error.jsp");
+	        dispatcher.forward(request, response);
+	        return;
+		}
 	     
 	}
 
