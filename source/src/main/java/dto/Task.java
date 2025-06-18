@@ -1,8 +1,9 @@
 package dto;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class Task {
+public class Task implements Serializable {
 	// フィールド定義
     private int taskId;				// タスクID
     private int accountId;			// アカウントID

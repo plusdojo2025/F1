@@ -1,8 +1,9 @@
 package dto;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class Log {
+public class Log implements Serializable {
 	// フィールド定義
     private int logId;					// ログID
     private int accountId;				// アカウントID

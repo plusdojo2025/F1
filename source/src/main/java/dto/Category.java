@@ -1,6 +1,8 @@
 package dto;
 
-public class Category {
+import java.io.Serializable;
+
+public class Category implements Serializable {
 	// フィールド定義
     private int categoryId;			// カテゴリID
     private String categoryTitle;	// カテゴリタイトル

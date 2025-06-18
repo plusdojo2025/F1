@@ -1,6 +1,8 @@
 package dto;
 
-public class MasterTask {
+import java.io.Serializable;
+
+public class MasterTask implements Serializable {
 	// フィールド定義
     private int masterTaskId;	// マスタータスクID
     private String title;		// マスタータスクタイトル

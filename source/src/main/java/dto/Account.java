@@ -1,8 +1,9 @@
 package dto;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class Account {
+public class Account implements Serializable {
 	// フィールド定義
     private int accountId;			// アカウントID
     private String email;			// メールアドレス

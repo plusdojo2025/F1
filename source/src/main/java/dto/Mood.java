@@ -1,6 +1,8 @@
 package dto;
 
-public class Mood {
+import java.io.Serializable;
+
+public class Mood implements Serializable {
 	// フィールド定義
     private int moodId;			// 気分ID
     private String moodTitle;	// 気分タイトル

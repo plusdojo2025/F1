@@ -1,6 +1,8 @@
 package dto;
 
-public class LogList {
+import java.io.Serializable;
+
+public class LogList implements Serializable {
 	// フィールド定義
     private int logId;					// ログID
     private String title;				// タスクタイトル

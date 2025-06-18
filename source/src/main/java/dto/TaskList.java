@@ -1,6 +1,8 @@
 package dto;
 
-public class TaskList {
+import java.io.Serializable;
+
+public class TaskList implements Serializable {
 	// フィールド定義
     private int taskId;				// タスクID
     private int accountId;			// アカウントID
