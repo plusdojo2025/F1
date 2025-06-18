@@ -4,7 +4,6 @@
 <!-- タスク変更モーダル -->
 <div id="editModal" class="modal-overlay">
 	<div>
-	<form><!-- 外側の枠 -->
 	<p class="white-label">タスクの変更</p>
 	<table>
 		<tr>
@@ -50,8 +49,14 @@
 			<td colspan="2" class="rightAlert">チェックすると他のユーザーに<br>タスク内容が公開されます。</td>
 		</tr>														<!-- 5行目（常時表示警告文） -->
 	</table>
-	<input type="submit" class="light-orange-btn" name="registBotton" value="キャンセル">
-	<input type="submit" class="orange-btn" name="resetBotton" value="変更">
-</form>
+	<div class="BtnSideBy">
+		<form action="/webapp/TaskRegistServlet" class = "LeftPositionBtn">
+			<input type="submit" class="olight-orange-btn" name="cancelBotton" value="キャンセル">
+		</form>
+		
+		<form action="/webapp/TaskRegistServlet" class = "RightPositionBtn">
+			<input type="submit" class="orange-btn" name="changeBotton" value="変更">
+		</form>
+	</div>
 	</div>
 </div> 
