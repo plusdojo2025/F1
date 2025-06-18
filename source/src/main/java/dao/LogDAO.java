@@ -125,6 +125,51 @@ public class LogDAO {
 		return result;
 	}
 	
+	
+	// 満足度の登録
+	public boolean registSatisfactionlevel(int accountId,int satisfactionLevel){
+		Connection conn = null;
+		boolean result = false;
+			
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+				
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f1?"
+					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+					"root", "password");
+
+			String sqlUpdate = "UPDATE log SET satisfaction_level = ? "
+					+ "WHERE account_id = ?;";
+					
+			PreparedStatement pStmtUpdate = conn.prepareStatement(sqlUpdate);
+					
+			pStmtUpdate.setInt(1,accountId);
+			pStmtUpdate.setInt(2,satisfactionLevel);
+					
+			if (pStmtUpdate.executeUpdate() == 1) {
+			result = true;
+			}
+					
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		// 結果を返す
+		return result;
+	}
+	
+	
 	// 総合計
 	public int sumDuration(int account_id){
 		
@@ -187,7 +232,7 @@ public class LogDAO {
 				//アカウント取得SQL文を準備
 				String sqlSum = "SELECT SUM(duration) AS sum_day_duration FROM log "
 						+ "WHERE account_id = ? "
-						+ "AND log_time = CURRENT_DATE;";
+						+ "AND DATE(log_time) = CURDATE();";
 				
 				PreparedStatement pStmtSum = conn.prepareStatement(sqlSum);
 				pStmtSum.setInt(1, account_id);
