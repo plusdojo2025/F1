@@ -79,7 +79,7 @@ public class TopPageServlet extends HttpServlet {
 	    // リクエストスコープにセット
 	    request.setAttribute("sumDuration", sumDuration);
 	    request.setAttribute("moodList", moodList);
-	    request.setAttribute("categoryList", categoryList);
+	    session.setAttribute("categoryList", categoryList);
         // ログインページへフォワード
         request.getRequestDispatcher("/WEB-INF/jsp/top_page.jsp").forward(request, response);
 	}

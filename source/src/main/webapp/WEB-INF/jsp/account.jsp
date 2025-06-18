@@ -1,14 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-	<meta charset="UTF-8">
-	<title>アカウント管理 | まにまに</title>
-	<link rel="stylesheet" type="text/css" href="/F1/js/account.css">
-</head>
-<body>
+<%@ include file="header.jsp" %>
 	<div class="wrapper">
 		
 		<!-- メイン（ここから） -->
@@ -22,29 +15,29 @@
                 <div class="account-view-section">
                     <div class="account-section under-line">
                         <p class="account-view-title">ニックネーム</p>
-                        <p>：${user.nickname}</p>
+                        <p>：${login_user.nickname}</p>
                     </div>
                     <div class="account-section under-line">
                         <p class="account-view-title">メールアドレス</p>
-                        <p>：${user.email}</p>
+                        <p>：${login_user.email}</p>
                     </div>
                     <div class="account-section under-line">
                         <p class="account-view-title">パスワード</p>
-                        <p>：${user.password}</p>
+                        <p>：${login_user.password}</p>
                     </div>
                     <div class="account-section under-line">
                         <p class="account-view-title">目標ジャンル</p>
-                        <p>：${category.category_title}</p>
+                        <p>：${login_user.category.categoryTitle}</p>
                     </div>
                     <div class="account-section ">
                         <p class="account-view-title">目標内容</p>
-                        <p>：${user.goalDetail}</p>
+                        <p>：${login_user.goalDetail}</p>
                     </div>
                 </div>
             </div>
 		    <div class="account-button-section">
 		    	<a href="/F1/TopPageServlet" class="button back-to-top-button">TOPへ戻る</a>
-		    	<a href="/F1/AccountUpdateServlet" class="button account-update-button">
+		    	<a href="/F1/AccountEditServlet" class="button account-update-button">
                     <span class="pencil-back-ground">
                         <img src="images/pencil.svg" alt="">
                     </span>

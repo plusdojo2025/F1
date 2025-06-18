@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.AccountDAO;
+import dao.CategoryDAO;
 import dto.Account;
 
 /**
@@ -19,47 +20,65 @@ import dto.Account;
 @WebServlet("/AccountUpdateServlet")
 public class AccountUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AccountUpdateServlet() {
-        super();
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//リクエストパラメーターを取得する
-		request.setCharacterEncoding("UTF-8");
-		HttpSession session = request.getSession();
+        // 文字コード・コンテンツタイプを設定
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
 		
-		try {
-			
-
-		//更新を行う
-		AccountDAO aDao = new AccountDAO();
-		Account account = (Account)session.getAttribute("account");
-		if(aDao.updateAccount(account)) {
-			// 更新成功
-			
-			session.setAttribute("login_user", account);
-			session.removeAttribute("account");
-			response.sendRedirect("AccountServlet");
+		// セッション取得・もしもログインしていなかったらログインサーブレットにリダイレクトする
+		HttpSession session = request.getSession();
+		Account login_user = (Account) session.getAttribute("login_user");
+		if (login_user == null) {
+			response.sendRedirect("LoginServlet");
+			return;
 		}
 		
-		}catch (Exception e) {
+		// メールアドレス変更状況のフラグを取得
+		Boolean emailCheck = (Boolean) session.getAttribute("emailCheck");
+		
+		System.out.println(login_user.getAccountId());
+		System.out.println(login_user.getEmail());
+		System.out.println(login_user.getPassword());
+		System.out.println(login_user.getNickname());
+		System.out.println(login_user.getCategoryId());
+		System.out.println(login_user.getGoalDetail());
+		System.out.println(login_user.getLoginAt());
+		System.out.println(login_user.getConsecutiveLogins());
+		
+		
+		try {
+			//更新を行う
+			AccountDAO aDao = new AccountDAO();
+			if(aDao.updateAccount(login_user, emailCheck)) {
+				// 更新成功
+				session.setAttribute("login_user", login_user);
+				response.sendRedirect("AccountServlet");
+			}
+			else {
+			    // メールアドレスが重複していた場合のエラー処理
+			    if (emailCheck) {
+			        request.setAttribute("emailErrorMessage", "すでに使用されているメールアドレスです。");
+			        // カテゴリ一覧
+			        CategoryDAO categoryDao = new CategoryDAO();
+			        request.setAttribute("categoryList", categoryDao.getCategoryList());
+
+			        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/account_edit.jsp");
+			        dispatcher.forward(request, response);
+			    } else {
+			        // それ以外のエラー：エラー画面へ
+			        request.setAttribute("errorMassage", "ユーザー情報の変更中にエラーが発生しました");
+			        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/error.jsp");
+			        dispatcher.forward(request, response);
+			    }
+			}
+		} catch (Exception e) {
             // DB例外・その他予期しないエラー時
-            request.setAttribute("AccountUpdateErrorMassage", "ユーザー情報の変更中にエラーが発生しました");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+            request.setAttribute("errorMassage", "ユーザー情報の変更中にエラーが発生しました");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/error.jsp");
             dispatcher.forward(request, response);
         }
 		

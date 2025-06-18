@@ -137,7 +137,7 @@ public class AccountDAO {
 	}
 		
 	// アカウント情報の更新
-	public boolean updateAccount(Account account){
+	public boolean updateAccount(Account account, Boolean emailCheck){
 		
 		Connection conn = null;
 		boolean result = false;
@@ -149,20 +149,57 @@ public class AccountDAO {
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 			
-			//入力されたメールアドレスが存在しなければ情報更新
-			if(existsAccount(account.getEmail())) {
-				
+			
+			if (emailCheck) {
+				// メールアドレスの変更有の場合の処理
+				//入力されたメールアドレスが存在しなければ情報更新
+				if(existsAccount(account.getEmail())) {
+					
+					//パスワードのハッシュ化
+					String password = hashPassword(account.getPassword());
+					
+					//アカウント情報更新SQLを準備
+					String sqlUpdate = "UPDATE account SET "
+							+ "email = ?, "
+							+ "password = ?, "
+							+ "nickname = ?, "
+							+ "category_id = ?, "
+							+ "goal_detail = ?, "
+							+ "login_at = ?, "
+							+ "consecutive_logins = ? "
+							+ "WHERE account_id = ?;";
+					PreparedStatement pStmtUpdate = conn.prepareStatement(sqlUpdate);
+					
+					//アカウント情報更新SQLに挿入するプリペアードステートメント
+					pStmtUpdate.setString(1,account.getEmail());
+					pStmtUpdate.setString(2,password);
+					pStmtUpdate.setString(3,account.getNickname());
+					pStmtUpdate.setInt(4,account.getCategoryId());
+					pStmtUpdate.setString(5,account.getGoalDetail());
+					pStmtUpdate.setTimestamp(6,account.getLoginAt());
+					pStmtUpdate.setInt(7,account.getConsecutiveLogins());
+					pStmtUpdate.setInt(8,account.getAccountId());
+					
+					//アカウント情報更新SQLを実行
+					if (pStmtUpdate.executeUpdate() == 1) {
+						result = true;
+					}
+				} else {
+					result = false;
+				}
+			} else {
+				// メールアドレスの変更無しの場合の処理
 				//パスワードのハッシュ化
 				String password = hashPassword(account.getPassword());
 				
 				//アカウント情報更新SQLを準備
 				String sqlUpdate = "UPDATE account SET "
-						+ "email = ?,"
-						+ "password = ?,"
-						+ "nickname = ?,"
-						+ "category_id = ?,"
-						+ "goal_detail = ? "
-						+ "login_at = ? "
+						+ "email = ?, "
+						+ "password = ?, "
+						+ "nickname = ?, "
+						+ "category_id = ?, "
+						+ "goal_detail = ?, "
+						+ "login_at = ?, "
 						+ "consecutive_logins = ? "
 						+ "WHERE account_id = ?;";
 				PreparedStatement pStmtUpdate = conn.prepareStatement(sqlUpdate);
@@ -179,12 +216,13 @@ public class AccountDAO {
 				
 				//アカウント情報更新SQLを実行
 				if (pStmtUpdate.executeUpdate() == 1) {
-				result = true;
+					result = true;
 				}
-				
 			}
+			
 		//エラー処理
 		} catch (SQLException e) {
+			e.getMessage();
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

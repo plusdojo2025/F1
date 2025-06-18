@@ -14,6 +14,7 @@ public class Account implements Serializable {
     private Timestamp createdAt;	// 登録日時
     private Timestamp loginAt;		// ログイン日時
     private int consecutiveLogins;	// 連続ログイン
+    private Category category;		// カテゴリーオブジェクト
 
 	// コンストラクタ
 	public Account() {
@@ -82,5 +83,12 @@ public class Account implements Serializable {
 	public void setConsecutiveLogins(int consecutiveLogins) {
 		this.consecutiveLogins = consecutiveLogins;
 	}
+	
+	public Category getCategory() {
+		return category;
+	}
 
+	public void setCategory(Category category) {
+		this.category = category;
+	}
 }

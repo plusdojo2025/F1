@@ -20,20 +20,16 @@ import dto.Account;
 public class AccountEditServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AccountEditServlet() {
-        super();
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		int flag =  Integer.parseInt(request.getParameter("flag"));
+		String flagPrm =  request.getParameter("flag");
+		
+		int flag = 0;
+		
+		if (flagPrm != null) {
+			flag =  Integer.parseInt(flagPrm);
+		}
 		
 		if(flag == 1) {
 			HttpSession session = request.getSession();

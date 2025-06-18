@@ -1,19 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-	<meta charset="UTF-8">
-	<title>アカウント情報編集 | まにまに</title>
-	<link rel="stylesheet" type="text/css" href="account.css">
-</head>
-<body>
+<%@ include file="header.jsp" %>
 	<div class="wrapper">
 		
 		<!-- メイン（ここから） -->
 		<main class="account-main">
-	    <form action="/F1/AccountConfServlet" class="account-update-form">
+	    <form method="POST" action="/F1/AccountConfServlet" class="account-update-form">
 		    <div class="account-body">
 		
 		        <div class="green-title-section">
@@ -29,17 +22,20 @@
                             <c:if test="${not empty errorMessage}">
                                 <span class="account-error-msg">${errorMessage}</span>
                             </c:if>
-                            <input type="text" name="nickname" class="account-input" value="${user.nickname}">
+                            <input type="text" name="nickname" class="account-input" value="${login_user.nickname}">
                         </p>
                     </div>
                     <div class="account-section under-line">
                         <p class="account-view-title">メールアドレス</p>
                         <p class="colon">：</p>
                         <p class="account-view-text">
+             				<c:if test="${not empty emailErrorMessage}">
+                                <span class="account-error-msg">${errorMessage}</span>
+                            </c:if>
                             <c:if test="${not empty errorMessage}">
                                 <span class="account-error-msg">${errorMessage}</span>
                             </c:if>
-                            <input type="text" name="email" class="account-input" value="${user.email}">
+                            <input type="text" name="email" class="account-input" value="${login_user.email}">
                         </p>
                     </div>
                     <div class="account-section under-line">
@@ -49,7 +45,7 @@
                             <c:if test="${not empty errorMessage}">
                                 <span class="account-error-msg">${errorMessage}</span>
                             </c:if>
-                            <input type="password" name="password" class="account-input" value="${user.password}">
+                            <input type="password" name="password" class="account-input" value="${login_user.password}">
                         </p>
                     </div>
                     <div class="account-section under-line">
@@ -57,7 +53,16 @@
                         <p class="colon">：</p>
                         <p class="account-view-text">
                             <select name="categoryId" class="account-input" required>
-                                <option value="${category.category_id}">${category.category_title}</option>
+                            <c:forEach var="category" items="${categoryList}">
+	                            <c:choose>
+									<c:when test="${category.categoryId == login_user.category.categoryId}">
+										<option value="${category.categoryId}" selected>${category.categoryTitle}</option>
+									</c:when>
+									<c:otherwise>
+										<option value="${category.categoryId}">${category.categoryTitle}</option>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
                             </select>
                         </p>
                     </div>
@@ -65,7 +70,7 @@
                         <p class="account-view-title">目標内容</p>
                         <p class="colon">：</p>
                         <p class="account-view-text">
-                            <input type="text" name="goalDetail" class="account-input goal-detail-input" value="${user.goalDetail}">
+                            <input type="text" name="goalDetail" class="account-input goal-detail-input" value="${login_user.goalDetail}">
                         </p>
                     </div>
                 </div>
@@ -75,11 +80,8 @@
                     キャンセル
                 </a>
 
-				<button type="submit" class="button account-update-button">
-                    <p class="account-update-text">
-                        確認する
-                    </p>
-      			</button>
+				<input type="submit" class="button account-update-button account-update-text" value="確認する">
+      			
 		    </div>
         </form>
 	    </main>
