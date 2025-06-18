@@ -5,7 +5,7 @@
 		<div class="execute-container">
 			<h2><c:out value="${currentlog.task.Title}"/></h2>
 			
-			<div id="timer">
+			<div class="result-time">
 				<p>今回の実行時間</p>
 				<span id="minutes"></span>分<span id="seconds"></span>秒
 			</div>
