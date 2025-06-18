@@ -50,6 +50,32 @@
 }
 
 /*task_view.jsp*/
-.TaskViewOutline{
+
+/*タスク一覧表示の外枠スタイル*/
+.TaskViewOutline{ 
 	margin: 0 40px 0 40px;
+	border-radius: 10px;
+	overflow-y: auto;
+	height: 390px;
+	border: solid #0B6446
+}
+
+/*tableTopのスタイル*/
+.Ttop {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+/*tableBodyのスタイル*/
+.Tbody{
+	height: 80px;
+	border-bottom: solid #0B6446;
+}
+
+
+/*汎用css*/
+/*ボタンを横並べにする為にボタンを囲っているdivに設定するスタイル*/
+.BtnSideBy{
+	display:inline-flex
 }

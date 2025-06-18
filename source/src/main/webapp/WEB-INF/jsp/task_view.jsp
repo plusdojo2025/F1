@@ -8,7 +8,7 @@
 <div class="TaskViewOutline">
 	<table>
 		<thead><!-- テーブルトップ -->
-		 <tr>
+		 <tr class="Ttop">
 		 <th>タスク内容</th>
 		 <th>所要時間</th>
 		 <th>気分</th>
@@ -19,19 +19,19 @@
 		</thead><!-- テーブルトップ -->
 		<tbody>
 			<c:forEach var="e" items="${taskList}" ><!-- 出力繰り返し -->
-					<input type="hidden" name="" value="${e.taskId}">
-					<tr>
-					<td>${e.title}</td><!-- タスク名 -->
+					<input type="hidden" name="taskslot" value="${e.taskId}">
+					<tr class="Tbody">
+					<td class="Tname">${e.title}</td><!-- タスク名 -->
 					<td>${e.timeSpan}</td><!-- 所要時間 -->
 					<td>${e.moodTitle}</td><!-- 気分 -->
-					<td>"${e.categoryTitle}</td><!-- 作業ジャンル -->
+					<td>${e.categoryTitle}</td><!-- 作業ジャンル -->
 					<td>
 					<c:if test="${ e.isPrivate == true }" >
 						check
 					</c:if>
 					</td><!-- 公開判定チェックマーク -->
 					<td>
-					<button type="button" class="reist-button" onclick="openRegistModal(${e.taskId}, '${e.timeSpan}', ${e.title}, 
+					<button type="button" class="edit-button" onclick="openRegistModal(${e.taskId}, '${e.timeSpan}', ${e.title}, 
 					'${e.moodTitle}', '${e.categoryTitle}', '${e.isPrivate}')">変更</button>
 					<button type="button" class="delete-button" onclick="openDeleteModal(${e.taskId}, '${e.title}')">削除</button>
 					</td><!-- 変更・削除ボタン -->
@@ -40,13 +40,16 @@
 		</tbody>
 	</table>
 </div>
-<form action="/webapp/TopPageServlet"><!-- トップに戻るボタン -->
-<input type="submit" class="light-orange-btn" name="goTopButton" value="トップへ戻る">
+
+<div class="BtnSideBy">
+<form action="/webapp/TopPageServlet" class = "LeftPositionBtn"><!-- トップに戻るボタン -->
+<input type="submit" class="light-orange-btn" name="goTopButton" value="Topへ戻る">
 </form>
 
-<form action="/webapp/TaskRegistServlet">
+<form action="/webapp/TaskRegistServlet" class = "RightPositionBtn">
 <input type="submit" class="green-btn" name="registTaskButton" value="新規タスクボタン">
 </form>
+</div>
 
 </main>
 
