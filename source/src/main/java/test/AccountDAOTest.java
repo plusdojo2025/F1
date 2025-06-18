@@ -122,8 +122,10 @@ public class AccountDAOTest {
 				upRec.setCategoryId(categoryId);
 				upRec.setGoalDetail(goalDetail);
 
+				// 第二引数用（emailCheckフラグ）
+				Boolean flg = false;
 				// 実行
-				if (adao.updateAccount(upRec)) {
+				if (adao.updateAccount(upRec, flg)) {
 					System.out.println("更新成功！");
 					AccountDAOTest.showAllData(adao.showAll());
 				} else {
