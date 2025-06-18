@@ -69,7 +69,9 @@
 dialog {
 	border: none;
 	padding: 20px;
-	width: 320px;
+	width: 500px;
+	height: 200px;
+	max-width: 90%;
 	border-radius: 12px;
 	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 	background-color: white;
@@ -191,6 +193,33 @@ input[type="range"]::-webkit-slider-runnable-track {
   font-weight: bold;
   
 }
+
+#execute-checkModal {
+  text-align: center;
+  padding: 30px 20px;
+}
+
+#execute-checkModal p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+#execute-checkModal button,
+#execute-checkModal input[type="submit"] {
+  margin: 0;
+  padding: 10px 30px;
+  font-size: 20px;
+  border-radius: 25px;
+  min-width: 120px;
+}
+
 
 
 /*.slider-with-labels .labels {

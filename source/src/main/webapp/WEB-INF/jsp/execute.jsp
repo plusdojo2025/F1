@@ -4,11 +4,13 @@
 
 	<dialog id="execute-checkModal" >
 		<p>現在の内容は削除されますがよろしいですか?</p>
+		<div class="modal-buttons">
+			<button class="orange-btn" id="reCancelButton">キャンセル</button>
+			<form>
+				<input type="submit" class="light-orange-btn" id="deleteButton" value="削除する">
+			</form>
+		</div>
 		
-		<button class="orange-btn" id="reCancelButton">キャンセル</button>
-		<form>
-			<input type="submit" class="light-orange-btn" id="deleteButton" value="削除する">
-		</form>
 	</dialog>
 
 	
