@@ -11,8 +11,9 @@
 		</form>
 	</dialog>
 
+	
 	<div class="execute-container">
-		<h2><c:out value="${currentlog.task.Title}"/></h2>
+		<h2><c:out value="${currentLog.task.title}" default="(タイトルなし)"/></h2>
 		<div id="timer">
 			<span id="minutes"></span>分<span id="seconds"></span>秒
 		</div>
