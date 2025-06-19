@@ -7,7 +7,7 @@
 		<div class="green-title-section">
 			<h1 class="white-label">削除の確認</h1>
 		</div>
-		<form method="POST" action="/F1/TaskRegistServlet"><!-- 外側の枠 -->
+		<form method="POST" action="/F1/TaskDeleteServlet"><!-- 外側の枠 -->
 			<div class="task-regist-formbody">
 				<div class="task-formsection task-regist-title-form">
 					<p class="taskTitle"></p>
@@ -29,8 +29,9 @@
 					<p class="taskContent"></p>
 				</div>
 			</div>
-			<button type="submit" class="light-orange-btn" name="registBotton">リセット</button>
-			<input type="submit" class="orange-btn" name="resetBotton" value="登録">
+			<button type="button" class="light-orange-btn" onclick="closeDeleteModal()">キャンセル</button>
+			<input type="hidden" id="deleteTaskId" name="taskId">
+			<input type="submit" class="orange-btn" name="resetBotton" value="削除">
 		</form>
 	</div>
 </div> 

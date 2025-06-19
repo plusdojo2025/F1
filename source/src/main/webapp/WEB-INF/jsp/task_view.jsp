@@ -33,7 +33,8 @@
 					<td>
 					<button type="button" class="edit-button" onclick="openRegistModal(${e.taskId}, '${e.timeSpan}', ${e.title}, 
 					'${e.moodTitle}', '${e.categoryTitle}', '${e.isPrivate}')">変更</button>
-					<button type="button" class="delete-button" onclick="openDeleteModal(${e.taskId}, '${e.title}')">削除</button>
+					<button type="button" class="delete-button" onclick="openDeleteModal(${e.taskId}, '${e.title}', '${e.timeSpan}',
+					 '${e.moodTitle}', '${e.categoryTitle}', '${e.isPrivate}')">削除</button>
 					</td><!-- 変更・削除ボタン -->
 					</tr>
 			</c:forEach>
@@ -56,6 +57,7 @@
 <footer>
 
 </footer>
-
+<%@ include file="task_delete.jsp" %>
+<script src="/F1/js/popup.js"></script>
 </body>
 </html>

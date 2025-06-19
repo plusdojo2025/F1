@@ -10,6 +10,9 @@
         <br>再度やり直しをお願いします</p>
     </div>
 
+	<c:if test="${not empty errorMessage}">
+		<span class="account-error-msg">${errorMessage}</span>
+	</c:if>
     <a href="/F1/SuggestServlet"> TOP画面へ戻る</a>
 </body>
 </html>
