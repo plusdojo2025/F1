@@ -80,6 +80,7 @@ public class LoginServlet extends HttpServlet {
         try {
             AccountDAO accountDAO = new AccountDAO();
             Account account = accountDAO.getAccount(email, password);
+            System.out.println("取得"+ account);
 
             if (account != null) {
                 // 今日の日付を取得
@@ -143,6 +144,7 @@ public class LoginServlet extends HttpServlet {
                 dispatcher.forward(request, response);
             }
         } catch (Exception e) {
+        	e.printStackTrace();
             // DB例外・その他予期しないエラー時
             request.setAttribute("loginErrorMessage", "ユーザー情報の確認中にエラーが発生しました");
             request.setAttribute("beforeEmail", email);

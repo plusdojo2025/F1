@@ -17,7 +17,7 @@
 
 	<div class="login-container">
 	<h1>まにまに</h1>
-	<form id="loginForm" method="POST" action="/F1/LoginServlet">
+	<form id="loginForm" method="POST" action="<%= request.getContextPath() %>/LoginServlet">
 		<label for="email">メールアドレス</label>
 		<input type="text" name="email" id="email" value="<%= request.getAttribute("beforeEmail") != null ? request.getAttribute("beforeEmail") : ""%>">
 		<div id="emailError" class="error">
@@ -25,13 +25,9 @@
 		</div>
 		
 		<label for="pw">パスワード</label>
-		<input type="password" name="password" id="password" value="<%= request.getAttribute("beforePassword") != null ? request.getAttribute("beforPassword") : ""%>">
+		<input type="password" name="password" id="password" value="<%= request.getAttribute("beforePassword") != null ? request.getAttribute("beforePassword") : "" %>">
 		<div id="passwordError" class="error">
 			<%= request.getAttribute("passwordErrorMessage") != null  ? request.getAttribute("passwordErrorMessage") : "" %>
-			<button type="button" id="togglePassword" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer;">
-              👁
-            </button>
-			
 		</div>
 		
 		<div  class="error">
@@ -49,12 +45,6 @@
 	</div>
 	<script >
 		document.getElementById("loginForm").addEventListener("submit", function(event){
-			
-			const clickedBtn = docment.getElemntById("clickedBtn").value;
-			
-			if (clickedBtn === "signup"){
-				return;
-			}
 			
 			let hasError = false;
 			
@@ -83,12 +73,6 @@
 			}
 		});
 		
-		document.getElementById("togglePassword").addEventListener("click", function () {
-		    const pwField = document.getElementById("password");
-		    const isHidden = pwField.type === "password";
-		    pwField.type = isHidden ? "text" : "password";
-		    this.textContent = isHidden ? "🙈" : "👁"; // アイコンを切り替える
-		  });
 	</script>
 </body>
 </html>

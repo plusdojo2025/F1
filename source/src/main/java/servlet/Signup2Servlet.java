@@ -31,7 +31,18 @@ public class Signup2Servlet extends HttpServlet {
 
 	        request.setCharacterEncoding("UTF-8");
 	        response.setContentType("text/html; charset=UTF-8");
-
+	        
+	        HttpSession session = request.getSession();
+	        Account signupAccount = (Account) session.getAttribute("signup_user");
+	        
+	        if(signupAccount !=null) {
+	        	request.setAttribute("beforeEmail", signupAccount.getEmail());
+	        	request.setAttribute("beforePassword", signupAccount.getPassword());
+	        }
+	        
+	        CategoryDAO categoryDAO = new CategoryDAO();
+	        request.setAttribute("categoryList", categoryDAO.getCategoryList());
+	        
 	        // 前回入力された情報をセッションなどから渡すならここで行う
 	        request.getRequestDispatcher("/WEB-INF/jsp/signup2.jsp").forward(request, response);
 	    }
@@ -67,7 +78,7 @@ public class Signup2Servlet extends HttpServlet {
 
             request.setAttribute("beforeEmail", email);
             request.setAttribute("beforePassword", password);
-            request.getRequestDispatcher("/WEB-INF/jsp/signup.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/jsp/signup2.jsp").forward(request, response);
             return;
         }
 
