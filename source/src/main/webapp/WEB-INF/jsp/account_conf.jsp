@@ -45,8 +45,8 @@
                 </div>
             </div>
 		    <div class="account-button-section">
-		    	<a href="/F1/TopPageServlet" class="button back-to-top-button">
-		    		TOPへ戻る
+		    	<a href="/F1/AccountEditServlet" class="button back-to-top-button">
+		    		変更画面に戻る
 		    	</a>
 				<input type="submit" class="button account-update-button account-update-text" value="この内容で確定">
 		    	
