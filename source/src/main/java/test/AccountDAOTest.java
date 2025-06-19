@@ -86,9 +86,9 @@ public class AccountDAOTest {
 				regRec.setNickname(nickname);
 				regRec.setCategoryId(categoryId);
 				regRec.setGoalDetail(goalDetail);
-
+				
 				// 実行
-				if (adao.registAccount(regRec)) {
+				if (adao.registAccount(regRec) > 0) {
 					System.out.println("登録成功！");
 					AccountDAOTest.showAllData(adao.showAll());
 				} else {
@@ -125,7 +125,7 @@ public class AccountDAOTest {
 				// 第二引数用（emailCheckフラグ）
 				Boolean flg = false;
 				// 実行
-				if (adao.updateAccount(upRec, flg)) {
+				if (adao.updateAccount(upRec, flg, flg)) {
 					System.out.println("更新成功！");
 					AccountDAOTest.showAllData(adao.showAll());
 				} else {

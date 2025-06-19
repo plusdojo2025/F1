@@ -40,6 +40,9 @@ public class AccountUpdateServlet extends HttpServlet {
 		// メールアドレス変更状況のフラグを取得
 		Boolean emailCheck = (Boolean) session.getAttribute("emailCheck");
 		
+		// メールアドレス変更状況のフラグを取得
+		Boolean passwordCheck = (Boolean) session.getAttribute("passwordCheck");
+		
 		System.out.println(login_user.getAccountId());
 		System.out.println(login_user.getEmail());
 		System.out.println(login_user.getPassword());
@@ -53,7 +56,7 @@ public class AccountUpdateServlet extends HttpServlet {
 		try {
 			//更新を行う
 			AccountDAO aDao = new AccountDAO();
-			if(aDao.updateAccount(login_user, emailCheck)) {
+			if(aDao.updateAccount(login_user, emailCheck, passwordCheck)) {
 				// 更新成功
 				session.setAttribute("login_user", login_user);
 				response.sendRedirect("AccountServlet");

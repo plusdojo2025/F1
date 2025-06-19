@@ -23,7 +23,7 @@
                     </div>
                     <div class="account-section under-line">
                         <p class="account-view-title">パスワード</p>
-                        <p>：${login_user.password}</p>
+                        <p>：登録済み</p>
                     </div>
                     <div class="account-section under-line">
                         <p class="account-view-title">目標ジャンル</p>

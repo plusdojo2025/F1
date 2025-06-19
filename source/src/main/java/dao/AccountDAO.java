@@ -19,7 +19,7 @@ public class AccountDAO {
 	// メールアドレスとパスワードをもとに、1件のアカウントを取得
 	public Account getAccount(String email, String password){
 		Connection conn = null;
-		Account account = new Account();
+		Account account = null;
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -42,8 +42,9 @@ public class AccountDAO {
 			//アカウント取得SQLを実行
 			ResultSet rs = pStmt.executeQuery();
 			
+			
 			//accountにSQL実行結果を挿入
-			while(rs.next()) {
+			if (rs.next()) {
 				account = new Account();
 				account.setAccountId(rs.getInt("account_id"));
 				account.setEmail(rs.getString("email"));
@@ -146,7 +147,7 @@ public class AccountDAO {
 		
 		
 	// アカウント情報の更新
-	public boolean updateAccount(Account account, Boolean emailCheck){
+	public boolean updateAccount(Account account, Boolean emailCheck, Boolean passwordCheck){
 		
 		Connection conn = null;
 		boolean result = false;
@@ -158,82 +159,46 @@ public class AccountDAO {
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 			
+			// パスワード（ハッシュ化が必要ならする）
+	        String password = passwordCheck ? hashPassword(account.getPassword()) : account.getPassword();
 			
-			if (emailCheck) {
-				// メールアドレスの変更有の場合の処理
-				//入力されたメールアドレスが存在しなければ情報更新
-				if(existsAccount(account.getEmail())) {
-					
-					//パスワードのハッシュ化
-					String password = hashPassword(account.getPassword());
-					
-					//アカウント情報更新SQLを準備
-					String sqlUpdate = "UPDATE account SET "
-							+ "email = ?, "
-							+ "password = ?, "
-							+ "nickname = ?, "
-							+ "category_id = ?, "
-							+ "goal_detail = ?, "
-							+ "login_at = ?, "
-							+ "consecutive_logins = ? "
-							+ "WHERE account_id = ?;";
-					PreparedStatement pStmtUpdate = conn.prepareStatement(sqlUpdate);
-					
-					//アカウント情報更新SQLに挿入するプリペアードステートメント
-					pStmtUpdate.setString(1,account.getEmail());
-					pStmtUpdate.setString(2,password);
-					pStmtUpdate.setString(3,account.getNickname());
-					pStmtUpdate.setInt(4,account.getCategoryId());
-					pStmtUpdate.setString(5,account.getGoalDetail());
-					pStmtUpdate.setTimestamp(6,account.getLoginAt());
-					pStmtUpdate.setInt(7,account.getConsecutiveLogins());
-					pStmtUpdate.setInt(8,account.getAccountId());
-					
-					//アカウント情報更新SQLを実行
-					if (pStmtUpdate.executeUpdate() == 1) {
-						result = true;
-					}
-				} else {
-					result = false;
-				}
-			} else {
-				// メールアドレスの変更無しの場合の処理
-				//パスワードのハッシュ化
-				String password = hashPassword(account.getPassword());
-				
-				//アカウント情報更新SQLを準備
-				String sqlUpdate = "UPDATE account SET "
-						+ "email = ?, "
-						+ "password = ?, "
-						+ "nickname = ?, "
-						+ "category_id = ?, "
-						+ "goal_detail = ?, "
-						+ "login_at = ?, "
-						+ "consecutive_logins = ? "
-						+ "WHERE account_id = ?;";
-				PreparedStatement pStmtUpdate = conn.prepareStatement(sqlUpdate);
-				
-				//アカウント情報更新SQLに挿入するプリペアードステートメント
-				pStmtUpdate.setString(1,account.getEmail());
-				pStmtUpdate.setString(2,password);
-				pStmtUpdate.setString(3,account.getNickname());
-				pStmtUpdate.setInt(4,account.getCategoryId());
-				pStmtUpdate.setString(5,account.getGoalDetail());
-				pStmtUpdate.setTimestamp(6,account.getLoginAt());
-				pStmtUpdate.setInt(7,account.getConsecutiveLogins());
-				pStmtUpdate.setInt(8,account.getAccountId());
-				
-				//アカウント情報更新SQLを実行
-				if (pStmtUpdate.executeUpdate() == 1) {
-					result = true;
-				}
+	        // emailの変更がある場合
+	        if (emailCheck) {
+	            // メールアドレス変更時：重複チェック
+	            if (existsAccount(account.getEmail())) {
+	                return false; // 重複してたら失敗
+	            }
+	        }
+			
+			//アカウント情報更新SQLを準備
+			String sqlUpdate = "UPDATE account SET "
+					+ "email = ?, "
+					+ "password = ?, "
+					+ "nickname = ?, "
+					+ "category_id = ?, "
+					+ "goal_detail = ?, "
+					+ "login_at = ?, "
+					+ "consecutive_logins = ? "
+					+ "WHERE account_id = ?;";
+			PreparedStatement pStmtUpdate = conn.prepareStatement(sqlUpdate);
+			
+			//アカウント情報更新SQLに挿入するプリペアードステートメント
+			pStmtUpdate.setString(1,account.getEmail());
+			pStmtUpdate.setString(2,password);
+			pStmtUpdate.setString(3,account.getNickname());
+			pStmtUpdate.setInt(4,account.getCategoryId());
+			pStmtUpdate.setString(5,account.getGoalDetail());
+			pStmtUpdate.setTimestamp(6,account.getLoginAt());
+			pStmtUpdate.setInt(7,account.getConsecutiveLogins());
+			pStmtUpdate.setInt(8,account.getAccountId());
+			
+			//アカウント情報更新SQLを実行
+			if (pStmtUpdate.executeUpdate() == 1) {
+				result = true;
 			}
 			
 		//エラー処理
-		} catch (SQLException e) {
-			e.getMessage();
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		} finally {
 			// データベースを切断

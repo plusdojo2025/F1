@@ -58,7 +58,10 @@ public class LoginServlet extends HttpServlet {
         
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-
+        
+        System.out.println(email);
+        System.out.println(password);
+        
         // 未入力チェック処理
         if (email == null || email.trim().isEmpty() || password == null || password.trim().isEmpty()) {
             if (email == null || email.trim().isEmpty()) {
@@ -114,9 +117,11 @@ public class LoginServlet extends HttpServlet {
                 
                 // メールアドレス変更状況の確認フラグ
         		Boolean emailCheck = false;
+                // パスワードハッシュ化の確認フラグ
+        		Boolean passwordCheck = false;
         		
                 // DBにアカウント情報を反映
-                accountDAO.updateAccount(account, emailCheck);
+                accountDAO.updateAccount(account, emailCheck, passwordCheck);
                 
                 // セッション登録
                 HttpSession session = request.getSession();
