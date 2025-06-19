@@ -29,9 +29,11 @@
 					<p class="taskContent"></p>
 				</div>
 			</div>
+			<div class="task-regist-button-section">
 			<button type="button" class="light-orange-btn" onclick="closeDeleteModal()">キャンセル</button>
 			<input type="hidden" id="deleteTaskId" name="taskId">
 			<input type="submit" class="orange-btn" name="resetBotton" value="削除">
+			</div>
 		</form>
 	</div>
 </div> 

@@ -29,7 +29,7 @@
 	color: #FFFFFF;
 	background-color: #0B6446;
 	border-radius: 50px;
-	width: 100px;
+	width: 120px;
 	text-align: center;
     display: flex;
     align-items: center;
@@ -55,7 +55,7 @@
 
 /*タスク一覧表示の外枠スタイル*/
 .TaskViewOutline{ 
-	margin: 0 40px 0 40px;
+	margin: 20px 40px 10px 40px;
 	border-radius: 10px;
 	overflow-y: auto;
 	height: 440px;
@@ -81,24 +81,54 @@
 	background-color: #eeeed5;
 	border: 1px solid #0B6446;
 	border-radius: 5px;
-	width: 250px;
+	width: 100%;
 	align-items: center;
+	text-align: center;
+	font-size: 25px;
     flex-direction: column;
+    margin: 10px 0 10px 0;
     
 }
 
 /*汎用css*/
 /*ボタンを横並べにする為にボタンを囲っているdivに設定するスタイル*/
 .BtnSideBy{
-	display:inline-flex
+	display: inline-flex;
 }
-
+.task-regist-button-section{
+	display: inline-flex;
+}
 .LeftPositionBtn{
 	margin-left: 40px;
 	align-items: left;
 }
 
+/*タスク一覧内のタスク内容変更ボタンのスタイル*/
+.edit-button{
+	color: white;
+	background-color: #006432;
+	border: 1px solid #0B6446;
+	border-radius: 50px;
+}
+
+/*タスク一覧内のタスク削除ボタンのスタイル*/
+.delete-button{
+	color: white;
+	background-color: #ff9800;
+	border: 1px solid #ff9800;
+	border-radius: 50px;
+}
+
 .RightPositionBtn{
 	margin-right: 40px;
 	align-items: right;
+}
+
+.green-btn{
+	 background-color: #006432;
+	 font-size: 20px;
+ 	 color: white;
+	border-radius: 50px;
+ 	 display: block;
+	margin: 20px auto;
 }
