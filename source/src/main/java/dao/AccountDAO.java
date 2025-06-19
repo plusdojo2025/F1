@@ -79,6 +79,63 @@ public class AccountDAO {
 		// 結果を返す
 		return account;
 	}
+	
+	// アカウントIDをもとに、1件のアカウントを取得
+	public Account getAccount(int account_id){
+		Connection conn = null;
+		Account account = null;
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f1?"
+					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+					"root", "password");
+			
+			//アカウント取得SQL文を準備
+			String sql = "SELECT * FROM account WHERE account_id = ?;";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			
+			//アカウント取得SQLに挿入するプリペアードステートメント
+			pStmt.setInt(1, account_id);
+			
+			//アカウント取得SQLを実行
+			ResultSet rs = pStmt.executeQuery();
+			
+			//accountにSQL実行結果を挿入
+			if (rs.next()) {
+				account = new Account();
+				account.setAccountId(rs.getInt("account_id"));
+				account.setEmail(rs.getString("email"));
+				account.setPassword(rs.getString("password"));
+				account.setNickname(rs.getString("nickname"));
+				account.setCategoryId(rs.getInt("category_id"));
+				account.setGoalDetail(rs.getString("goal_detail"));
+				account.setCreatedAt(rs.getTimestamp("created_at"));
+				account.setLoginAt(rs.getTimestamp("login_at"));
+				account.setConsecutiveLogins(rs.getInt("consecutive_logins"));
+			}
+		
+		//エラー処理
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+			account = null;
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					account = null;
+				}
+			}
+		}
+
+		// 結果を返す
+		return account;
+	}
+
 		
 	// 1件のアカウントを新規登録
 	public int registAccount(Account account){
@@ -176,9 +233,7 @@ public class AccountDAO {
 					+ "password = ?, "
 					+ "nickname = ?, "
 					+ "category_id = ?, "
-					+ "goal_detail = ?, "
-					+ "login_at = ?, "
-					+ "consecutive_logins = ? "
+					+ "goal_detail = ? "
 					+ "WHERE account_id = ?;";
 			PreparedStatement pStmtUpdate = conn.prepareStatement(sqlUpdate);
 			
@@ -188,9 +243,7 @@ public class AccountDAO {
 			pStmtUpdate.setString(3,account.getNickname());
 			pStmtUpdate.setInt(4,account.getCategoryId());
 			pStmtUpdate.setString(5,account.getGoalDetail());
-			pStmtUpdate.setTimestamp(6,account.getLoginAt());
-			pStmtUpdate.setInt(7,account.getConsecutiveLogins());
-			pStmtUpdate.setInt(8,account.getAccountId());
+			pStmtUpdate.setInt(6,account.getAccountId());
 			
 			//アカウント情報更新SQLを実行
 			if (pStmtUpdate.executeUpdate() == 1) {
@@ -215,6 +268,53 @@ public class AccountDAO {
 		return result;
 			
 	}
+	
+	// ログイン時のアカウント情報更新
+    public boolean loginAccount(Account account){
+        Connection conn = null;
+        boolean result = false;
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/f1?"
+                    + "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+                    "root", "password");
+            
+                //アカウント情報更新SQLを準備
+                String sqlLogin = "UPDATE account SET "
+                        + "login_at = ? "
+                        + "consecutive_logins = ? "
+                        + "WHERE account_id = ?;";
+                
+                PreparedStatement pStmtLogin = conn.prepareStatement(sqlLogin);
+                //アカウント情報更新SQLに挿入するプリペアードステートメント
+                pStmtLogin.setTimestamp(1,account.getLoginAt());
+                pStmtLogin.setInt(2,account.getConsecutiveLogins());
+                pStmtLogin.setInt(3,account.getAccountId());
+                
+                //アカウント情報更新SQLを実行
+                if (pStmtLogin.executeUpdate() == 1) {
+                result = true;
+                }
+        //エラー処理
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            // データベースを切断
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        // 結果を返す
+        return result;
+    }
+	
 	//入力されたメールアドレスがテーブル内に存在しないならtrue,存在するならfalseを返すメソッド
 	public boolean existsAccount(String email){
 		

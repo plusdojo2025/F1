@@ -115,14 +115,9 @@ public class LoginServlet extends HttpServlet {
                 
                 // 初回ログイン判定（前回ログイン日時がnullなら初回）
                 boolean isFirstLogin = (lastLoginTimestamp == null);
-                
-                // メールアドレス変更状況の確認フラグ
-        		Boolean emailCheck = false;
-                // パスワードハッシュ化の確認フラグ
-        		Boolean passwordCheck = false;
         		
                 // DBにアカウント情報を反映
-                accountDAO.updateAccount(account, emailCheck, passwordCheck);
+                accountDAO.loginAccount(account);
                 
                 // セッション登録
                 HttpSession session = request.getSession();

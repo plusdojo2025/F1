@@ -15,7 +15,7 @@ import dao.CategoryDAO;
 import dto.Account;
 
 /**
- * Servlet implementation class AccountUpdateServlet
+ * アカウント情報の更新を実行するサーブレット
  */
 @WebServlet("/AccountUpdateServlet")
 public class AccountUpdateServlet extends HttpServlet {
@@ -40,31 +40,27 @@ public class AccountUpdateServlet extends HttpServlet {
 		// メールアドレス変更状況のフラグを取得
 		Boolean emailCheck = (Boolean) session.getAttribute("emailCheck");
 		
-		// メールアドレス変更状況のフラグを取得
-		Boolean passwordCheck = (Boolean) session.getAttribute("passwordCheck");
-		
-		System.out.println(login_user.getAccountId());
-		System.out.println(login_user.getEmail());
-		System.out.println(login_user.getPassword());
-		System.out.println(login_user.getNickname());
-		System.out.println(login_user.getCategoryId());
-		System.out.println(login_user.getGoalDetail());
-		System.out.println(login_user.getLoginAt());
-		System.out.println(login_user.getConsecutiveLogins());
-		
+		// パスワード変更状況のフラグを取得
+		Boolean passwordCheck = (Boolean) session.getAttribute("passwordCheck");		
 		
 		try {
-			//更新を行う
+			// アカウント情報の更新を行う
 			AccountDAO aDao = new AccountDAO();
 			if(aDao.updateAccount(login_user, emailCheck, passwordCheck)) {
 				// 更新成功
 				session.setAttribute("login_user", login_user);
+				
 				response.sendRedirect("AccountServlet");
 			}
 			else {
 			    // メールアドレスが重複していた場合のエラー処理
 			    if (emailCheck) {
 			        request.setAttribute("emailErrorMessage", "すでに使用されているメールアドレスです。");
+			        
+			        // セッションのフラグを初期化する
+			        session.removeAttribute("emailCheck");
+			        session.removeAttribute("passwordCheck");
+			        
 			        // カテゴリ一覧
 			        CategoryDAO categoryDao = new CategoryDAO();
 			        request.setAttribute("categoryList", categoryDao.getCategoryList());

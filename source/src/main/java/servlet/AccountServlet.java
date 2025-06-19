@@ -42,7 +42,7 @@ public class AccountServlet extends HttpServlet {
 			// アカウントの情報を再度取得
 			try {
 				AccountDAO accountDAO = new AccountDAO();
-				accountAccessUser = accountDAO.getAccount(login_user.getEmail(), login_user.getPassword());
+				accountAccessUser = accountDAO.getAccount(login_user.getAccountId());
 			} catch (Exception e) {
 		        // エラー画面へ
 		        request.setAttribute("errorMassage", "ユーザー情報の変更中にエラーが発生しました");
@@ -51,10 +51,20 @@ public class AccountServlet extends HttpServlet {
 			}
 		}
 		
+		// セッション内の古い情報を削除
 		String beforeEmail = (String) session.getAttribute("beforeEmail");
+		String beforePassword = (String) session.getAttribute("beforePassword");
 		if (beforeEmail != null) {
 			session.removeAttribute("beforeEmail");
 		}
+		if (beforePassword != null) {
+			session.removeAttribute("beforePassword");
+		}
+		// アクセス時のlogin_userの情報を取得・セッションに格納
+		beforeEmail = accountAccessUser.getEmail();
+		beforePassword = accountAccessUser.getPassword();
+		session.setAttribute("beforeEmail", beforeEmail);
+		session.setAttribute("beforePassword", beforePassword);
 		
 		// リクエストパラメータを取得する
 		String flagPrm = request.getParameter("flag");
@@ -76,9 +86,6 @@ public class AccountServlet extends HttpServlet {
 		Category category = cDao.getCategory(categoryId);
 		accountAccessUser.setCategory(category);
 		
-		// この時点でのlogin_userのEmailを取得・セッションに格納
-		beforeEmail = login_user.getEmail();
-		session.setAttribute("beforeEmail", beforeEmail);
 		// この時点でのオブジェクトをセッションに格納（login_userの更新）
 		session.setAttribute("login_user", accountAccessUser);
 		

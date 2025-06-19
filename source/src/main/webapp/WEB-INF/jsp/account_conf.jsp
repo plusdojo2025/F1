@@ -24,7 +24,15 @@
                     </div>
                     <div class="account-section under-line">
                         <p class="account-view-title">パスワード</p>
-                        <p>：${login_user.password}</p>
+                        <c:choose>
+							<c:when test="${passwordCheck == true}">
+								<p>：${login_user.password}</p>
+							</c:when>
+							<c:otherwise>
+								<p>：パスワードの変更はありません。</p>
+							</c:otherwise>
+						</c:choose>
+                        
                     </div>
                     <div class="account-section under-line">
                         <p class="account-view-title">目標ジャンル</p>

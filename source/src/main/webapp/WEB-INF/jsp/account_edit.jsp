@@ -6,7 +6,7 @@
 		
 		<!-- メイン（ここから） -->
 		<main class="account-main">
-	    <form method="POST" action="/F1/AccountConfServlet" class="account-update-form">
+	    <form method="POST" action="/F1/AccountConfServlet" id="accountUpdateForm" class="account-update-form">
 		    <div class="account-body">
 		
 		        <div class="green-title-section">
@@ -30,7 +30,7 @@
                         <p class="colon">：</p>
                         <p class="account-view-text">
              				<c:if test="${not empty emailErrorMessage}">
-                                <span class="account-error-msg">${errorMessage}</span>
+                                <span class="account-error-msg">${emailErrorMessage}</span>
                             </c:if>
                             <c:if test="${not empty errorMessage}">
                                 <span class="account-error-msg">${errorMessage}</span>
@@ -38,14 +38,35 @@
                             <input type="text" name="email" class="account-input" value="${login_user.email}">
                         </p>
                     </div>
-                    <div class="account-section under-line">
-                        <p class="account-view-title">パスワード</p>
+                    <div class="account-section">
+                        <p class="account-view-title">現在のパスワード</p>
+                        <p class="colon">：</p>
+                        <p class="account-view-text">
+                        	<span id="formError" class="account-error-msg"></span>
+                            <c:if test="${not empty notEqualsErrorMessage}">
+                                <span class="account-error-msg">${notEqualsErrorMessage}</span>
+                            </c:if>
+                            <input type="password" name="beforePassword" id="beforePassword" class="account-input">
+                        </p>
+                    </div>
+                    <div class="account-section">
+                        <p class="account-view-title">新しいパスワード</p>
                         <p class="colon">：</p>
                         <p class="account-view-text">
                             <c:if test="${not empty errorMessage}">
                                 <span class="account-error-msg">${errorMessage}</span>
                             </c:if>
-                            <input type="password" name="password" class="account-input" value="${login_user.password}">
+                            <input type="password" name="newPassword" id="newPassword" class="account-input">
+                        </p>
+                    </div>
+                    <div class="account-section under-line">
+                        <p class="account-view-title">新しいパスワード（確認）</p>
+                        <p class="colon">：</p>
+                        <p class="account-view-text">
+                            <c:if test="${not empty errorMessage}">
+                                <span class="account-error-msg">${errorMessage}</span>
+                            </c:if>
+                            <input type="password" name="newPasswordConf" id="newPasswordConf" class="account-input">
                         </p>
                     </div>
                     <div class="account-section under-line">
@@ -76,7 +97,7 @@
                 </div>
             </div>
 		    <div class="account-button-section">
-		    	<a href="/F1/TopPageServlet" class="button back-to-top-button">
+		    	<a href="/F1/AccountServlet" class="button back-to-top-button">
                     キャンセル
                 </a>
 
@@ -86,5 +107,46 @@
         </form>
 	    </main>
 	</div>
+	<script >
+		document.getElementById("accountUpdateForm").addEventListener("submit", function(event){
+			let beforePassword = document.getElementById("beforePassword").value.trim();
+			let newPassword = document.getElementById("newPassword").value.trim();
+			let newPasswordConf = document.getElementById("newPasswordConf").value.trim();
+			
+			let formError = document.getElementById("formError")
+			
+			//エラーメッセージ初期化
+			formError.textContent = "";
+			
+			// Password入力欄に入力がある場合
+			if (beforePassword || newPassword || newPasswordConf) {
+				// 空欄チェック
+				if (!beforePassword || !newPassword || !newPasswordConf) {
+					formError.textContent = "すべてのパスワードの項目を入力してください";
+					event.preventDefault();
+					return;
+				}
+				
+				//パスワードの強度
+				const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
+				// パスワード強度チェック
+				if (!passwordRegex.test(newPassword)) {
+				    formError.textContent = "パスワードは8文字以上で、英大文字・小文字・数字を含めてください";
+				    event.preventDefault();
+				    return;
+				}
+				
+				// 新しいパスワードの確認
+				if (newPassword !== newPasswordConf){
+					formError.textContent = "新しいパスワードが一致しません";
+					event.preventDefault();
+					return;
+				}
+			}
+			
+
+			
+		});
+	</script>
 </body>
 </html>
