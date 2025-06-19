@@ -42,11 +42,11 @@
 </div>
 
 <div class="BtnSideBy">
-<form action="/webapp/TopPageServlet" class = "LeftPositionBtn"><!-- トップに戻るボタン -->
+<form action="/F1/TopPageServlet" class = "LeftPositionBtn"><!-- トップに戻るボタン -->
 <input type="submit" class="light-orange-btn" name="goTopButton" value="Topへ戻る">
 </form>
 
-<form action="/webapp/TaskRegistServlet" class = "RightPositionBtn">
+<form action="/F1/TaskRegistServlet" class = "RightPositionBtn">
 <input type="submit" class="green-btn" name="registTaskButton" value="新規タスクボタン">
 </form>
 </div>
