@@ -6,8 +6,8 @@
 <div id="editModal" class="modal-overlay">
 	<div class="account-main">
 	<div class="task-regist-body">
-		<div class="green-title-section">
-			<h1 class="green-label">タスクの新規作成</h1>
+		<div class="white-title-section">
+			<h1 class="white-label">タスク内容の変更</h1>
 		</div>
 			<div class="task-regist-formbody">
 				<div class="task-formsection task-regist-title-form">
@@ -55,8 +55,8 @@
 					<input type="submit" class="light-orange-btn" name="goTopButton" value="キャンセル">
 				</form>
 				
-				<form 　method="POST" action="/F1/TaskRegistServlet" class="task-regist-form">
-					<input type="submit" class="green-btn" name="registTaskButton" value="新規タスクボタン">
+				<form method="POST" action="/F1/TaskRegistServlet" class="task-regist-form">
+					<input type="submit" class="green-btn" name="registTaskButton" value="変更">
 				</form>
 			</div>
 	</div>
