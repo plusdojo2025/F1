@@ -6,7 +6,7 @@
 <%@ include file="header.jsp" %>
 <div class="account-main">
 	<div class="task-regist-body">
-		<div class="white-title-section">
+		<div class="green-title-section">
 			<h1 class="green-label">タスクの新規作成</h1>
 		</div>
 		<form method="POST" action="/F1/TaskRegistServlet" class="task-regist-form"><!-- 外側の枠 -->
