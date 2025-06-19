@@ -371,8 +371,8 @@ public class TasksDAO {
 			pStmtRegist.setInt(1,task.getAccountId());
 			pStmtRegist.setString(2,task.getTitle());
 			pStmtRegist.setInt(3,task.getTimeSpan());
-			pStmtRegist.setInt(4,task.getCategoryId());
-			pStmtRegist.setInt(5,task.getMoodId());
+			pStmtRegist.setInt(4,task.getMoodId());
+			pStmtRegist.setInt(5,task.getCategoryId());
 			pStmtRegist.setBoolean(6,task.getIsPrivate());
 			
 			//タスク新規登録SQLを実行
