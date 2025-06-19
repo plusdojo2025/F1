@@ -13,19 +13,19 @@
 					<p class="taskTitle"></p>
 				</div>
 				<div class="task-formsection">
-					<p>所要時間</p>
+					<p class="task-title-tips">所要時間</p>
 					<p class="taskContent"></p>
 				</div>
 				<div class="task-formsection">
-					<p>気分</p>
+					<p class="task-title-tips">気分</p>
 					<p class="taskContent"></p>
 				</div>
 				<div class="task-formsection">
-					<p>作業ジャンル</p>
+					<p class="task-title-tips">作業ジャンル</p>
 					<p class="taskContent"></p>
 				</div>
 				<div class="task-formsection">
-					<p>公開設定</p>
+					<p class="task-title-tips">公開設定</p>
 					<p class="taskContent"></p>
 				</div>
 			</div>

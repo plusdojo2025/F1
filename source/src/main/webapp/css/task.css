@@ -49,6 +49,8 @@
 	width: 100%;
 }
 
+
+
 /*task_view.jsp*/
 
 /*タスク一覧表示の外枠スタイル*/
@@ -73,9 +75,30 @@
 	border-bottom: solid #0B6446;
 }
 
+/*タスク一覧のtitleに対するスタイル*/
+.taskTitle{
+	color: #0B6446;
+	background-color: #eeeed5;
+	border: 1px solid #0B6446;
+	border-radius: 5px;
+	width: 250px;
+	align-items: center;
+    flex-direction: column;
+    
+}
 
 /*汎用css*/
 /*ボタンを横並べにする為にボタンを囲っているdivに設定するスタイル*/
 .BtnSideBy{
 	display:inline-flex
+}
+
+.LeftPositionBtn{
+	margin-left: 40px;
+	align-items: left;
+}
+
+.RightPositionBtn{
+	margin-right: 40px;
+	align-items: right;
 }
