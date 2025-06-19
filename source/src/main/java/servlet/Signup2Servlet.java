@@ -36,8 +36,9 @@ public class Signup2Servlet extends HttpServlet {
 	        Account signupAccount = (Account) session.getAttribute("signup_user");
 	        
 	        if(signupAccount !=null) {
-	        	request.setAttribute("beforeEmail", signupAccount.getEmail());
-	        	request.setAttribute("beforePassword", signupAccount.getPassword());
+	        	request.setAttribute("beforeName", signupAccount.getNickname());
+	        	request.setAttribute("beforeCategory", signupAccount.getCategoryId());
+	        	request.setAttribute("beforeGoalDetail", signupAccount.getGoalDetail());
 	        }
 	        
 	        CategoryDAO categoryDAO = new CategoryDAO();

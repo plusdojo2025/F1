@@ -28,13 +28,15 @@
 		<label for="category">目標ジャンル</label>
             <select name="categoryId" id="category" class="company-select" required>
       			<c:forEach var="category" items="${categoryList}">
-					<option value="${category.categoryId}">${category.categoryTitle}</option>
+					<option value="${category.categoryId}"
+					 <c:if test="${category.categoryId == beforeCategory}">selected</c:if>>
+					 ${category.categoryTitle}</option>
 				</c:forEach>
             </select>			
 			
 		
 		<label for="goalDetail">目標詳細（２５文字以内）</label>
-		<input type="text" name="goalDetail" id="goalDetail" maxlength="25" autocomplete="off" placeholder="例：　目指せ-5kg" value="<%= request.getAttribute("beforeGoal") != null ? request.getAttribute("beforeGoal") : "" %>">
+		<input type="text" name="goalDetail" id="goalDetail" maxlength="25" placeholder="例：　目指せ-5kg" autocomplete="off"  value="${beforeGoalDetail != null ? beforeGoalDetail : '' }">
 		
 		<div id="formError" class="error"></div>
 		

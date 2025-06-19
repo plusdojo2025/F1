@@ -16,27 +16,27 @@
 			<tr>
 			  <th>ニックネーム</th>
 			  <td class="colon">:</td>
-			  <td>${signup_user.nickname}</td>
+			  <td class="ie">${signup_user.nickname}</td>
 			</tr>
 			<tr>
 			  <th>メールアドレス</th>
 			  <td class="colon">:</td>
-			  <td>${signup_user.email}</td>
+			  <td class="ie">${signup_user.email}</td>
 			</tr>
 			<tr>
 			  <th>パスワード</th>
 			  <td class="colon">:</td>
-			  <td>${signup_user.password}</td>
+			  <td class="ie">${signup_user.password}</td>
 			</tr>
 			<tr>
 			  <th>目標ジャンル</th>
 			  <td class="colon">:</td>
-			  <td>${signupCategory.categoryTitle}</td>
+			  <td class="ie">${signupCategory.categoryTitle}</td>
 			</tr>
 			<tr>
 			  <th>目標内容</th>
 			  <td class="colon">:</td>
-			  <td>${signup_user.goalDetail}</td>
+			  <td class="ie">${signup_user.goalDetail}</td>
 			</tr>
 		</table>
 	<form action="<%= request.getContextPath() %>/SignupExecuteServlet" method="post">
