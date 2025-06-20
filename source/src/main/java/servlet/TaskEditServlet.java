@@ -36,12 +36,14 @@ public class TaskEditServlet extends HttpServlet {
 	     }
 	     
 	     // リクエストスコープからパラメーターを取得
+	     int taskId = Integer.parseInt(request.getParameter("taskId"));
 	     String title = request.getParameter("title");
 	     int timeSpan = Integer.parseInt(request.getParameter("timeSpan"));
 	     int moodId = Integer.parseInt(request.getParameter("moodId"));
 	     int categoryId = Integer.parseInt(request.getParameter("categoryId"));
 	     Boolean isPrivate = Boolean.parseBoolean(request.getParameter("isPrivate"));
-	     int taskId = Integer.parseInt(request.getParameter("taskId"));
+	     
+	     
 
 	     // 変更内容用のオブジェクト生成
 	     Task editTask = new Task();
@@ -50,10 +52,9 @@ public class TaskEditServlet extends HttpServlet {
 	     editTask.setTaskId(taskId);
 	     editTask.setTitle(title);
 	     editTask.setTimeSpan(timeSpan);
-	     editTask.setCategoryId(moodId);
-	     editTask.setMoodId(categoryId);
+	     editTask.setMoodId(moodId);
+	     editTask.setCategoryId(categoryId);
 	     editTask.setIsPrivate(isPrivate);
-	     
 	     // DAOの生成
 	     TasksDAO tasksDAO = new TasksDAO();
 	     
