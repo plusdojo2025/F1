@@ -13,25 +13,25 @@
 		            <h1 class="green-title">アカウント情報</h1>
 		        </div>
                 <div class="account-view-section">
-                    <div class="account-section under-line">
+                    <div class="account-section account-view-section under-line">
                         <p class="account-view-title">ニックネーム</p>
-                        <p>：${login_user.nickname}</p>
+                        <p class="account-view-text">：${login_user.nickname}</p>
                     </div>
                     <div class="account-section under-line">
                         <p class="account-view-title">メールアドレス</p>
-                        <p>：${login_user.email}</p>
+                        <p class="account-view-text">：${login_user.email}</p>
                     </div>
-                    <div class="account-section under-line">
+                    <div class="account-section account-view-section under-line">
                         <p class="account-view-title">パスワード</p>
-                        <p>：登録済み</p>
+                        <p class="account-view-text">：登録済み</p>
                     </div>
-                    <div class="account-section under-line">
+                    <div class="account-section account-view-section under-line">
                         <p class="account-view-title">目標ジャンル</p>
-                        <p>：${login_user.category.categoryTitle}</p>
+                        <p class="account-view-text">：${login_user.category.categoryTitle}</p>
                     </div>
-                    <div class="account-section ">
+                    <div class="account-section account-view-section">
                         <p class="account-view-title">目標内容</p>
-                        <p>：${login_user.goalDetail}</p>
+                        <p class="account-view-text">：${login_user.goalDetail}</p>
                     </div>
                 </div>
             </div>
@@ -50,7 +50,7 @@
                     <div class="pencil-back-ground">
                         <img src="images/logout.svg" alt="">
                     </div>
-                    <p class="account-update-text">
+                    <p class="account-update-text logout-button-text">
                         ログアウト
                     </p>
       			</button>
