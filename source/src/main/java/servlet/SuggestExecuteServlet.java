@@ -74,7 +74,9 @@ public class SuggestExecuteServlet extends HttpServlet {
 		
 		// logオブジェクトにデータをセット
 		currentLog.setAccountId(loginAccount.getAccountId());
-		currentLog.setTaskId(task.getTaskId());
+		currentLog.setTaskTitle(task.getTitle());
+		currentLog.setMoodId(task.getMoodId());
+		currentLog.setCategoryId(task.getCategoryId());
 		currentLog.setLogTime(Timestamp.valueOf(LocalDateTime.now()));
 		currentLog.setTask(task);
 		
