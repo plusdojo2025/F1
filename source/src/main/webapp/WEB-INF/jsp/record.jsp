@@ -13,13 +13,13 @@
             <p class="statisticsCategory">よく行う気分
                 <img src="<c:url value='/images/smile.svg' />">
             </p>
-            <p class="statisticsData"><c:out value="${mostCategory}"/></p>
+            <p class="statisticsData"><c:out value="${mostMood.moodTitle}"/></p>
         </div>
 	<div class="mostMood">
         <p class="statisticsCategory">よく行う作業ジャンル
              <img src="<c:url value='/images/work.svg' />">
         </p>
-        <p class="statisticsData"><c:out value="${mostMood}"/></p> 
+        <p class="statisticsData"><c:out value="${mostCategory.categoryTitle}"/></p> 
     </div>
 </div>
 	<table>
@@ -45,6 +45,6 @@
 		</tr>
 	</c:if>
 	</table>
-	<a href="/F1/SuggestServlet" class="light-orange-btn"> TOP画面へ戻る</a>
+	<a href="<c:url value='/TopPageServlet' />" class="light-orange-btn"> TOP画面へ戻る</a>
 </body>
 </html>
