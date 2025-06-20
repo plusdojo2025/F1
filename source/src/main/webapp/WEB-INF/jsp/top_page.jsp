@@ -18,7 +18,7 @@
 					<div class="goallogo-under2"></div>
 				</div>
 				<p class="goalDetail-top">
-					<c:out value="${goalDetail}" />
+					<c:out value="${login_user.goalDetail}" />
 				</p>
 
 			</div>

@@ -47,8 +47,9 @@
 <input type="submit" class="light-orange-btn" name="goTopButton" value="Topへ戻る">
 </form>
 
-<form action="/F1/TaskRegistServlet" class = "RightPositionBtn">
-<input type="submit" class="green-btn" name="registTaskButton" value="新規タスクボタン">
+<form action="/F1/TaskRegistServlet" class = "RightPositionBtn green-btn">
+<img src="<c:url value='/images/white-plus.svg' />">
+<input type="submit" name="registTaskButton" value="新規タスクボタン">
 </form>
 </div>
 
