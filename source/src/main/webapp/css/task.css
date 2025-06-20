@@ -90,8 +90,11 @@
 /*汎用css*/
 /*ボタンを横並べにする為にボタンを囲っているdivに設定するスタイル*/
 .BtnSideBy{
-	display: inline-flex;
+	display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
+
 .task-regist-button-section{
 	display: inline-flex;
 }
@@ -132,7 +135,7 @@
 .task-delete-form {
 	padding: 30px 50px;
 }
-.task-delete-item {
+.task-edidel-item {
 	width: 85%;
 }
 
