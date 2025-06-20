@@ -31,7 +31,7 @@
 					</c:if>
 					</td><!-- 公開判定チェックマーク -->
 					<td>
-					<button type="button" class="edit-button" onclick="openRegistModal(${e.taskId}, '${e.timeSpan}', ${e.title}, 
+					<button type="button" class="edit-button" onclick="openEditModal(${e.taskId}, '${e.title}', ${e.timeSpan}, 
 					'${e.moodTitle}', '${e.categoryTitle}', '${e.isPrivate}')">変更</button>
 					<button type="button" class="delete-button" onclick="openDeleteModal(${e.taskId}, '${e.title}', '${e.timeSpan}',
 					 '${e.moodTitle}', '${e.categoryTitle}', '${e.isPrivate}')">削除</button>
@@ -57,6 +57,7 @@
 <footer>
 
 </footer>
+<%@ include file="task_edit.jsp" %>
 <%@ include file="task_delete.jsp" %>
 <script src="/F1/js/popup.js"></script>
 </body>

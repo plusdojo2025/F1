@@ -9,6 +9,8 @@
 		<div class="white-title-section">
 			<h1 class="white-label">タスク内容の変更</h1>
 		</div>
+		<form method="POST" id="editTaskForm" action="/F1/TaskEditServlet" class="task-regist-form">
+				
 			<div class="task-regist-formbody">
 				<div class="task-formsection task-regist-title-form">
 					<span class="account-error-msg">ここにアラートを表示</span>
@@ -22,7 +24,14 @@
 					<p class="task-title-tips">気分</p>
 					<SELECT name="moodId" id="moodId" class="account-input task-select task-regist-input">
 				 		<c:forEach var="mood" items="${moodList}">
-				 			<option value="${mood.moodId}">${mood.moodTitle}</option>
+				 			<c:choose>
+								<c:when test="${mood.moodId == task.moodId}">
+									<option value="${mood.moodId}" selected>${mood.moodTitle}</option>
+								</c:when>
+								<c:otherwise>
+									<option value="${mood.moodId}">${mood.moodTitle}</option>
+								</c:otherwise>
+							</c:choose>
 				 		</c:forEach>
 					</SELECT>
 				</div>
@@ -31,7 +40,7 @@
 					<SELECT name="categoryId" id="categoryId" class="account-input task-select task-regist-input">
 				 		<c:forEach var="category" items="${categoryList}">
 				 			<c:choose>
-				 				<c:when test="${category.categoryId == login_user.categoryId}">
+				 				<c:when test="${category.categoryId == task.categoryId}">
 				 					<option value="${category.categoryId}" selected>${category.categoryTitle}</option>
 				 				</c:when>
 				 				<c:otherwise>
@@ -51,14 +60,23 @@
 				</div>
 			</div>
 			<div class="task-regist-button-section">
-				<form action="/F1/TaskViewServlet"><!-- トップに戻るボタン -->
-					<input type="submit" class="light-orange-btn" name="goTopButton" value="キャンセル">
-				</form>
-				
-				<form method="POST" action="/F1/TaskRegistServlet" class="task-regist-form">
-					<input type="submit" class="green-btn" name="registTaskButton" value="変更">
-				</form>
+				<button type="button" class="light-orange-btn" onclick="closeEditModal()">キャンセル</button>
+				<input type="hidden" name="taskId" id="editTaskId">
+				<button type="button" class="green-btn" onclick="confirmEditTask()">変更</button>
 			</div>
+		</form>
 	</div>
 </div>
 </div> 
+
+
+<!-- アラート風確認モーダル -->
+<div id="editAlertModal" class="modal-overlay" style="display: none;">
+  <div class="alert-modal-content">
+    <p id="editAlertText">ここに確認メッセージ</p>
+    <div class="alert-button-area">
+      <button class="light-orange-btn" onclick="cancelEditConfirm()">キャンセル</button>
+      <button class="green-btn" onclick="submitEditTask()">OK</button>
+    </div>
+  </div>
+</div>
