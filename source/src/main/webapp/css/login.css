@@ -235,9 +235,11 @@ td {
 
 .login-container2 table td {
     font-size: 20px; /* テーブルの文字サイズ */
+    width: 10px;
     padding: 10px 5px;
     border-bottom: 3px solid #ccc;
     text-align: left;
+    word-break: break-all;
 }
 
 .login-container2 table td.colom {
