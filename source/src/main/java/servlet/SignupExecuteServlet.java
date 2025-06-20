@@ -36,6 +36,7 @@ public class SignupExecuteServlet extends HttpServlet {
 	    // セッションスコープから新規登録アカウントデータを取得 
 		HttpSession session = request.getSession();
 		Account signupAccount = (Account) session.getAttribute("signup_user");
+		System.out.println("signup_user = " + signupAccount);
 		
 		// アカウントDAOの生成
 		AccountDAO accountDAO = new AccountDAO();
@@ -73,13 +74,13 @@ public class SignupExecuteServlet extends HttpServlet {
 			} else {
 				// 登録失敗:エラー画面
 				request.setAttribute("errorMessage", "登録に失敗しました。もう一度お試しください。");
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/error.jsp");
-				dispatcher.forward(request, response);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/signup.jsp");
+				dispatcher.forward(request, response);                   
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
             request.setAttribute("errorMessage", "アカウント情報の登録中にエラーが発生しました。");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/error.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/signup.jsp");
             dispatcher.forward(request, response);
             return;
 		}

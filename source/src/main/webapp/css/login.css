@@ -172,10 +172,15 @@ td {
   width: 230px;
   height: 70px;
   margin: 0 auto;
-  background-color: #ffcc6f;
+  background-color: #FFDC99;
   font-size: 23px;
   font-weight: bold;
   color: white;
+  transition: background-color 0.3s ease;
+}
+
+.light-orange-btn:hover {
+  background-color: #fbd40e;  
 }
 
 .login-orange-btn {
@@ -263,7 +268,11 @@ td {
   font-size: 23px;
   font-weight: bold;
   color: white;
-	
+  transition: background-color 0.3s ease;
+}
+
+#back2:hover {
+  background-color: #fbd40e;  
 }
 
 #check2{

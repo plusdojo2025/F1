@@ -21,7 +21,7 @@
 		<form id="loginForm" method="POST" action="<%= request.getContextPath() %>/Signup2Servlet" autocomplete="off">
 		<label for="email">メールアドレス</label>
 		<input type="text" name="email" id="email" autocomplete="off" value="<%= request.getAttribute("beforeEmail") != null ? request.getAttribute("beforeEmail") : ""%>">
-		
+		<a style="font-size: 0.8em;">【条件】有効なメールアドレス形式（例：example@example.com）</a>
 		
 		<label for="pw">パスワード</label>
 		<input type="password" name="password" id="password" autocomplete="new-password" value="<%= request.getAttribute("beforePassword") != null ? request.getAttribute("beforePassword") : ""%>">
@@ -61,6 +61,17 @@
 				event.preventDefault();
 				return;
 			}
+			
+			
+			
+			// メールアドレスの形式チェック
+			const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+			if (!emailRegex.test(email)) {
+			    formError.textContent = "有効なメールアドレスを入力してください";
+			    event.preventDefault();
+			    return;
+			}
+
 			
 			//パスワード確認
 			if (password !== passwordConf){

@@ -282,7 +282,7 @@ public class AccountDAO {
             
                 //アカウント情報更新SQLを準備
                 String sqlLogin = "UPDATE account SET "
-                        + "login_at = ? "
+                        + "login_at = ? ,"
                         + "consecutive_logins = ? "
                         + "WHERE account_id = ?;";
                 
