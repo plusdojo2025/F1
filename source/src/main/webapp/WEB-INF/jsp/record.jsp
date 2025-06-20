@@ -2,33 +2,26 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="header.jsp" %>
-	<div>
-		<p>
-			これまでに活用した合計時間<img src="<c:url value='/images/time.svg' />">
-		</p>
-		<p>
-			<c:out value="${durationSum}" />
-		</p>
-	</div>
-	<div>
-		<p>
-			よく行う気分<img src="<c:url value='/images/smile.svg' />">
-		</p>
-		<p>
-			<c:out value="${mostCategory}" />
-
-
-		</p>
-	</div>
-	<div>
-		<p>
-			よく行う作業ジャンル <img src="<c:url value='/images/work.svg' />">
-		</p>
-		<p>
-			<c:out value="${mostMood}" />
-		</p>
-	</div>
-
+<div class="statistics">
+	<div class="sumDuration">
+            <p class="statisticsCategory">これまでに活用した合計時間
+            <img src="images/time.svg">
+            </p>
+       <p class="statisticsData"><c:out value="${durationSum}"/></p> 
+        </div>
+	<div class="mostCategory">
+            <p class="statisticsCategory">よく行う気分
+                <img src="<c:url value='/images/smile.svg' />">
+            </p>
+            <p class="statisticsData"><c:out value="${mostCategory}"/></p>
+        </div>
+	<div class="mostMood">
+        <p class="statisticsCategory">よく行う作業ジャンル
+             <img src="<c:url value='/images/work.svg' />">
+        </p>
+        <p class="statisticsData"><c:out value="${mostMood}"/></p> 
+    </div>
+</div>
 	<table>
 		<tr>
 			<th>タスク内容</th>
@@ -47,7 +40,9 @@
 				</tr>
 			</c:forEach>
 			<c:if test="${empty history}">
-		<p>指定された条件に一致するデータはありません。</p>
+			<tr>
+		<td colspan=5 class="white-title-section">指定された条件に一致するデータはありません。</td>
+		</tr>
 	</c:if>
 	</table>
 	<a href="/F1/SuggestServlet" class="light-orange-btn"> TOP画面へ戻る</a>
