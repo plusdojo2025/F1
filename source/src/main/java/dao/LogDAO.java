@@ -45,7 +45,7 @@ public class LogDAO {
 			while(rsSelect.next()) {
 				LogList log = new LogList();
 				log.setLogId(rsSelect.getInt("log_id"));
-				log.setTitle(rsSelect.getString("title"));
+				log.setTitle(rsSelect.getString("task_title"));
 				log.setDuration(rsSelect.getInt("duration"));
 		        log.setMoodTitle(rsSelect.getString("mood_title"));
 		        log.setCategoryTitle(rsSelect.getString("category_title"));

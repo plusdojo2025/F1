@@ -263,6 +263,7 @@ public class TasksDAO {
 					+ "WHERE account_id <> ? "
 					+ "AND mood_id = ? "
 					+ "AND category_id = ? "
+					+ "AND is_private = 1 "
 					+ "AND time_span BETWEEN (? - 5) AND ? "
 					+ "ORDER BY RAND();";
 			PreparedStatement pStmtSuggest1 = conn.prepareStatement(sqlSuggest1);
@@ -298,6 +299,7 @@ public class TasksDAO {
 					+ "WHERE account_id <> ? "
 					+ "AND mood_id <> ? "
 					+ "AND category_id = ? "
+					+ "AND is_private = 1 "
 					+ "AND time_span BETWEEN (? - 5) AND ? "
 					+ "ORDER BY RAND();";
 			PreparedStatement pStmtSuggest2 = conn.prepareStatement(sqlSuggest2);
