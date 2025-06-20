@@ -232,4 +232,482 @@ input[type="range"]::-webkit-slider-runnable-track {
 }*/
 
 
+/*top画面*/
+/*目標*/
+.goallogo{
+	position:relative;
+	top: 20px;
+}
+.goallogo-top{
+    width: 1px;
+    border-top: 10px solid transparent;
+    border-right: 10px solid rgb(29, 95, 46);
+    position: absolute;
+    top: -41px;
+    z-index: 1;
+    left: 12px;
+}
+.goallogo-main{
+    writing-mode: vertical-lr;
+    color: #ffffff;
+    background-color: rgb(29, 95, 46);
+    border: 2px solid rgb(29, 95, 46);
+    position: absolute;
+    top: -40px;
+    z-index: 10;
+    width: 35px;
+    height: 60px;
+    padding: 0px 34px 0px 0px;
+}
+.goallogo-under1{
+    width: 0;
+    height: 0;
+    border-top: 18px solid rgb(29, 95, 46);
+    border-right: 18px solid transparent;
+    position: absolute;
+    z-index: 2;
+    top: 20px;
+    left: 20px;
+}
+.goallogo-under2{
+    width: 0;
+    height: 0;
+    border-top: 18px solid rgb(29, 95, 46);
+    border-left: 18px solid transparent;
+    position: absolute;
+    z-index: 2;
+    top: 20px;
+    left: 40px;
+}
+
+.goalDetail-top{
+	    font-size: 25px;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.topPage-goalDetail{
+	width: 800px;
+    height: 70px;
+    padding: 10px 10px 10px 10px;
+    margin: 20px auto 20px auto;
+    border: 2px solid  #ffcf32;
+    border-radius: 10px;
+    background-color: rgb(255, 253, 240);
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.topPage-record{
+	        display: flex;
+    justify-content: space-around;
+    width: 850px;
+    margin: 10px auto;
+}
+.topPage-sumDuration{
+	
+    width: 360px;
+    padding: 10px 10px 10px 10px;
+    border: 2px solid  #ffcf32;
+    border-radius: 10px;
+    background-color: rgb(255, 253, 240);
+    font-size: 20px;
+    margin: 10px auto 10px auto;
+    height: 100px;
+    position: relative;
+    top: -10px;
+    left: 0px;
+}
+.sDuration-top{
+    position: absolute;
+    top: -15px;
+}
+.sumDuration-top{
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    margin: 5px 0 0 0;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.topPage-consecutiveLogins{
+    width: 360px;
+    padding: 10px 10px 10px 10px;
+    border: 2px solid  #ffcf32;
+    border-radius: 10px;
+    background-color: rgb(255, 253, 240);
+    height: 100px;
+    text-align: center;
+    position: relative;
+    top: 0px;
+}
+.cLogin{
+    width: 360px;
+    font-size: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0 0 0 0;
+}
+.count{
+    font-weight: bold;
+    font-size: 45px;
+    margin: 0 15px 0 15px;
+    color: rgb(29, 95, 46);
+}
+
+
+.nowTimeSpan{
+    font-weight: bold;
+    font-size: 30px;
+    position: relative;
+    left: -20px;
+    text-align: center;
+}
+.minutes{
+	    position: absolute;
+    top: 105px;
+    left: 368px;
+    font-size: 30px;
+    font-weight: normal;
+}
+.suggest-info{
+	color: rgb(29, 95, 46);
+	    border: 2px solid rgb(29, 95, 46);
+    border-radius: 5px;
+    width: 250px;
+    height: 80px;
+    text-align: center;
+    font-size: 50px;
+}
+.suggestMoodCatgeory{
+	     color: rgb(29, 95, 46);
+    text-align: left;
+    font-size: 30px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-around;
+    width: 800px;
+    margin: 5px auto 5px auto;
+}
+
+.suggest-info2{
+    color: rgb(29, 95, 46);
+    border: 3px solid rgb(29, 95, 46);
+    border-radius: 10px;
+    background-color: #ffffff;
+    width: 380px;
+    height: 65px;
+    text-align: left;
+    font-size: 40px;
+}
+
+.green-btn{
+	    border: 2px solid rgb(29, 95, 46);
+    border-radius: 8.0em;
+    background-color: rgb(29, 95, 46);
+    color: #ffffff;
+    margin: 59px auto 10px auto;
+    height: 60px;
+    width: 205px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+}
+
+#topError{
+	    color: #ff0000;
+    font-size: 16px;
+    width: 456px;
+    height: 24px;
+
+}
+
+
+
+/*チュートリアル用*/
+/*モーダルのスタイル*/
+.modaloverlay{
+    overflow: auto;
+    position: fixed;
+    display: none;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0);
+    opacity:0.6;
+}
+
+/*ピックアップするコンテンツのボックス*/
+#task{
+	position: relative;
+	z-index: 30;
+	
+}
+.task1{
+	
+    border: 2px solid  rgb(244 244 244);
+    border-radius: 10px;
+   background-color:   rgb(244 244 244);
+    margin: 35px auto 10px auto;
+    position: relative;
+    left: -20px;
+    text-align: center;
+    width: 460px;
+    z-index:20
+   
+    
+    
+} 
+.task2{
+	
+     border: 2px solid  rgb(244 244 244);
+    border-radius: 10px;
+   background-color:   rgb(244 244 244);
+    position: relative;
+    left: -20px;
+    width: 385px;
+} 
+.task3{
+	    
+    border: 2px solid rgb(244 244 244);
+    border-radius: 10px;
+    background-color:   rgb(244 244 244);
+    position: relative;
+    width: 385px;
+} 
+.task4 {
+position:relative;
+}
+
+/* 説明用テキスト */
+
+#setsumeitext{
+    display: none;
+    position: relative;
+    
+}
+.setsumeitext{
+    position: absolute;
+    top: -264px;
+    left: 36%;
+    z-index: 15001;
+    width: 500px;
+    height: 200px;
+    border: 4px solid  #ffcf32;
+    border-radius: 10px;
+    background-color: rgb(255, 253, 240);
+    font-weight: bold;
+    text-align: center;
+    padding: 45px 19px 0px 10px;
+    font-size: 20px;
+}
+.traiangl1{
+    border-top: 40px solid rgb(255, 253, 240);
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    z-index: 15003;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 192px;
+    left: 230px;
+}
+.traiangl1-back{
+    border-top: 45px solid #ffcf32;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    z-index: 11;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 193px;
+    left: 225px;
+}
+/*ピックアップするコンテンツのボックス*/
+#new{
+position:relative;
+border: 2px solid #ffffff;
+    border-radius: 0.5em;
+    background-color: #FFFFFF;
+    padding: 10px 10px 10px 10px;
+}
+
+
+/* 説明用テキスト */
+#setsumeitext2{
+	position: relative;
+	display:none;
+}
+.setsumeitext2{
+    position: absolute;
+    top: 98px;
+    left: -163px;
+    z-index: 15001;
+    width: 500px;
+    height: 200px;
+    border: 4px solid  #ffcf32;
+    border-radius: 10px;
+    background-color: rgb(255, 253, 240);
+    font-weight: bold;
+    text-align: center;
+    padding: 45px 19px 0px 10px;
+    font-size: 20px;
+}
+.traiangl2{
+    border-bottom: 40px solid rgb(255, 253, 240);
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    z-index: 15003;
+    width: 0px;
+    height: 0;
+    position: absolute;
+    top: -40px;
+    left: 68px; 
+}
+.traiangl2-back{
+    border-bottom: 45px solid #ffcf32;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    z-index: 11;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: -48px;
+    left: 63px;
+}
+
+/*ピックアップするコンテンツのボックス*/
+#goal{
+	position: relative;
+}
+.goal1{
+position:absolute;
+
+} 
+.goal2{
+	position:relative;
+}
+.goal3{
+position:relative;
+}
+
+/* 説明用テキスト */
+#setsumeitext3{
+    position: relative;
+    display: none;
+  
+}
+.setsumeitext3{
+    position: absolute;
+    top: 49px;
+    left: 707px;
+    z-index: 15001;
+    width: 500px;
+    height: 200px;
+    border: 4px solid  #ffcf32;
+    border-radius: 10px;
+    background-color: rgb(255, 253, 240);
+    font-weight: bold;
+    text-align: center;
+    padding: 45px 19px 0px 10px;
+    font-size: 20px;
+}
+.traiangl3{
+    border-bottom: 40px solid rgb(255, 253, 240);
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    z-index: 15003;
+    width: 0px;
+    height: 0;
+    position: absolute;
+    top: -40px;
+    left: 222px;
+    
+}
+.traiangl3-back{
+    border-bottom: 45px solid #ffcf32;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    z-index: 11;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: -48px;
+    left: 217px;
+}
+
+/*ピックアップするコンテンツのボックス*/
+#help{
+position:relative;
+border: 2px solid #ffffff;
+    border-radius: 0.5em;
+    background-color: #FFFFFF;
+    padding: 10px 10px 10px 10px;
+    z-index:9;
+}
+
+/* 説明用テキスト */
+
+#setsumeitext4{
+    display: none;
+    position: relative;
+    
+}
+.setsumeitext4{
+    position: absolute;
+    top: 88px;
+    left: -492px;
+    z-index: 15001;
+    width: 500px;
+    height: 200px;
+    border: 4px solid  #ffcf32;
+    border-radius: 10px;
+    background-color: rgb(255, 253, 240);
+    font-weight: bold;
+    text-align: center;
+    padding: 45px 19px 0px 10px;
+    font-size: 20px;
+}
+.traiangl4{
+    border-bottom: 40px solid rgb(255, 253, 240);
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    z-index: 15003;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: -39px;
+    left: 410px;
+}
+.traiangl4-back{
+    border-bottom: 45px solid #ffcf32;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    z-index: 11;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: -47px;
+    left: 405px;
+}
+#tutorial{
+    display: none;
+}
+
+.display{
+    z-index: 1500;
+}
+
 
