@@ -122,5 +122,6 @@
 	<div class="modaloverlay" id="modaloverlay_id"></div>
 </main>
 <script src="<c:url value='/js/tutorial.js'/>"></script>
+<script src="<c:url value='/js/suggest.js'/>"></script>
 </body>
 </html>
