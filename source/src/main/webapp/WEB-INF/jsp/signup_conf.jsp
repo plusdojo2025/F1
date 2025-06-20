@@ -15,28 +15,24 @@
 		<table>
 			<tr>
 			  <th>ニックネーム</th>
-			  <td class="colon">:</td>
-			  <td class="ie">${signup_user.nickname}</td>
+
+			  <td class="ie">:&nbsp;&nbsp;&nbsp;&nbsp;${signup_user.nickname}</td>
 			</tr>
 			<tr>
 			  <th>メールアドレス</th>
-			  <td class="colon">:</td>
-			  <td class="ie">${signup_user.email}</td>
+			  <td class="ie">:&nbsp;&nbsp;&nbsp;&nbsp;${signup_user.email}</td>
 			</tr>
 			<tr>
 			  <th>パスワード</th>
-			  <td class="colon">:</td>
-			  <td class="ie">${signup_user.password}</td>
+			  <td class="ie">:&nbsp;&nbsp;&nbsp;&nbsp;${signup_user.password}</td>
 			</tr>
 			<tr>
 			  <th>目標ジャンル</th>
-			  <td class="colon">:</td>
-			  <td class="ie">${signupCategory.categoryTitle}</td>
+			  <td class="ie">:&nbsp;&nbsp;&nbsp;&nbsp;${signupCategory.categoryTitle}</td>
 			</tr>
 			<tr>
 			  <th>目標内容</th>
-			  <td class="colon">:</td>
-			  <td class="ie">${signup_user.goalDetail}</td>
+			  <td class="ie">:&nbsp;&nbsp;&nbsp;&nbsp;${signup_user.goalDetail}</td>
 			</tr>
 		</table>
 	<form action="<c:url value='/SignupExecuteServlet' />" method="post">

@@ -5,7 +5,7 @@
 <div class="statistics">
 	<div class="sumDuration">
             <p class="statisticsCategory">これまでに活用した合計時間
-            <img src="images/time.svg">
+            <img src="<c:url value='/images/time.svg' />">
             </p>
        <p class="statisticsData"><c:out value="${durationSum}"/></p> 
         </div>
@@ -22,29 +22,31 @@
         <p class="statisticsData"><c:out value="${mostCategory.categoryTitle}"/></p> 
     </div>
 </div>
+<div class="logList">
 	<table>
 		<tr>
-			<th>タスク内容</th>
-			<th>所要時間</th>
-			<th>気分</th>
-			<th>作業ジャンル</th>
-			<th>満足度</th>
+			<th class="th-record">タスク内容</th>
+			<th class="th-record">所要時間</th>
+			<th  class="th-record">気分</th>
+			<th class="th-record">作業ジャンル</th>
+			<th class="th-record">満足度</th>
 			<c:forEach var="log" items="${history}">
 				<tr>
-					<td class="taskTitle"><c:out value="${log.title}" /></td>
-					<td class="duration"><c:out value="${log.duration}" /></td>
-					<td class="mood"><c:out value="${log.moodTitle}" /></td>
-					<td class="category"><c:out value="${log.categoryTitle}" /></td>
-					<td><span class="rate"
+					<td class="taskTitle-record  td-record"><span class="taskName-record"><c:out  value="${log.title}" /></span></td>
+					<td class="duration-record td-record"><c:out value="${log.duration}" /></td>
+					<td class="mood-record td-record"><c:out value="${log.moodTitle}" /></td>
+					<td class="category-record td-record"><c:out value="${log.categoryTitle}" /></td>
+					<td  class="td-record"><span class="rate"
 						style="--percent: ${log.satisfactionLevel / 5 * 100}%;"></span></td>
 				</tr>
 			</c:forEach>
 			<c:if test="${empty history}">
 			<tr>
-		<td colspan=5 class="white-title-section">指定された条件に一致するデータはありません。</td>
+		<td colspan=5 class="white-title-section lognone">実績がまだありません。</td>
 		</tr>
 	</c:if>
 	</table>
+	</div >
 	<a href="<c:url value='/TopPageServlet' />" class="light-orange-btn"> TOP画面へ戻る</a>
 </body>
 </html>
