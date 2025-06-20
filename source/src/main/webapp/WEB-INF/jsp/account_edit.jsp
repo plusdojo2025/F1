@@ -6,7 +6,7 @@
 		
 		<!-- メイン（ここから） -->
 		<main class="account-main">
-	    <form method="POST" action="/F1/AccountConfServlet" id="accountUpdateForm" class="account-update-form">
+	    <form method="POST" action="<c:url value='/AccountConfServlet' />" id="accountUpdateForm" class="account-update-form">
 		    <div class="account-body">
 		
 		        <div class="green-title-section">
@@ -97,7 +97,7 @@
                 </div>
             </div>
 		    <div class="account-button-section">
-		    	<a href="/F1/AccountServlet" class="button back-to-top-button">
+		    	<a href="<c:url value='/AccountServlet' />" class="button back-to-top-button">
                     キャンセル
                 </a>
 

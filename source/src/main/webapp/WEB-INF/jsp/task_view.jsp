@@ -43,11 +43,11 @@
 </div>
 
 <div class="BtnSideBy">
-<form action="/F1/TopPageServlet" class = "LeftPositionBtn"><!-- トップに戻るボタン -->
+<form action="<c:url value='/TopPageServlet' />" class = "LeftPositionBtn"><!-- トップに戻るボタン -->
 <input type="submit" class="light-orange-btn" name="goTopButton" value="Topへ戻る">
 </form>
 
-<form action="/F1/TaskRegistServlet" class = "RightPositionBtn green-btn">
+<form action="<c:url value='/TaskRegistServlet' />" class = "RightPositionBtn green-btn">
 <img src="<c:url value='/images/white-plus.svg' />">
 <input type="submit" name="registTaskButton" value="新規タスクボタン">
 </form>
@@ -60,6 +60,6 @@
 </footer>
 <%@ include file="task_edit.jsp" %>
 <%@ include file="task_delete.jsp" %>
-<script src="/F1/js/popup.js"></script>
+<script src="<c:url value='/js/popup.js' />"></script>
 </body>
 </html>

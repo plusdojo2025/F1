@@ -6,7 +6,7 @@
 		
 		<!-- メイン（ここから） -->
 		<main class="account-main">
-		<form method="POST" action="/F1/AccountUpdateServlet" class="account-update-form">
+		<form method="POST" action="<c:url value='/AccountUpdateServlet' />" class="account-update-form">
    
 		    <div class="account-body">
 		
@@ -45,7 +45,7 @@
                 </div>
             </div>
 		    <div class="account-button-section">
-		    	<a href="/F1/AccountEditServlet" class="button back-to-top-button">
+		    	<a href="<c:url value='/AccountEditServlet' />" class="button back-to-top-button">
 		    		変更画面に戻る
 		    	</a>
 				<input type="submit" class="button account-update-button account-update-text" value="この内容で確定">

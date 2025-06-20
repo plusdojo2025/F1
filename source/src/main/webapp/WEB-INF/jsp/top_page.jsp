@@ -60,7 +60,7 @@
 
 
 	<div id="task">
-		<form id="suggestForm" method="POST" action="/F1/SuggestServlet">
+		<form id="suggestForm" method="POST" action="<c:url value='/SuggestServlet' />">
 			<!-- チュートリアル1 -->
 
 			<!--目立たせたい要素-->

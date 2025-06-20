@@ -16,7 +16,7 @@
 			<c:forEach var="task" items="${suggestTaskList}">
 				<tr>
 					<td>
-						<form method="POST" action="/F1/SuggestExecuteServlet">
+						<form method="POST" action="<c:url value='/SuggestExecuteServlet' />">
 							<input type="hidden" name="taskId" value="${task.taskId}">
 							<input type="submit" value="${task.title}">
 						</form>
@@ -41,7 +41,7 @@
 			<c:forEach var="task" items="${suggestOtherTaskList}">
 				<tr>
 					<td>
-						<form method="POST" action="/F1/SuggestExecuteServlet">
+						<form method="POST" action="<c:url value='/SuggestExecuteServlet' />">
 							<input type="hidden" name="taskId" value="${task.taskId}">
 							<input type="submit" value="${task.title}">
 						</form>
@@ -59,11 +59,11 @@
 		</c:choose>
 	</table>
 	
-	<form method="GET" action="/F1/TopPageServlet">
+	<form method="GET" action="<c:url value='/TopPageServlet' />">
 		<input class="light-orange-button" type="submit" onclick="" value="キャンセル">
 	</form>
 	
-	<form method="GET" action="/F1/TaskRegistServlet">
+	<form method="GET" action="<c:url value='/TaskRegistServlet' />">
 		<input class="green-btn" type="submit" onclick="" value="タスク新規作成">
 	</form>
 

@@ -7,7 +7,7 @@
 		<div class="white-title-section">
 			<h1 class="white-title">削除の確認</h1>
 		</div>
-		<form method="POST" action="/F1/TaskDeleteServlet" class="task-delete-form">
+		<form method="POST" action="<c:url value='/TaskDeleteServlet' />" class="task-delete-form">
 			<div class="green-l-body task-delete-form">
 				<div class="task-edidel-item task-regist-title-form">
 					<p class="taskTitle"></p>

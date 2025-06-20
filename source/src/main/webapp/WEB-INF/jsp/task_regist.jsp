@@ -9,7 +9,7 @@
 		<div class="green-title-section">
 			<h1 class="green-label">タスクの新規作成</h1>
 		</div>
-		<form method="POST" action="/F1/TaskRegistServlet" class="task-regist-form"><!-- 外側の枠 -->
+		<form method="POST" action="<c:url value='/TaskRegistServlet' />" class="task-regist-form"><!-- 外側の枠 -->
 			<div class="task-regist-formbody">
 				<div class="task-formsection task-regist-title-form">
 					<span class="account-error-msg">ここにアラートを表示</span>

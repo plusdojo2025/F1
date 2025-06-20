@@ -6,7 +6,7 @@
 		<p>現在の内容は削除されますがよろしいですか?</p>
 		<div class="modal-buttons">
 			<button class="orange-btn" id="reCancelButton">キャンセル</button>
-			<form action="<%= request.getContextPath() %>/TopPageServlet" method="GET">
+			<form action="<c:url value='/TopPageServlet' />" method="GET">
 				<input type="submit" class="light-orange-btn" id="deleteButton" value="削除する">
 			</form>
 		</div>
@@ -23,7 +23,7 @@
 			<span id="unit">秒</span>
 		</div>
 		
-		<form method="POST" action="/F1/ToResultServlet">
+		<form method="POST" action="<c:url value='/ToResultServlet' />">
 			<input id="duration" type="hidden" name="duration">
 			<input type="submit" class="orange-btn" id="completeButton" value="完了">
 		</form>

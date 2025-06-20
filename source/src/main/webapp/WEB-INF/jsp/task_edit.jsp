@@ -9,7 +9,7 @@
 		<div class="white-title-section">
 			<h1 class="white-title">タスク内容の変更</h1>
 		</div>
-		<form method="POST" id="editTaskForm" action="/F1/TaskEditServlet" class="task-delete-form">
+		<form method="POST" id="editTaskForm" action="<c:url value='/TaskEditServlet' />" class="task-delete-form">
 				
 			<div class="green-l-body task-delete-form">
 				<div class="task-edidel-item task-formsection task-regist-title-form">

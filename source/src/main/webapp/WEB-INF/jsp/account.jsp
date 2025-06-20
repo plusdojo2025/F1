@@ -36,10 +36,10 @@
                 </div>
             </div>
 		    <div class="account-button-section">
-		    	<a href="/F1/TopPageServlet" class="button back-to-top-button">TOPへ戻る</a>
-		    	<a href="/F1/AccountEditServlet" class="button account-update-button">
+		    	<a href="<c:url value='/TopPageServlet' />" class="button back-to-top-button">TOPへ戻る</a>
+		    	<a href="<c:url value='/AccountEditServlet' />" class="button account-update-button">
                     <span class="pencil-back-ground">
-                        <img src="images/pencil.svg" alt="">
+                        <img src="<c:url value='/images/pencil.svg' />" alt="内容を変更する">
                     </span>
                     <span class="account-update-text">
                         内容を変更する
@@ -48,7 +48,7 @@
 				<button type="button" class="button logout-button" onclick="openLoguotModal()">
         			
                     <div class="pencil-back-ground">
-                        <img src="images/logout.svg" alt="">
+                        <img src="<c:url value='/images/logout.svg' />" alt="">
                     </div>
                     <p class="account-update-text logout-button-text">
                         ログアウト
@@ -59,6 +59,6 @@
 	</div>
 
 <%@ include file="logout.jsp" %>
-<script src="/F1/js/popup.js"></script>
+<script src="<c:url value='/js/popup.js' />"></script>
 </body>
 </html>

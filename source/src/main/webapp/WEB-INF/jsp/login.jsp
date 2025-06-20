@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <title>まにまに</title>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/css/login.css">
+<link rel="stylesheet" href="<c:url value='/css/login.css' />">
 <style>
 	.error{
 		color: red;
@@ -17,7 +17,7 @@
 
 	<div class="login-container">
 	<h1>まにまに</h1>
-	<form id="loginForm" method="POST" action="<%= request.getContextPath() %>/LoginServlet">
+	<form id="loginForm" method="POST" action="<c:url value='/LoginServlet' />">
 		<label for="email">メールアドレス</label>
 		<input type="text" name="email" id="email" value="<%= request.getAttribute("beforeEmail") != null ? request.getAttribute("beforeEmail") : ""%>">
 		<div id="emailError" class="error">

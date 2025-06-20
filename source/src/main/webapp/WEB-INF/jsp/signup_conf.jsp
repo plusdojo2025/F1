@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/css/login.css">
+<link rel="stylesheet" href="<c:url value='/css/login.css' />">
 </head>
 <body>
 	<div class="login-container2">
@@ -39,7 +39,7 @@
 			  <td class="ie">${signup_user.goalDetail}</td>
 			</tr>
 		</table>
-	<form action="<%= request.getContextPath() %>/SignupExecuteServlet" method="post">
+	<form action="<c:url value='/SignupExecuteServlet' />" method="post">
 	    <input type="hidden" name="action" value="signup_complete">
 	    <input type="hidden" name="nickname" value="${signup_user.nickname}">
 	    <input type="hidden" name="email" value="${signup_user.email}">
@@ -57,7 +57,7 @@
 	<script >
 		
 		document.getElementById("back2").addEventListener("click", function (){
-			window.location.href = "<%= request.getContextPath() %>/Signup2Servlet";
+			window.location.href = "<c:url value='/Signup2Servlet' />";
 		});
 	
 	</script>

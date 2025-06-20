@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>まにまに</title>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/css/login.css">
+<link rel="stylesheet" href="<c:url value='/css/login.css' />">
 <style>
 	.error {
 		color: red;
@@ -20,7 +20,7 @@
 <body>
 	<div class="login-container">
 		<h1>まにまに</h1>
-		<form id="name" method="POST" action="<%= request.getContextPath() %>/SignupConfServlet" autocomplete="off">
+		<form id="name" method="POST" action="<c:url value='/SignupConfServlet' />" autocomplete="off">
 		<label for="nickname">ニックネーム</label>
 		<input type="text" name="nickname" id="nickname" autocomplete="off" value="<%= request.getAttribute("beforeName") != null ? request.getAttribute("beforeName") : ""%>">
 		
@@ -72,7 +72,7 @@
 		  });
 		
 		document.getElementById("back").addEventListener("click", function (){
-			window.location.href = "<%= request.getContextPath() %>/SignupServlet";
+			window.location.href = "<c:url value='/SignupServlet' />";
 		});
 	
 	</script>

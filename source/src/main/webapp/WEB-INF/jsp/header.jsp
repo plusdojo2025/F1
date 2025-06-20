@@ -15,8 +15,8 @@
 <body>
 
 	<header class="header">
-		<a href="/F1/TopPageServlet"> <img class="logo-img"
-			src="<%=request.getContextPath()%>/images/manimani-logo.svg"
+		<a href="<c:url value='/TopPageServlet' />"> <img class="logo-img"
+			src="<c:url value='/images/manimani-logo.svg' />"
 			alt="名刺管理アプリケーション">
 		</a>
 		<nav class="nav">
@@ -24,8 +24,8 @@
 				<li>
 					<!-- チュートリアル2 --> <!--目立たせたい要素-->
 					<div id="new">
-						<a href="/F1/TaskRegistServlet"> <img
-							src="<c:url value='/images/plus.svg'/>" alt="タスクの新規登録">
+						<a href="<c:url value='/TaskRegistServlet' />"> <img
+							src="<c:url value='/images/plus.svg' />" alt="タスクの新規登録">
 							タスクの新規作成
 						</a>
 					</div>
@@ -37,21 +37,21 @@
 						</div>
 					</div>
 				</li>
-				<li><a href="/F1/TaskViewServlet"> <img
+				<li><a href="<c:url value='/TaskViewServlet' />"> <img
 						src="<c:url value='/images/task-list.svg' />" alt="タスク一覧">
 						タスク一覧
 				</a></li>
-				<li><a href="/F1/RecordServlet"> <img
+				<li><a href="<c:url value='/RecordServlet' />"> <img
 						src="<c:url value='/images/medal.svg' />" alt="実績"> 実績
 				</a></li>
-				<li><a href="/F1/AccountServlet"> <img
+				<li><a href="<c:url value='/AccountServlet' />"> <img
 						src="<c:url value='/images/account.svg' />" alt="アカウント">
 						アカウント
 				</a></li>
 				<li>
 					<!-- チュートリアル4 --> <!--目立たせたい要素-->
 					<div id="help">
-						<a href="/F1/HelpServlet"> <img
+						<a href="<c:url value='/HelpServlet' />"> <img
 							src="<c:url value='/images/question.svg' />" alt="ヘルプ"> ヘルプ
 						</a>
 					</div>
