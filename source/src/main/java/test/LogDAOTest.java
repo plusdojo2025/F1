@@ -47,9 +47,13 @@ public class LogDAOTest {
 
 				System.out.print("アカウントID:");
 				accountId = scn.nextInt();
-				System.out.print("タスクID:");
-				int taskId = scn.nextInt();
+				System.out.print("タスクタイトル:");
+				String taskTitle = scn.next();
 				Timestamp LogTime = new Timestamp(System.currentTimeMillis());
+				System.out.print("気分ID:");
+				int moodId = scn.nextInt();
+				System.out.print("作業ジャンルID:");
+				int categoryId = scn.nextInt();
 				System.out.print("所要時間:");
 				int duration = scn.nextInt();
 				System.out.print("満足度:");
@@ -57,7 +61,9 @@ public class LogDAOTest {
 
 				Log regRec = new Log();
 				regRec.setAccountId(accountId);
-				regRec.setTaskId(taskId);
+				regRec.setTaskTitle(taskTitle);
+				regRec.setMoodId(moodId);
+				regRec.setCategoryId(categoryId);
 				regRec.setLogTime(LogTime);
 				regRec.setDuration(duration);
 				regRec.setSatisfactionLevel(satisfactionLevel);
