@@ -5,22 +5,22 @@
 <!-- タスク変更モーダル -->
 <div id="editModal" class="modal-overlay">
 	<div class="account-main">
-	<div class="task-regist-body">
+	<div class="gray-back-body">
 		<div class="white-title-section">
-			<h1 class="white-label">タスク内容の変更</h1>
+			<h1 class="white-title">タスク内容の変更</h1>
 		</div>
-		<form method="POST" id="editTaskForm" action="/F1/TaskEditServlet" class="task-regist-form">
+		<form method="POST" id="editTaskForm" action="/F1/TaskEditServlet" class="task-delete-form">
 				
-			<div class="task-regist-formbody">
-				<div class="task-formsection task-regist-title-form">
+			<div class="green-l-body task-delete-form">
+				<div class="task-edidel-item task-formsection task-regist-title-form">
 					<span class="account-error-msg">ここにアラートを表示</span>
 					<input type="text" class="account-input w-form" name="title">
 				</div>
-				<div class="task-formsection align-i-c">
+				<div class="task-edidel-item task-formsection align-i-c">
 					<p class="task-title-tips">所要時間</p>
 					<input type="number" class="account-input task-regist-input" name="timeSpan">
 				</div>
-				<div class="task-formsection align-i-c">
+				<div class="task-edidel-item task-formsection align-i-c">
 					<p class="task-title-tips">気分</p>
 					<SELECT name="moodId" id="moodId" class="account-input task-select task-regist-input">
 				 		<c:forEach var="mood" items="${moodList}">
@@ -35,7 +35,7 @@
 				 		</c:forEach>
 					</SELECT>
 				</div>
-				<div class="task-formsection align-i-c">
+				<div class="task-edidel-item task-formsection align-i-c">
 					<p class="task-title-tips">作業ジャンル</p>
 					<SELECT name="categoryId" id="categoryId" class="account-input task-select task-regist-input">
 				 		<c:forEach var="category" items="${categoryList}">
@@ -50,7 +50,7 @@
 				 		</c:forEach>
 					</SELECT>
 				</div>
-				<div class="task-formsection">
+				<div class="task-edidel-item task-formsection">
 					<p class="task-title-tips">公開設定</p>
 					<div>
 						<input type="checkbox" name="isPrivate" value="true">公開する
