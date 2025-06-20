@@ -13,7 +13,7 @@
 		            <h1 class="green-title">アカウント情報</h1>
 		        </div>
                 
-                <div class="account-view-section">
+                <div class="account-edit-view-section">
                     
                     <div class="account-section under-line">
                         <p class="account-view-title">ニックネーム</p>
@@ -49,18 +49,18 @@
                             <input type="password" name="beforePassword" id="beforePassword" class="account-input">
                         </p>
                     </div>
-                    <div class="account-section">
+                    <div class="account-section new-pw-section">
                         <p class="account-view-title">新しいパスワード</p>
                         <p class="colon">：</p>
                         <p class="account-view-text">
-                            <c:if test="${not empty errorMessage}">
+                            <%-- <c:if test="${not empty errorMessage}"> --%>
                                 <span class="account-error-msg">${errorMessage}</span>
-                            </c:if>
+                            <%-- </c:if> --%>
                             <input type="password" name="newPassword" id="newPassword" class="account-input">
                         </p>
                     </div>
-                    <div class="account-section under-line">
-                        <p class="account-view-title">新しいパスワード（確認）</p>
+                    <div class="account-section under-line new-pw-conf-section">
+                        <p class="account-view-title">パスワード（確認）</p>
                         <p class="colon">：</p>
                         <p class="account-view-text">
                             <c:if test="${not empty errorMessage}">
