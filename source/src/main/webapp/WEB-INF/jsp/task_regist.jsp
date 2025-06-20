@@ -5,7 +5,7 @@
 <main>
 <%@ include file="header.jsp" %>
 <div class="account-main">
-	<div class="task-regist-body">
+	<div class="task-regist-body green-l-body">
 		<div class="green-title-section">
 			<h1 class="green-label">タスクの新規作成</h1>
 		</div>

@@ -5,7 +5,7 @@
 <%@ include file="header.jsp" %><!-- ヘッダー＆グローバルナビ -->
 
 <main>
-<div class="TaskViewOutline">
+<div class="green-l-body task-view-body">
 	<table>
 		<thead><!-- テーブルトップ -->
 		 <tr class="Ttop">

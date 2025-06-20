@@ -3,28 +3,28 @@
 
 <!-- タスク削除モーダル -->
 <div id="deleteModal" class="modal-overlay">
-	<div class="task-regist-body">
-		<div class="green-title-section">
-			<h1 class="white-label">削除の確認</h1>
+	<div class="gray-back-body">
+		<div class="white-title-section">
+			<h1 class="white-title">削除の確認</h1>
 		</div>
-		<form method="POST" action="/F1/TaskDeleteServlet"><!-- 外側の枠 -->
-			<div class="task-regist-formbody">
-				<div class="task-formsection task-regist-title-form">
+		<form method="POST" action="/F1/TaskDeleteServlet" class="task-delete-form">
+			<div class="green-l-body task-delete-form">
+				<div class="task-delete-item task-regist-title-form">
 					<p class="taskTitle"></p>
 				</div>
-				<div class="task-formsection">
+				<div class="task-delete-item task-formsection">
 					<p class="task-title-tips">所要時間</p>
 					<p class="taskContent"></p>
 				</div>
-				<div class="task-formsection">
+				<div class="task-delete-item task-formsection">
 					<p class="task-title-tips">気分</p>
 					<p class="taskContent"></p>
 				</div>
-				<div class="task-formsection">
+				<div class="task-delete-item task-formsection">
 					<p class="task-title-tips">作業ジャンル</p>
 					<p class="taskContent"></p>
 				</div>
-				<div class="task-formsection">
+				<div class="task-delete-item task-formsection">
 					<p class="task-title-tips">公開設定</p>
 					<p class="taskContent"></p>
 				</div>

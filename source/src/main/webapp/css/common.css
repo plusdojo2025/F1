@@ -87,3 +87,42 @@ body {
   align-items: center;
   z-index: 9999;
 }
+
+/* body ====================================== */
+
+.green-l-body {
+    background-color: #ffffff;
+    border: solid #0B6446;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.gray-back-body {
+    background-color: #F5F5F5;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* title ====================================== */
+.green-title-section {
+    background-color: #0B6446;
+    color: #ffffff;
+    width: 100%;
+    text-align: center;
+}
+.green-title {
+    margin: 10px;
+}
+
+.white-title-section {
+    background-color: #FFFFFF;
+    color: #0B6446;
+    width: 100%;
+    text-align: center;
+}
+.white-title {
+    margin: 10px;
+}

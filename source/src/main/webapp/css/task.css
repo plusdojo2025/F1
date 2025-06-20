@@ -1,13 +1,7 @@
 @charset "UTF-8";
 
 .task-regist-body {
-    background-color: #ffffff;
     width: 55%;
-    border: solid #0B6446;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .task-formsection {
@@ -54,6 +48,9 @@
 /*task_view.jsp*/
 
 /*タスク一覧表示の外枠スタイル*/
+.task-view-body {
+	margin: 20px;
+}
 .TaskViewOutline{ 
 	margin: 20px 40px 10px 40px;
 	border-radius: 10px;
@@ -78,7 +75,7 @@
 /*タスク一覧のtitleに対するスタイル*/
 .taskTitle{
 	color: #0B6446;
-	background-color: #eeeed5;
+	background-color: #FFF9E4;
 	border: 1px solid #0B6446;
 	border-radius: 5px;
 	width: 100%;
@@ -132,8 +129,12 @@
  	 display: block;
 	margin: 20px auto;
 }
-
-
+.task-delete-form {
+	padding: 30px 50px;
+}
+.task-delete-item {
+	width: 85%;
+}
 
 /* アラートモーダル */
 .modal-overlay {
