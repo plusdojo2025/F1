@@ -30,13 +30,11 @@ public class LogDAO {
 			
 			//ログ取得SQL文を準備
 			String sqlSelect = "SELECT "
-					+ "log_id, tsk.title, log.duration, m.mood_title, c.category_title, satisfaction_level "
-					+ "FROM log "
-					+ "JOIN tasks AS tsk ON tsk.task_id = log.task_id "
-                    + "JOIN mood AS m ON m.mood_id = tsk.mood_id "
-                    + "JOIN category AS c "
-                    + "ON c.category_id = tsk.category_id "
-					+ "WHERE log.account_id = ? "
+					+ "log_id, l.task_title, l.duration, m.mood_title, c.category_title, l.satisfaction_level "
+					+ "FROM log AS l "
+                    + "JOIN mood AS m ON m.mood_id = l.mood_id "
+                    + "JOIN category AS c ON c.category_id = l.category_id "
+					+ "WHERE l.account_id = ? "
 					+ "ORDER BY log_time DESC;";
 
 			PreparedStatement pStmtSelect = conn.prepareStatement(sqlSelect);
@@ -92,15 +90,17 @@ public class LogDAO {
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 
-			String sqlRegist = "INSERT INTO log VALUES (0,?,?,?,?,?);";
+			String sqlRegist = "INSERT INTO log VALUES (0,?,?,?,?,?,?,?);";
 				
 			PreparedStatement pStmtRegist = conn.prepareStatement(sqlRegist);
 				
 			pStmtRegist.setInt(1,log.getAccountId());
-			pStmtRegist.setInt(2,log.getTaskId());
-			pStmtRegist.setTimestamp(3,log.getLogTime());
-			pStmtRegist.setInt(4,log.getDuration());
-			pStmtRegist.setInt(5,log.getSatisfactionLevel());
+			pStmtRegist.setString(2,log.getTaskTitle());
+			pStmtRegist.setInt(3,log.getMoodId());
+			pStmtRegist.setInt(4,log.getCategoryId());
+			pStmtRegist.setTimestamp(5,log.getLogTime());
+			pStmtRegist.setInt(6,log.getDuration());
+			pStmtRegist.setInt(7,log.getSatisfactionLevel());
 				
 			if (pStmtRegist.executeUpdate() == 1) {
 			result = true;
@@ -277,23 +277,16 @@ public class LogDAO {
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 			
-			//アカウント取得SQL文を準備
-			String sqlSum = "SELECT b.mood_id "
-					+ "FROM(SELECT a.mood_id,COUNT(mood_id) AS mood_count "
-					+ "     FROM (SELECT l.account_id,l.task_id,t.mood_id "
-					+ "           FROM log AS l "
-					+ "           INNER JOIN tasks AS t "
-					+ "           ON l.task_id = t.task_id ) AS a "
-					+ "     WHERE a.account_id = ? "
-					+ "     GROUP BY a.mood_id ) AS b "
-					+ "WHERE mood_count = (SELECT MAX(mood_count) "
-					+ "                    FROM (SELECT a.mood_id,COUNT(mood_id) AS mood_count "
-					+ "                          FROM (SELECT l.account_id,l.task_id,t.mood_id "
-					+ "                                FROM log AS l "
-					+ "                                INNER JOIN tasks AS t "
-					+ "                                ON l.task_id = t.task_id ) AS a "
-					+ "                          WHERE a.account_id = ? "
-					+ "                          GROUP BY a.mood_id )AS b );";
+			//最頻気分ID取得SQL文を準備
+			String sqlSum = "SELECT mood_id FROM log "
+					+ "WHERE account_id = ? "
+					+ "GROUP BY mood_id "
+					+ "HAVING count(*) = (SELECT MAX(cnt) "
+					+ "                   FROM (SELECT count(*) AS cnt FROM log "
+					+ "                         WHERE account_id = ? "
+					+ "                         GROUP BY mood_id) AS a) "
+					+ "ORDER BY mood_id "
+					+ "LIMIT 1;";
 			
 			PreparedStatement pStmtSum = conn.prepareStatement(sqlSum);
 			pStmtSum.setInt(1, account_id);
@@ -340,23 +333,16 @@ public class LogDAO {
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 			
-			//アカウント取得SQL文を準備
-			String sqlSum = "SELECT b.category_id AS category_id "
-					+ "FROM(SELECT a.category_id,COUNT(category_id) AS category_count "
-					+ "     FROM (SELECT l.account_id,l.task_id,t.category_id "
-					+ "           FROM log AS l "
-					+ "           INNER JOIN tasks AS t "
-					+ "           ON l.task_id = t.task_id ) AS a  "
-					+ "     WHERE a.account_id = ? "
-					+ "     GROUP BY a.category_id ) AS b "
-					+ "WHERE category_count = (SELECT MAX(category_count) "
-					+ "                    FROM (SELECT a.category_id,COUNT(category_id) AS category_count "
-					+ "                          FROM (SELECT l.account_id,l.task_id,t.category_id "
-					+ "                                FROM log AS l "
-					+ "                                INNER JOIN tasks AS t "
-					+ "                                ON l.task_id = t.task_id ) AS a "
-					+ "                          WHERE a.account_id = ? "
-					+ "                          GROUP BY a.category_id )AS b );";
+			//最頻作業カテゴリID取得SQL文を準備
+			String sqlSum = "SELECT category_id FROM log "
+					+ "WHERE account_id = ? "
+					+ "GROUP BY category_id "
+					+ "HAVING count(*) = (SELECT MAX(cnt) "
+					+ "                   FROM (SELECT count(*) AS cnt FROM log "
+					+ "                         WHERE account_id = ? "
+					+ "                         GROUP BY category_id) AS a) "
+					+ "ORDER BY category_id "
+					+ "LIMIT 1;";
 			
 			PreparedStatement pStmtSum = conn.prepareStatement(sqlSum);
 			pStmtSum.setInt(1, account_id);
