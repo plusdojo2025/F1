@@ -22,6 +22,7 @@
         <p class="statisticsData"><c:out value="${mostCategory.categoryTitle}"/></p> 
     </div>
 </div>
+<div class="logList">
 	<table>
 		<tr>
 			<th>タスク内容</th>
@@ -41,10 +42,11 @@
 			</c:forEach>
 			<c:if test="${empty history}">
 			<tr>
-		<td colspan=5 class="white-title-section">指定された条件に一致するデータはありません。</td>
+		<td colspan=5 class="white-title-section lognone">実績がまだありません。</td>
 		</tr>
 	</c:if>
 	</table>
+	</div >
 	<a href="<c:url value='/TopPageServlet' />" class="light-orange-btn"> TOP画面へ戻る</a>
 </body>
 </html>
