@@ -47,10 +47,14 @@
 <input type="submit" class="light-orange-btn" name="goTopButton" value="Topへ戻る">
 </form>
 
-<form action="<c:url value='/TaskRegistServlet' />" class = "RightPositionBtn green-btn">
-<img src="<c:url value='/images/white-plus.svg' />">
-<input type="submit" name="registTaskButton" value="新規タスクボタン">
+<!-- タスク新規作成ボタン -->
+<form action="<c:url value='/TaskRegistServlet' />" class="RightPositionBtn">
+  <button type="submit" class="task-create-btn">
+    <img src="<c:url value='/images/white-plus.svg' />" class="task-create-icon" alt="＋">
+    タスク新規作成
+  </button>
 </form>
+
 </div>
 
 </main>
