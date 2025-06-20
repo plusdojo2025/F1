@@ -9,8 +9,6 @@
 </head>
 <body>
 
-	<table id="mineTasks">
-		<caption>${login_user.nickname}さんの登録したタスク</caption>
 <%@ include file="header.jsp"%>
 <div class="suggestTask">
 	<table id="mineTasks" >
@@ -42,7 +40,6 @@
 	<table id="otherTasks">
 		<caption class="green-title-section suggestTitle">他のユーザからの提案</caption>
 		<c:choose>
-		<c:when test="${not empty suggestTaskList}">
 		<c:when test="${not empty suggestOtherTaskList}">
 			<c:forEach var="task" items="${suggestOtherTaskList}">
 				<tr>
