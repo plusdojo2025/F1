@@ -54,7 +54,7 @@ public class TaskDeleteServlet extends HttpServlet {
 	    
 			if (result) {
 				// 登録成功：TaskViewServletへリダイレクト
-				response.sendRedirect("TaskViewServlet");
+				response.sendRedirect(request.getContextPath() + "/TaskViewServlet");
 			} else {
 				// 登録失敗:エラー画面
 				request.setAttribute("errorMessage", "削除に失敗しました。もう一度お試しください。");

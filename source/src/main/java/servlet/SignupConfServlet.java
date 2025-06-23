@@ -54,7 +54,7 @@ public class SignupConfServlet extends HttpServlet {
 	     
 	     // セッションに新規登録中アカウント情報が無い場合
 	     if (signupAccount == null) {
-	    	    response.sendRedirect("SignupServlet");
+	    	    response.sendRedirect(request.getContextPath() + "/SignupServlet");
 	    	    return;
 	     }
 	
@@ -96,7 +96,7 @@ public class SignupConfServlet extends HttpServlet {
 	     
 	     // 自身のサーブレットにリダイレクト
 	     session.setAttribute("signup_user", signupAccount);
-	     response.sendRedirect("SignupConfServlet");
+	     response.sendRedirect(request.getContextPath() + "/SignupConfServlet");
 	}
      
 }
