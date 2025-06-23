@@ -95,8 +95,8 @@ INSERT INTO master_tasks (master_task_id, title, time_span, mood_id, category_id
 
 
 INSERT INTO account (email,password,nickname,category_id,goal_detail,created_at,login_at,consecutive_logins) 
-VALUES ('dojouser1@plusdojo.jp', '5d1a82dba8cefa593f1f9ad97bf98050816e147543ce31f3ca5b15ac3905ca14', 'PlusDojo', 1, 'フィットネス向上', '2025-06-23 00:00:00', '2025-06-23 08:00:00', 1),
-       ('dojouser2@plusdojo.jp', '5d1a82dba8cefa593f1f9ad97bf98050816e147543ce31f3ca5b15ac3905ca14', 'PlusDojo', 2, '新しいスキル習得', '2025-06-23 00:00:00', '2025-06-23 08:00:00', 1),
-       ('dojouser3@plusdojo.jp', '5d1a82dba8cefa593f1f9ad97bf98050816e147543ce31f3ca5b15ac3905ca14', 'PlusDojo', 3, '本を30冊読む', '2025-06-23 00:00:00', '2025-06-23 08:00:00', 1),
-       ('dojouser4@plusdojo.jp', '5d1a82dba8cefa593f1f9ad97bf98050816e147543ce31f3ca5b15ac3905ca14', 'PlusDojo', 4, '英語を流暢に話す', '2025-06-23 00:00:00', '2025-06-23 08:00:00', 1),
-       ('dojouser5@plusdojo.jp', '5d1a82dba8cefa593f1f9ad97bf98050816e147543ce31f3ca5b15ac3905ca14', 'PlusDojo', 5, '料理の技術向上', '2025-06-23 00:00:00', '2025-06-23 08:00:00', 1);
+VALUES ('dojouser1@plusdojo.jp', '5d1a82dba8cefa593f1f9ad97bf98050816e147543ce31f3ca5b15ac3905ca14', 'dojouser1', 1, 'フィットネス向上', '2025-06-23 00:00:00', '2025-06-23 08:00:00', 1),
+       ('dojouser2@plusdojo.jp', '5d1a82dba8cefa593f1f9ad97bf98050816e147543ce31f3ca5b15ac3905ca14', 'dojouser2', 2, '新しいスキル習得', '2025-06-23 00:00:00', '2025-06-23 08:00:00', 1),
+       ('dojouser3@plusdojo.jp', '5d1a82dba8cefa593f1f9ad97bf98050816e147543ce31f3ca5b15ac3905ca14', 'dojouser3', 3, '本を30冊読む', '2025-06-23 00:00:00', '2025-06-23 08:00:00', 1),
+       ('dojouser4@plusdojo.jp', '5d1a82dba8cefa593f1f9ad97bf98050816e147543ce31f3ca5b15ac3905ca14', 'dojouser4', 4, '英語を流暢に話す', '2025-06-23 00:00:00', '2025-06-23 08:00:00', 1),
+       ('dojouser5@plusdojo.jp', '5d1a82dba8cefa593f1f9ad97bf98050816e147543ce31f3ca5b15ac3905ca14', 'dojouser5', 5, '料理の技術向上', '2025-06-23 00:00:00', '2025-06-23 08:00:00', 1);
