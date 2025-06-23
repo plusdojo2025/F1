@@ -50,6 +50,7 @@ public class LogDAO {
 		        log.setMoodTitle(rsSelect.getString("mood_title"));
 		        log.setCategoryTitle(rsSelect.getString("category_title"));
 		        log.setSatisfactionLevel((Integer)rsSelect.getObject("satisfaction_level"));
+		        log.setDurations(setDuration(rsSelect.getInt("duration")));
 		        logs.add(log);
 			}
 			
@@ -374,6 +375,19 @@ public class LogDAO {
 		// 結果を返す
 		return category;
 		
+	}
+	
+	public String pad(int value) {
+		  return value > 9 ? String.valueOf(value) : '0' +  String.valueOf(value);
+	}
+	
+	//時分秒表記に直すメソッド
+	public String setDuration(int duration) {
+		String s = pad(duration % 60);
+		String m = pad((int)((duration % 3600) / 60));
+		String h = pad((int)(duration / 3600));
+		
+		return h +"時間"+ m +"分"+ s +"秒";
 	}
 
 }

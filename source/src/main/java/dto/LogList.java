@@ -10,6 +10,7 @@ public class LogList implements Serializable {
     private String moodTitle;			// 気分タイトル
     private String categoryTitle;		// カテゴリータイトル
     private Integer satisfactionLevel; 	// 満足度（NULL許容のためラッパークラス）
+    private String durations;
     
     // コンストラクタ定義
 	public LogList() {}
@@ -61,6 +62,14 @@ public class LogList implements Serializable {
 
 	public void setSatisfactionLevel(Integer satisfactionLevel) {
 		this.satisfactionLevel = satisfactionLevel;
+	}
+
+	public String getDurations() {
+		return durations;
+	}
+
+	public void setDurations(String durations) {
+		this.durations = durations;
 	}    
     
 }

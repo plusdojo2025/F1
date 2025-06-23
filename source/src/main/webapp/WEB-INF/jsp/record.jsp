@@ -33,7 +33,7 @@
 			<c:forEach var="log" items="${history}">
 				<tr>
 					<td class="taskTitle-record  td-record"><span class="taskName-record"><c:out  value="${log.title}" /></span></td>
-					<td class="duration-record td-record"><c:out value="${log.duration}" /></td>
+					<td class="duration-record td-record"><c:out value="${log.durations}" /></td>
 					<td class="mood-record td-record"><c:out value="${log.moodTitle}" /></td>
 					<td class="category-record td-record"><c:out value="${log.categoryTitle}" /></td>
 					<td  class="td-record"><span class="rate"

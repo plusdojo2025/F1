@@ -49,7 +49,7 @@ public class RecordServlet extends HttpServlet {
 		
 		//集計処理を行う
 		LogDAO ldao = new LogDAO();
-		int durationSum = ldao.sumDuration(account.getAccountId());
+		String durationSum = ldao.setDuration(ldao.sumDuration(account.getAccountId()));
 		Category mostCategory = ldao.getMaxCategory(account.getAccountId());
 		Mood mostMood = ldao.getMaxMood(account.getAccountId());
 		
