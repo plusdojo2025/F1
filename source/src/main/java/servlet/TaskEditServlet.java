@@ -31,7 +31,7 @@ public class TaskEditServlet extends HttpServlet {
 	     HttpSession session = request.getSession();
 	     Account login_user = (Account) session.getAttribute("login_user");
 	     if (login_user == null) {
-           response.sendRedirect("LoginServlet");
+	    	 response.sendRedirect(request.getContextPath() + "/LoginServlet");
            return;
 	     }
 	     

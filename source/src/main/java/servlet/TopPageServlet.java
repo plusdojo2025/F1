@@ -41,7 +41,7 @@ public class TopPageServlet extends HttpServlet {
 	    
         if (login_user == null) {
             // 未ログインはログイン画面へリダイレクト
-            response.sendRedirect("LoginServlet");
+            response.sendRedirect(request.getContextPath() + "/LoginServlet");
             return; // ここで処理終了
         }
 

@@ -35,7 +35,7 @@ public class ToResultServlet extends HttpServlet {
 	     
 	    // セッションにアカウント情報が無い場合
 	    if (loginAccount == null) {
-	   	    response.sendRedirect("LoginServlet");
+	    	response.sendRedirect(request.getContextPath() + "/LoginServlet");
 	   	    return;
 	    }
 	    // セッションに実行中ログ情報が無い場合

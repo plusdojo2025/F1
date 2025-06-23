@@ -42,7 +42,7 @@ public class TaskRegistServlet extends HttpServlet {
         
         // 未ログインはログイン画面へリダイレクト
         if (login_user == null) {
-            response.sendRedirect("LoginServlet");
+            response.sendRedirect(request.getContextPath() + "/LoginServlet");
             return; // ここで処理終了
         }
         
@@ -87,7 +87,7 @@ public class TaskRegistServlet extends HttpServlet {
         
         // 未ログインはログイン画面へリダイレクト
         if (login_user == null) {
-            response.sendRedirect("LoginServlet");
+            response.sendRedirect(request.getContextPath() + "/LoginServlet");
             return; // ここで処理終了
         }
 		
