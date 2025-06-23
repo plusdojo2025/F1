@@ -123,10 +123,9 @@ public class LoginServlet extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("login_user", account);
                 
-                // 初回ログインならチュートリアル画面へ→一旦
+                // 初回ログインならチュートリアル画面へ
                 if (isFirstLogin) {
-                    session.setAttribute("show_tutorial", true);
-                    response.sendRedirect(request.getContextPath()+"/TopPageServlet");
+                    response.sendRedirect(request.getContextPath()+"/TutorialServlet");
                 } else {
                     response.sendRedirect(request.getContextPath()+"/TopPageServlet");
                 }

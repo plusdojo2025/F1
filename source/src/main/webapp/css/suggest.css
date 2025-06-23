@@ -710,6 +710,13 @@ border: 2px solid #ffffff;
     z-index: 1500;
 }
 
+/* チュートリアル時のリンクの無効化 */
+.tutorial-disabled {
+    pointer-events: none !important;
+    opacity: 0.8;
+    user-select: none;
+}
+
 
 
 

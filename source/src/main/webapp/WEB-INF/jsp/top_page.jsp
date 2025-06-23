@@ -4,7 +4,7 @@
 <%@ include file="header.jsp"%>
 
 <main class="suggest-main">
-	<span id="tutorial"></span>
+	<span id="tutorial"><c:out value="${sessionScope.tutorial}" /></span>
 	<div id="goal">
 		<!-- チュートリアル3 -->
 		<!--目立たせたい要素-->
@@ -82,7 +82,6 @@
 				</div>
 			</div>
 			<!--目立たせたい要素-->
-
 			<div class="suggestMoodCatgeory">
 				<div class="task2">
 					<label for="mood"><img

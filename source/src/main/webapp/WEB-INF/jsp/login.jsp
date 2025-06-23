@@ -39,7 +39,7 @@
 		<input type="submit" class="green-btn" name="login" value="ログイン">
 		<p style="font-size: 40px;">or</p>
 		<div class="container">
-			<a  href="/F1/SignupServlet" type="submit" class="login-orange-btn" name="signup" >新規作成</a>
+			<a href="<c:url value='/SignupServlet' />" type="submit" class="login-orange-btn" name="signup" >新規作成</a>
 		</div>
 		
 	
