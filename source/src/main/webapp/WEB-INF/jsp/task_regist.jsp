@@ -19,7 +19,7 @@
 				</div>
 				<div class="task-formsection align-i-c">
 					<p class="task-title-tips">所要時間</p>
-					<input type="number" class="account-input task-regist-input" name="timeSpan" required>
+					<input type="number" class="account-input task-regist-input" name="timeSpan" min="1" max ="2147483647" value="1" required>
 				</div>
 				<div class="task-formsection align-i-c">
 					<p class="task-title-tips">気分</p>

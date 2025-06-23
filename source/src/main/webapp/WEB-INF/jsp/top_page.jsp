@@ -78,7 +78,7 @@
 					<label for="timeSpan">今のすきま時間は？</label><br>
 					<p id="topError"></p>
 					 <input type="number" class="suggest-info" id="spanTime"
-						name="spanTime" min="1" value="1" /><p class="minutes">分</p>
+						name="spanTime" min="1" max ="2147483647" value="1" /><p class="minutes">分</p>
 				</div>
 			</div>
 			<!--目立たせたい要素-->
