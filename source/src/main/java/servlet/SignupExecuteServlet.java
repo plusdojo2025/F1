@@ -70,7 +70,7 @@ public class SignupExecuteServlet extends HttpServlet {
 				
 				// 登録成功：セッション情報の削除・LoginServletへリダイレクト
 				session.removeAttribute("signup_user");
-				response.sendRedirect("LoginServlet");
+				response.sendRedirect(request.getContextPath() + "/LoginServlet");
 			} else {
 				// 登録失敗:エラー画面
 				request.setAttribute("errorMessage", "登録に失敗しました。もう一度お試しください。");
