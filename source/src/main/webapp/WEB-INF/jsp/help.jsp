@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="header.jsp" %>
 <div class="main-wrapper">
-     <div class="help">
+     <div class="help green-l-body">
         <h1 class="explain">操作説明について</h1>
        <section class="top">
         <h2 class="topic">TOP</h2>
