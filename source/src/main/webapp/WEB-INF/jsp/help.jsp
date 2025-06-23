@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="header.jsp" %>
+<div class="main-wrapper">
      <div class="help">
         <h1 class="explain">操作説明について</h1>
        <section class="top">
@@ -58,7 +59,7 @@
             </ul>
         </section>
     </div>
-    <a href="<c:url value='/TopPageServlet' />" class="light-orange-btn"> TOP画面へ戻る</a>
-    
+    <a href="<c:url value='/TopPageServlet' />" class="light-orange-btn to-top-btn"> TOPへ戻る</a>
+</div>
 </body>
 </html>

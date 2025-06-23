@@ -44,7 +44,7 @@
 
 <div class="BtnSideBy">
 <form action="<c:url value='/TopPageServlet' />" class = "LeftPositionBtn"><!-- トップに戻るボタン -->
-<input type="submit" class="light-orange-btn" name="goTopButton" value="Topへ戻る">
+<input type="submit" class="light-orange-btn to-top-btn" name="goTopButton" value="TOPへ戻る">
 </form>
 
 <!-- タスク新規作成ボタン -->

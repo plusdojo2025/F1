@@ -64,11 +64,15 @@
 	</div>
 	<div id="botton-suggest">
 	<form method="GET" action="<c:url value='/TopPageServlet' />">
-		<input class="light-orange-button back-to-top-button" type="submit" onclick="" value="キャンセル">
+		<input class="light-orange-button back-to-top-button button" type="submit" onclick="" value="キャンセル">
 	</form>
 	
-	<form method="GET" action="<c:url value='/TaskRegistServlet'/>">
-		<input type="submit" class="green-btn" onclick="" value="タスク新規作成">
+	<!-- タスク新規作成ボタン -->
+	<form action="<c:url value='/TaskRegistServlet' />" class="RightPositionBtn">
+	  <button type="submit" class="task-create-btn">
+	    <img src="<c:url value='/images/white-plus.svg' />" class="task-create-icon" alt="＋">
+	    タスク新規作成
+	  </button>
 	</form>
 	</div>
 

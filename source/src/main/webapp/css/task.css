@@ -113,11 +113,12 @@
 	align-items: left;
 }
 
-.task-form-btn {
+.task-form-btn{
 	font-size: 1.3rem;
     padding: 10px;
     margin: unset;
-    width: 120px;
+    width: 150px;
+    text-align: center;
 }
 
 /*タスク一覧内のタスク内容変更ボタンのスタイル*/

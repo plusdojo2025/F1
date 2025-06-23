@@ -33,18 +33,7 @@
 	font-weight: bold;
 }
 
-/* ボタン共通 */
-.orange-btn, .light-orange-btn {
-	margin: 20px;
-	padding: 20px 60px;
-	font-size: 32px;
-	border: none;
-	border-radius: 50px;
-	cursor: pointer;
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-	transition: transform 0.1s ease-in-out, box-shadow 0.2s;
-	
-}
+
 
 /*.orange-btn:hover, .light-orange-btn:hover {
 	transform: translateY(-2px);

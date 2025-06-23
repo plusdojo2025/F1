@@ -1,6 +1,7 @@
 @charset "UTF-8";
+
 .help{
-    height: 750px;
+    height: 650px;
     width: 95%;
     overflow-y: auto;
     border: 2px solid rgb(29, 95, 46);

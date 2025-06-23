@@ -13,6 +13,6 @@
 	<c:if test="${not empty errorMessage}">
 		<span class="account-error-msg">${errorMessage}</span>
 	</c:if>
-    <a href="<c:url value='/TopPageServlet' />"> TOP画面へ戻る</a>
+    <a href="<c:url value='/TopPageServlet' />" class="light-orange-btn to-top-btn"> TOPへ戻る</a>
 </body>
 </html>

@@ -47,6 +47,6 @@
 	</c:if>
 	</table>
 	</div >
-	<a href="<c:url value='/TopPageServlet' />" class="light-orange-btn"> TOP画面へ戻る</a>
+	<a href="<c:url value='/TopPageServlet' />" class="light-orange-btn to-top-btn"> TOPへ戻る</a>
 </body>
 </html>
