@@ -25,7 +25,7 @@ public class LogoutServlet extends HttpServlet {
 		session.removeAttribute("login_user");
 		
         // ログインページへリダイレクト
-        response.sendRedirect("LoginServlet");
+        response.sendRedirect(request.getContextPath()+"/LoginServlet");
 	}
 
 }

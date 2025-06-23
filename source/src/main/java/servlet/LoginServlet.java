@@ -126,9 +126,9 @@ public class LoginServlet extends HttpServlet {
                 // 初回ログインならチュートリアル画面へ→一旦
                 if (isFirstLogin) {
                     session.setAttribute("show_tutorial", true);
-                    response.sendRedirect("TopPageServlet");
+                    response.sendRedirect(request.getContextPath()+"/TopPageServlet");
                 } else {
-                    response.sendRedirect("TopPageServlet");
+                    response.sendRedirect(request.getContextPath()+"/TopPageServlet");
                 }
             } else {
                 // ログイン失敗（ユーザー情報がnull）
