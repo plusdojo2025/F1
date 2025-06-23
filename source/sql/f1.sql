@@ -66,3 +66,29 @@ category_id INT,
 PRIMARY KEY (master_task_id),
 FOREIGN KEY(category_id)REFERENCES category(category_id),
 FOREIGN KEY(mood_id)REFERENCES mood(mood_id));
+
+
+INSERT INTO mood (mood_id,mood_title) 
+VALUES (0,"リラックス"),
+       (1,"集中"),
+       (2,"アクティブ"),
+       (3,"リフレッシュ"),
+       (4,"悲しい");
+
+
+INSERT INTO category (category_id,category_title) 
+VALUES (0,"運動・ストレッチ"),
+       (1,"セルフケア"),
+       (2,"スキルアップ"),
+       (3,"環境リセット"),
+       (4,"趣味"),
+       (5,"キャリアアップ");
+
+
+INSERT INTO master_tasks (master_task_id, title, time_span, mood_id, category_id) VALUES 
+(1,"master_軽いストレッチ", 5, 3, 0),
+(2,"master_瞑想でリラックス", 10, 0, 1),
+(3,"master_短い英単語の復習", 8, 1, 2),
+(4,"master_さっと片付け", 7, 2, 3), 
+(5,"master_好きな音楽を1曲聴く", 4, 4, 4),
+(6,"master_明日の計画を考える", 3, 1, 5); 
