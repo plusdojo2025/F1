@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+/* タスクの新規作成 */
 .task-regist-body {
     width: 55%;
 }
@@ -43,6 +44,10 @@
 	width: 100%;
 }
 
+/* タスクの編集 */
+.task-edit-main {
+	width: 100%;
+}
 
 
 /*task_view.jsp*/
@@ -99,10 +104,20 @@
 
 .task-regist-button-section{
 	display: inline-flex;
+    width: 100%;
+    justify-content: space-around;
 }
+
 .LeftPositionBtn{
 	margin-left: 40px;
 	align-items: left;
+}
+
+.task-form-btn {
+	font-size: 1.3rem;
+    padding: 10px;
+    margin: unset;
+    width: 120px;
 }
 
 /*タスク一覧内のタスク内容変更ボタンのスタイル*/
@@ -126,14 +141,14 @@
 	align-items: right;
 }
 
-.green-btn{
+/* .green-btn{
 	 background-color: #006432;
 	 font-size: 20px;
  	 color: white;
 	border-radius: 50px;
  	 display: block;
 	margin: 20px auto;
-}
+} */
 .task-delete-form {
 	padding: 30px 50px;
 }
@@ -142,16 +157,6 @@
 }
 
 /* アラートモーダル */
-.modal-overlay {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  background-color: rgba(0,0,0,0.5);
-  justify-content: center;
-  align-items: center;
-  display: none;
-  z-index: 9999;
-}
 .alert-modal-content {
   background: #fff;
   padding: 30px;

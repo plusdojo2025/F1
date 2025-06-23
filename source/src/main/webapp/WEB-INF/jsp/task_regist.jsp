@@ -12,16 +12,18 @@
 		<form method="POST" action="<c:url value='/TaskRegistServlet' />" class="task-regist-form"><!-- 外側の枠 -->
 			<div class="task-regist-formbody">
 				<div class="task-formsection task-regist-title-form">
-					<span class="account-error-msg">ここにアラートを表示</span>
-					<input type="text" class="account-input w-form" name="title">
+					<c:if test="${not empty errorMessage}">
+						<span class="account-error-msg">${errorMessage}</span>
+					</c:if>
+					<input type="text" class="account-input w-form" name="title" required>
 				</div>
 				<div class="task-formsection align-i-c">
 					<p class="task-title-tips">所要時間</p>
-					<input type="number" class="account-input task-regist-input" name="timeSpan">
+					<input type="number" class="account-input task-regist-input" name="timeSpan" required>
 				</div>
 				<div class="task-formsection align-i-c">
 					<p class="task-title-tips">気分</p>
-					<SELECT name="moodId" id="moodId" class="account-input task-select task-regist-input">
+					<SELECT name="moodId" id="moodId" class="account-input task-select task-regist-input" required>
 				 		<c:forEach var="mood" items="${moodList}">
 				 			<option value="${mood.moodId}">${mood.moodTitle}</option>
 				 		</c:forEach>
@@ -29,7 +31,7 @@
 				</div>
 				<div class="task-formsection align-i-c">
 					<p class="task-title-tips">作業ジャンル</p>
-					<SELECT name="categoryId" id="categoryId" class="account-input task-select task-regist-input">
+					<SELECT name="categoryId" id="categoryId" class="account-input task-select task-regist-input" required>
 				 		<c:forEach var="category" items="${categoryList}">
 				 			<c:choose>
 				 				<c:when test="${category.categoryId == login_user.categoryId}">
@@ -52,8 +54,8 @@
 				</div>
 			</div>
 			<div class="task-regist-button-section">
-				<button type="submit" class="light-orange-btn" name="resetBotton">リセット</button>
-				<input type="submit" class="orange-btn" name="registBotton" value="登録">
+				<button type="reset" class="light-orange-btn task-form-btn" name="resetBotton">リセット</button>
+				<input type="submit" class="orange-btn task-form-btn" name="registBotton" value="登録">
 			</div>
 		</form>
 	</div>

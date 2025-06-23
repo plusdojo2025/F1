@@ -58,7 +58,7 @@
             </ul>
         </section>
     </div>
-    <a href="<c:url value='/TopPageServlet.java' />" class="light-orange-btn"> TOP画面へ戻る</a>
+    <a href="<c:url value='/TopPageServlet' />" class="light-orange-btn"> TOP画面へ戻る</a>
     
 </body>
 </html>
