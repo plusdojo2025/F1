@@ -36,7 +36,7 @@ public class AccountServlet extends HttpServlet {
 		Account accountAccessUser = new Account();
 		
 		if (login_user == null) {
-			response.sendRedirect("LoginServlet");
+			response.sendRedirect(request.getContextPath() + "/LoginServlet");
 			return;
 		} else {
 			// アカウントの情報を再度取得

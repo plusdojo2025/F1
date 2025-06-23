@@ -33,7 +33,7 @@ public class AccountUpdateServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		Account login_user = (Account) session.getAttribute("login_user");
 		if (login_user == null) {
-			response.sendRedirect("LoginServlet");
+			response.sendRedirect(request.getContextPath() + "/LoginServlet");
 			return;
 		}
 		
@@ -50,7 +50,7 @@ public class AccountUpdateServlet extends HttpServlet {
 				// 更新成功
 				session.setAttribute("login_user", login_user);
 				
-				response.sendRedirect("AccountServlet");
+				response.sendRedirect(request.getContextPath() + "/AccountServlet");
 			}
 			else {
 			    // メールアドレスが重複していた場合のエラー処理
