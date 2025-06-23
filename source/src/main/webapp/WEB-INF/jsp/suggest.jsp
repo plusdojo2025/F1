@@ -10,14 +10,14 @@
 <body>
 
 <%@ include file="header.jsp"%>
-<div class="suggestTask">
+<div class="suggestTask  white-title-section">
 	<table id="mineTasks" >
 		<caption class="green-title-section suggestTitle" >${login_user.nickname}さんの登録したタスク</caption>
 		<c:choose>
 		<c:when test="${not empty suggestTaskList}">
 			<c:forEach var="task" items="${suggestTaskList}">
 				<tr>
-					<td class="td-suggest white-title-section">
+					<td class="td-suggest">
 					<form method="POST" action="<c:url value='/SuggestExecuteServlet' />">
 							<input type="hidden" name="taskId" value="${task.taskId}">
 							<input type="submit" value="${task.title}"  class="taskSelect">
@@ -28,7 +28,7 @@
 		</c:when>
 		<c:otherwise>
 			<tr>
-				<td class="white-title-section taskNone">
+				<td class="taskNone">
 					<p>該当するタスクがありませんでした。</p>
 				</td>
 			</tr>
@@ -36,14 +36,14 @@
 		</c:choose>
 	</table>
 	</div>
-	<div class="suggestTask">
+	<div class="suggestTask white-title-section">
 	<table id="otherTasks">
 		<caption class="green-title-section suggestTitle">他のユーザからの提案</caption>
 		<c:choose>
 		<c:when test="${not empty suggestOtherTaskList}">
 			<c:forEach var="task" items="${suggestOtherTaskList}">
 				<tr>
-					<td class="td-suggest white-title-section">
+					<td class="td-suggest">
 						<form method="POST" action="<c:url value='/SuggestExecuteServlet' />">
 							<input type="hidden" name="taskId" value="${task.taskId}">
 							<input type="submit" value="${task.title}" class="taskSelect">
@@ -54,7 +54,7 @@
 		</c:when>
 		<c:otherwise>
 		<tr>
-				<td class="white-title-section taskNone">
+				<td class="taskNone">
 					<p>該当するタスクがありませんでした。</p>
 				</td>
 			</tr>
