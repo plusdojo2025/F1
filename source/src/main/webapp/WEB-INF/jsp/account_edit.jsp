@@ -19,23 +19,16 @@
                         <p class="account-view-title">ニックネーム</p>
                         <p class="colon">：</p>
                         <p class="account-view-text">
-                            <c:if test="${not empty errorMessage}">
-                                <span class="account-error-msg">${errorMessage}</span>
-                            </c:if>
-                            <input type="text" name="nickname" class="account-input" value="${login_user.nickname}">
+							<span id = "nicknameError" class="account-error-msg">${errorMessage}</span>
+                            <input type="text" id = "nickname" name="nickname" class="account-input" value="${login_user.nickname}">
                         </p>
                     </div>
                     <div class="account-section under-line">
                         <p class="account-view-title">メールアドレス</p>
                         <p class="colon">：</p>
                         <p class="account-view-text">
-             				<c:if test="${not empty emailErrorMessage}">
-                                <span class="account-error-msg">${emailErrorMessage}</span>
-                            </c:if>
-                            <c:if test="${not empty errorMessage}">
-                                <span class="account-error-msg">${errorMessage}</span>
-                            </c:if>
-                            <input type="text" name="email" class="account-input" value="${login_user.email}">
+                           	<span id = "emailError" class="account-error-msg">${emailErrorMessage}</span>
+                            <input type="text" id = "email" name="email" class="account-input" value="${login_user.email}">
                         </p>
                     </div>
                     <div class="account-section">
@@ -93,7 +86,7 @@
                         <p class="colon">：</p>
                         <p class="account-view-text">
                         	<span class="account-error-msg" id = "goalDetailError"></span>
-                            <input type="text" name="goalDetail" class="account-input goal-detail-input" onkeyup="countGoalDetail(value)" value="${login_user.goalDetail}">
+                            <input type="text" id = "goalDetail" name="goalDetail" class="account-input goal-detail-input" onkeyup="countGoalDetail(value)" value="${login_user.goalDetail}">
                         </p>
                     </div>
                 </div>
@@ -115,10 +108,50 @@
 			let newPassword = document.getElementById("newPassword").value.trim();
 			let newPasswordConf = document.getElementById("newPasswordConf").value.trim();
 			
-			let formError = document.getElementById("formError")
+			let nickname = document.getElementById("nickname").value.trim();
+			let email = document.getElementById("email").value.trim();
+			let goalDetail = document.getElementById("goalDetail").value.trim();
+			
+			let formError = document.getElementById("formError");
+			let nicknameError = document.getElementById("nicknameError");
+			let emailError = document.getElementById("emailError");
+			let goalDetailError = document.getElementById("goalDetailError");
 			
 			//エラーメッセージ初期化
 			formError.textContent = "";
+			nicknameError.textContent = "";
+			emailError.textContent = "";
+			goalDetailError.textContent = "";
+			
+			//ニックネーム未入力チェック
+			if(!nickname){
+				nicknameError.textContent = "この項目を入力してください";
+				event.preventDefault();//フォーム送信中止
+			}
+			
+			const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+			//メールアドレス未入力・形式チェック
+			if(!email){
+				emailError.textContent = "この項目を入力してください";
+				event.preventDefault();//フォーム送信中止
+			} else{
+				if(!emailRegex.test(email)) {
+			    	emailError.textContent = "有効なメールアドレスを入力してください";
+			    	event.preventDefault();
+				}
+			}
+			
+			//目標内容未入力・文字数チェック
+			if(!goalDetail){
+				goalDetailError.textContent = "この項目を入力してください";
+				event.preventDefault();//フォーム送信中止
+			} else{
+				if(goalDetail.length > 25) {
+			    	goalDetailError.textContent = "入力できるのは25文字までです";
+			    	event.preventDefault();
+				}
+			}
+			
 			
 			// Password入力欄に入力がある場合
 			if (beforePassword || newPassword || newPasswordConf) {
