@@ -74,12 +74,12 @@
 
 
 <!-- アラート風確認モーダル -->
-<div id="editAlertModal" class="modal-overlay" style="display: none;">
+<div id="editAlertModal" class="modal-overlay alert-modal-overlay" style="display: none;">
   <div class="alert-modal-content">
     <p id="editAlertText">ここに確認メッセージ</p>
     <div class="alert-button-area">
-      <button class="light-orange-btn" onclick="cancelEditConfirm()">キャンセル</button>
-      <button class="green-btn" onclick="submitEditTask()">OK</button>
+      <button class="light-orange-btn task-form-btn" onclick="cancelEditConfirm()">キャンセル</button>
+      <button class="green-btn task-form-btn" onclick="submitEditTask()">OK</button>
     </div>
   </div>
 </div>

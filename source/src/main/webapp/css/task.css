@@ -114,6 +114,7 @@
 	display: inline-flex;
     width: 100%;
     justify-content: space-around;
+    margin-top: 5%;
 }
 
 .LeftPositionBtn{
@@ -127,6 +128,9 @@
     margin: unset;
     width: 150px;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /*タスク一覧内のタスク内容変更ボタンのスタイル*/
@@ -160,18 +164,34 @@
 } */
 .task-delete-form {
 	padding: 30px 50px;
+	width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .task-edidel-item {
-	width: 85%;
+	width: 100%;
+}
+
+/* タスク削除内のアイテム */
+.task-del-item {
+    display: flex;
+    justify-content: flex-start;
+    gap: 30px;
 }
 
 /* アラートモーダル */
+.alert-modal-overlay {
+	background: rgba(0, 0, 0, 0.1);
+}
 .alert-modal-content {
   background: #fff;
   padding: 30px;
   border-radius: 10px;
   text-align: center;
-  width: 320px;
+  top: 0;
+  position: absolute;
+  width: 40%;
 }
 .alert-button-area {
   margin-top: 20px;

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="header.jsp" %>
-
+<div class="main-wrapper">
 	<dialog id="execute-checkModal" >
 		<p>現在の内容は削除されますがよろしいですか?</p>
 		<div class="modal-buttons">
@@ -31,7 +31,7 @@
 	
 	<button class="light-orange-btn" id="cancelButton" onclick="">中止</button>
 	
-
+</div>
 </body>
 <script>
 document.addEventListener("DOMContentLoaded", function () {

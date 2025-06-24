@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="header.jsp" %>
+
+<div class="main-wrapper">
 	<form method="POST" action="<c:url value='/ResultServlet' />">
 		<div class="execute-container">
 			<h2><c:out value="${currentLog.task.title}"/></h2>
@@ -32,6 +34,7 @@
 		</div>
 		
 	</form>
+</div>
 </body>
 
 <script>

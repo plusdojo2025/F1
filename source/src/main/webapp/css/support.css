@@ -32,10 +32,24 @@
 	width: 80%;
       
 }
+.error-main-wrapper p {
+	margin: unset;
+}
+.error-main-wrapper messege {
+	margin-bottom: 30px;
+}
+.error-title {
+	text-align: center;
+    font-size: 1.5rem;
+    margin: 0;
+}
 
 .helpText{
     margin: 10px 10% 10px 10%;
     list-style: square;
     color:  rgb(29, 95, 46);
     
+}
+.error-detail-text {
+	font-size: 1.5rem;
 }

@@ -4,7 +4,7 @@
 .execute-container {
 	width: 700px;
 	height: 600px;
-	margin: 50px auto;
+	margin: 0 auto;
 	padding: 0;
 	background: #ffffff;
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -715,6 +715,7 @@ border: 2px solid #ffffff;
 #botton-suggest{
     display: flex;
     justify-content: space-around;
+    width: 100%;
 }
 .suggestTask{
     height: 300px;
@@ -744,10 +745,10 @@ border: 2px solid #ffffff;
     border-radius: 11px;
     width: 80%;
     height: 65px;
-    font-size: 40px;
     background-color: #fff9e4;
     margin: 8px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-size: 2rem;
 }
 .taskNone{
     width: 100%;
