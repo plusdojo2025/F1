@@ -39,8 +39,8 @@ public class RecordServlet extends HttpServlet {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
 		if (session.getAttribute("login_user") == null) {
-			response.sendRedirect("/webapp/LoginServlet");
-			return;
+			response.sendRedirect(request.getContextPath() + "/LoginServlet");
+            return; // ここで処理終了
 		}
 		
 		//文字コード設定

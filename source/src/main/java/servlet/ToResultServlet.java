@@ -19,7 +19,17 @@ import dto.Log;
 @WebServlet("/ToResultServlet")
 public class ToResultServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+     
+	
+	 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	// もしもログインしていなかったらログインサーブレットにリダイレクトする
+	HttpSession session = request.getSession();
+		if (session.getAttribute("login_user") == null) {
+			response.sendRedirect(request.getContextPath() + "/LoginServlet");
+		     return; // ここで処理終了
+		}
+	}
+	
 	/**
 	 * POSTリクエスト時の処理
 	 */
