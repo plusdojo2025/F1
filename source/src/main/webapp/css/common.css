@@ -157,3 +157,34 @@ body {
     text-align: center;
     margin: 30px 50px;
 }
+
+.orange3-btn {
+  background-color: #ff9800;
+  color: #fff; /* 必要に応じて白なら #fff */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.light-orange3-btn {
+  background-color: #ff867c;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.orange3-btn:hover,
+.light-orange3-btn:hover {
+  opacity: 0.8;
+}
+
+.highlight {
+  font-weight: bold;
+  color: #ff867c; /* グレープフルーツっぽい赤ピンク */
+}
+

@@ -63,6 +63,15 @@
 </div>
 </main>
 
+<dialog id="submitModal">
+  <p id="modalMessage">このタスクを<span class="highlight">公開</span>します。よろしいですか？</p>
+  <div style="text-align: center; margin-top: 10px;">
+    <button id="confirmBtn" class="orange3-btn">はい</button>
+    <button id="cancelBtn" class="light-orange3-btn">キャンセル</button>
+  </div>
+</dialog>
+
+
 <!-- フッター -->
 <footer>
 
@@ -71,6 +80,13 @@
 window.addEventListener('DOMContentLoaded', function () {
     const form = document.querySelector('.task-regist-form');
     const titleInput = form.querySelector('input[name="title"]');
+    const privateCheckbox = form.querySelector('input[name="isPrivate"]');
+    const modal = document.getElementById('submitModal');
+    const modalMsg = document.getElementById('modalMessage');
+    const confirmBtn = document.getElementById('confirmBtn');
+    const cancelBtn = document.getElementById('cancelBtn');
+    
+    let allowSubmit = false;
 
     // エラーメッセージ表示用の要素を生成（フォーム内の先頭に追加）
     const errorMsg = document.createElement('div');
@@ -88,10 +104,31 @@ window.addEventListener('DOMContentLoaded', function () {
             e.preventDefault(); // フォームの送信を止める
             errorMsg.textContent = 'タスクタイトルは20文字以内です。';
             errorMsg.style.display = 'block';
+            return;
         } else {
             errorMsg.style.display = 'none';
         }
+        
+        if(!allowSubmit){
+        	e.preventDefault();
+        	modalMsg.innerHTML = privateCheckbox.checked
+        		? 'このタスクを<span class="highlight" style="font-size: 25px;">公開</span>します。よろしいですか？'
+        		: 'このタスクは非公開として登録されます。よろしいですか？';
+        	modal.showModal();
+        } 
     });
+    
+    confirmBtn.addEventListener('click', function(){
+    	allowSubmit = true;
+    	modal.close();
+    	form.requestSubmit();
+    });
+    
+    cancelBtn.addEventListener('click', function(){
+    	allowSubmit = false;
+    	modal.close();
+    });
+    
 });
 </script>
 
