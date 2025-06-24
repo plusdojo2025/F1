@@ -21,7 +21,7 @@
 			<c:forEach var="e" items="${taskList}" ><!-- 出力繰り返し -->
 					<input type="hidden" name="taskslot" value="${e.taskId}">
 					<tr class="Tbody">
-					<td><div class="taskTitle">${e.title}</div></td><!-- タスク名 -->
+					<td class="task-view-title-td"><div class="taskTitle task-view-title">${e.title}</div></td><!-- タスク名 -->
 					<td>${e.timeSpan}</td><!-- 所要時間 -->
 					<td>${e.moodTitle}</td><!-- 気分 -->
 					<td>${e.categoryTitle}</td><!-- 作業ジャンル -->

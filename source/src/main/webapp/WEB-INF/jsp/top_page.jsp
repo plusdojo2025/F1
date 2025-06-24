@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="header.jsp"%>
 
-<main class="suggest-main">
+<main class="suggest-main main-wrapper">
 	<span id="tutorial"><c:out value="${sessionScope.tutorial}" /></span>
 	<div id="goal">
 		<!-- チュートリアル3 -->
