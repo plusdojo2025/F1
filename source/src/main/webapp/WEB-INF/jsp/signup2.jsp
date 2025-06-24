@@ -35,8 +35,9 @@
             </select>			
 			
 		
-		<label for="goalDetail">目標詳細（２５文字以内）</label>
-		<input type="text" name="goalDetail" id="goalDetail" maxlength="25" placeholder="例：　目指せ-5kg" autocomplete="off"  value="${beforeGoalDetail != null ? beforeGoalDetail : '' }">
+		<label for="goalDetail">目標内容（２５文字以内）</label>
+		<span class="error" id="goalDetailError"></span>
+		<input type="text" name="goalDetail" id="goalDetail" maxlength="25" placeholder="例：　目指せ-5kg" autocomplete="off"  onkeyup="countGoalDetail(value)" value="${beforeGoalDetail != null ? beforeGoalDetail : '' }">
 		
 		<div id="formError" class="error"></div>
 		
@@ -75,6 +76,13 @@
 			window.location.href = "<c:url value='/SignupServlet' />";
 		});
 	
+		function countGoalDetail(value){
+			if(value.length > 25){
+				document.getElementById('goalDetailError').innerHTML = "入力できるのは25文字までです";
+			}else{
+				document.getElementById('goalDetailError').innerHTML = "";
+			}
+		}
 	</script>
 </body>
 </html>

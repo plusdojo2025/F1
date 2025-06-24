@@ -87,11 +87,13 @@
                             </select>
                         </p>
                     </div>
+                    
                     <div class="account-section ">
                         <p class="account-view-title">目標内容</p>
                         <p class="colon">：</p>
                         <p class="account-view-text">
-                            <input type="text" name="goalDetail" class="account-input goal-detail-input" value="${login_user.goalDetail}">
+                        	<span class="account-error-msg" id = "goalDetailError"></span>
+                            <input type="text" name="goalDetail" class="account-input goal-detail-input" onkeyup="countGoalDetail(value)" value="${login_user.goalDetail}">
                         </p>
                     </div>
                 </div>
@@ -144,9 +146,15 @@
 				}
 			}
 			
-
-			
 		});
+		
+		function countGoalDetail(value){
+			if(value.length > 25){
+				document.getElementById('goalDetailError').innerHTML = "入力できるのは25文字までです";
+			}else{
+				document.getElementById('goalDetailError').innerHTML = "";
+			}
+		}
 	</script>
 </body>
 </html>
