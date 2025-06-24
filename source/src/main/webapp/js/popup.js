@@ -91,5 +91,30 @@ function cancelEditConfirm() {
 
 // タスクの更新の実行
 function submitEditTask() {
-  document.getElementById("editTaskForm").submit();
+  const form = document.getElementById("editTaskForm");
+  const titleInput = form.querySelector('input[name="title"]');
+  const titleValue = titleInput.value.trim();
+
+  // すでに存在していれば再利用、なければ生成
+  let errorMsg = titleInput.parentElement.querySelector('.dynamic-error-msg');
+  if (!errorMsg) {
+    errorMsg = document.createElement('div');
+    errorMsg.classList.add('account-error-msg', 'dynamic-error-msg');
+    errorMsg.style.color = 'red';
+    errorMsg.style.marginBottom = '5px';
+    titleInput.parentElement.insertBefore(errorMsg, titleInput);
+  }
+
+  if (titleValue.length > 20) {
+    errorMsg.textContent = 'タスクタイトルは20文字以内です。';
+    errorMsg.style.display = 'block';
+    document.getElementById("editAlertModal").style.display = "none";
+    document.getElementById("editModal").style.pointerEvents = "auto";
+    return; // フォーム送信を中止
+  } else {
+    errorMsg.style.display = 'none';
+  }
+
+  form.submit(); // バリデーション通過時のみ送信
 }
+

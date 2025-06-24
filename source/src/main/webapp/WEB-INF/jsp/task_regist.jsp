@@ -16,6 +16,7 @@
 						<span class="account-error-msg">${errorMessage}</span>
 					</c:if>
 					<input type="text" class="account-input w-form" name="title" required>
+					<span class="account-error-msg task-regist-rule">【条件】タスクタイトルは20文字以内</span>
 				</div>
 				<div class="task-formsection align-i-c">
 					<p class="task-title-tips">所要時間</p>
@@ -66,5 +67,33 @@
 <footer>
 
 </footer>
+<script>
+window.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('.task-regist-form');
+    const titleInput = form.querySelector('input[name="title"]');
+
+    // エラーメッセージ表示用の要素を生成（フォーム内の先頭に追加）
+    const errorMsg = document.createElement('div');
+    errorMsg.classList.add('account-error-msg');
+    errorMsg.style.color = 'red';
+    errorMsg.style.marginBottom = '5px';
+    errorMsg.style.display = 'none';  // 初期状態は非表示
+
+    titleInput.parentElement.insertBefore(errorMsg, titleInput);
+
+    form.addEventListener('submit', function (e) {
+        const titleValue = titleInput.value.trim();
+
+        if (titleValue.length > 20) {
+            e.preventDefault(); // フォームの送信を止める
+            errorMsg.textContent = 'タスクタイトルは20文字以内です。';
+            errorMsg.style.display = 'block';
+        } else {
+            errorMsg.style.display = 'none';
+        }
+    });
+});
+</script>
+
 </body>
 </html>

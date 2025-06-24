@@ -43,7 +43,9 @@
 .w-form {
 	width: 100%;
 }
-
+.task-regist-rule {
+	color: #0B6446;
+}
 /* タスクの編集 */
 .task-edit-main {
 	width: 100%;

@@ -13,8 +13,11 @@
 				
 			<div class="green-l-body task-delete-form">
 				<div class="task-edidel-item task-formsection task-regist-title-form">
-					<span class="account-error-msg">ここにアラートを表示</span>
+					<c:if test="${not empty errorMessage}">
+						<span class="account-error-msg">${errorMessage}</span>
+					</c:if>
 					<input type="text" class="account-input w-form" name="title">
+					<span class="account-error-msg task-regist-rule">【条件】タスクタイトルは20文字以内</span>
 				</div>
 				<div class="task-edidel-item task-formsection align-i-c">
 					<p class="task-title-tips">所要時間</p>
