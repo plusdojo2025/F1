@@ -59,15 +59,15 @@
 			// 入力値を取得
 		    let nickname = document.getElementById("nickname").value.trim();
 		    let category = document.getElementById("category").value.trim();
-		    let goalDetail = document.getElementById("goalDetail").value.trim();
+		    //let goalDetail = document.getElementById("goalDetail").value.trim();
 
 		    // エラーメッセージ表示領域
 		    let formError = document.getElementById("formError");
 		    formError.textContent = "";
 
 		    // 未入力チェック
-		    if (!nickname || !category || !goalDetail) {
-		      formError.textContent = "すべての項目を入力してください";
+		    if (!nickname || !category) {
+		      formError.textContent = "ニックネームをを入力してください";
 		      event.preventDefault(); // フォーム送信中止
 		    }
 		  });
