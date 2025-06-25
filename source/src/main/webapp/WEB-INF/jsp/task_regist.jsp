@@ -65,7 +65,7 @@
 
 <dialog id="submitModal">
   <p id="modalMessage">このタスクを<span class="highlight">公開</span>します。よろしいですか？</p>
-  <div style="text-align: center; margin-top: 10px;">
+  <div id="space">
     <button id="confirmBtn" class="orange3-btn">はい</button>
     <button id="cancelBtn" class="light-orange3-btn">キャンセル</button>
   </div>
@@ -112,7 +112,7 @@ window.addEventListener('DOMContentLoaded', function () {
         if(!allowSubmit){
         	e.preventDefault();
         	modalMsg.innerHTML = privateCheckbox.checked
-        		? 'このタスクは他のユーザに<span class="highlight" style="font-size: 25px;">公開</span>されます。<br>登録しますか？'
+        		? 'このタスクは他のユーザに<span class="highlight" style="font-size: 25px;">公開</span>されます。登録しますか？'
         		: 'このタスクを登録します。よろしいですか？';
         	modal.showModal();
         } 
