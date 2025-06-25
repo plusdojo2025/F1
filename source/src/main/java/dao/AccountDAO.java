@@ -222,7 +222,7 @@ public class AccountDAO {
 	        // emailの変更がある場合
 	        if (emailCheck) {
 	            // メールアドレス変更時：重複チェック
-	            if (existsAccount(account.getEmail())) {
+	            if (!(existsAccount(account.getEmail()))) {
 	                return false; // 重複してたら失敗
 	            }
 	        }
