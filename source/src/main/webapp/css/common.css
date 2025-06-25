@@ -159,23 +159,27 @@ body {
 }
 
 .orange3-btn {
-  background-color: #ff9800;
+  background-color: #006432;
   color: #fff; /* 必要に応じて白なら #fff */
   border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
+  padding: 20px 40px;
+  border-radius: 40px;
   font-weight: bold;
   cursor: pointer;
+  margin-right: 120px;
+  font-size: 20px;
 }
 
 .light-orange3-btn {
-  background-color: #ff867c;
+  background-color: #ff9800;
   color: #fff;
   border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
+  padding: 20px 40px;
+  border-radius: 40px;
   font-weight: bold;
   cursor: pointer;
+  font-size: 20px;
+  margin-left: 120px;
 }
 
 .orange3-btn:hover,
@@ -187,4 +191,31 @@ body {
   font-weight: bold;
   color: #ff867c; /* グレープフルーツっぽい赤ピンク */
 }
+
+#space{
+	justify-content: space-between;
+	margin-top: 80px;
+}
+
+#submitModal {
+  position: fixed;
+  top: 0%;              /* 画面上からの距離 */
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  border: none;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+  text-align: center;
+  width: 40%;
+  height: 260px;
+} 
+
+#modalMessage{
+	font-size: 20px;
+}
+
+
 
