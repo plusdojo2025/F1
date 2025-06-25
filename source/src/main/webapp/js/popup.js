@@ -38,7 +38,7 @@ function closeDeleteModal() {
 
 // タスク編集画面用モーダル表示
 
-function openEditModal(taskId, title, timeSpan, moodTitle, categoryTitle, isPrivate) {
+function openEditModal(taskId, title, timeSpan, moodId, categoryId, isPrivate) {
   // モーダル要素取得
   const modal = document.getElementById("editModal");
   modal.style.display = "flex";
@@ -49,8 +49,8 @@ function openEditModal(taskId, title, timeSpan, moodTitle, categoryTitle, isPriv
   modal.querySelector('input[name="taskId"]').value = taskId;
 
   // セレクトボックスの値設定
-  modal.querySelector('select[name="moodId"]').value = getMoodIdByTitle(moodTitle);
-  modal.querySelector('select[name="categoryId"]').value = getCategoryIdByTitle(categoryTitle);
+  modal.querySelector('select[name="moodId"]').value = moodId;
+  modal.querySelector('select[name="categoryId"]').value = categoryId;
 
   // チェックボックス設定
   modal.querySelector('input[name="isPrivate"]').checked = (isPrivate === "true");
@@ -61,6 +61,17 @@ function openEditModal(taskId, title, timeSpan, moodTitle, categoryTitle, isPriv
 
 // 編集モーダルを閉じる関数
 function closeEditModal() {
+  // エラーメッセージ初期化処理
+  const timeSpanContainer = document.getElementById('taskEditTimeSpan');
+  const parentContainer = timeSpanContainer.parentElement; // 先にparentContainerを定義する
+  const titleInput = document.querySelector('#editModal input[name="title"]');
+
+  let timeSpanError = parentContainer.querySelector('.edit-time-error-msg');
+  let titleError = titleInput.parentElement.querySelector('.edit-title-error-msg');
+
+  titleError.textContent = "";
+  timeSpanError.textContent = "";
+  //編集モーダルを閉じる
   document.getElementById("editModal").style.display = "none";
 }
 

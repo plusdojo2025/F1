@@ -32,7 +32,7 @@
 					</td><!-- 公開判定チェックマーク -->
 					<td>
 					<button type="button" class="edit-button" onclick="openEditModal(${e.taskId}, '${e.title}', ${e.timeSpan}, 
-					'${e.moodTitle}', '${e.categoryTitle}', '${e.isPrivate}')">変更</button>
+					'${e.moodId}', '${e.categoryId}', '${e.isPrivate}')">変更</button>
 					<button type="button" class="delete-button" onclick="openDeleteModal(${e.taskId}, '${e.title}', '${e.timeSpan}',
 					 '${e.moodTitle}', '${e.categoryTitle}', '${e.isPrivate}')">削除</button>
 					</td><!-- 変更・削除ボタン -->

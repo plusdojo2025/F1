@@ -25,7 +25,7 @@ public class TasksDAO {
 					"root", "password");
 			
 			//タスク全件取得SQL文を準備
-			String sqlSelect = "SELECT task_id,account_id,title,time_span,mood_title,category_title,is_private "
+			String sqlSelect = "SELECT task_id,account_id,title,time_span,t.mood_id,mood_title,t.category_id,category_title,is_private "
 					+ "FROM tasks AS t "
 					+ "INNER JOIN mood As m ON t.mood_id = m.mood_id "
 					+ "INNER JOIN category As c ON t.category_id = c.category_id "
@@ -45,7 +45,9 @@ public class TasksDAO {
 				task.setAccountId(rsSelect.getInt("account_id"));
 				task.setTitle(rsSelect.getString("title"));
 				task.setTimeSpan(rsSelect.getInt("time_span"));
+				task.setMoodId(rsSelect.getInt("mood_id"));
 				task.setMoodTitle(rsSelect.getString("mood_title"));
+				task.setCategoryId(rsSelect.getInt("category_id"));
 				task.setCategoryTitle(rsSelect.getString("category_title"));
 				task.setIsPrivate(rsSelect.getBoolean("is_private"));
 				taskList.add(task);
