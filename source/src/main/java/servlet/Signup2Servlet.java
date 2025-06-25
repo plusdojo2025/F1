@@ -12,9 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.AccountDAO;
 import dao.CategoryDAO;
 import dto.Account;
 import dto.Category;
+
 
 /**
  * 新規登録２画面を表示するサーブレット
@@ -62,6 +64,17 @@ public class Signup2Servlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String passwordConf = request.getParameter("passwordConf");
+        
+        //メールアドレスの重複チェック
+        AccountDAO aDao = new AccountDAO();
+        if(!aDao.existsAccount(email)) {
+        	request.setAttribute("sameEmail", "すでに使用されているメールアドレスです。");
+        	
+        	request.setAttribute("beforeEmail", email);
+            request.setAttribute("beforePassword", password);
+            request.getRequestDispatcher("/WEB-INF/jsp/signup.jsp").forward(request, response);
+            return;
+        }
         
         // 未入力チェック処理
         if (email == null || email.trim().isEmpty() || password == null || password.trim().isEmpty() || passwordConf == null || passwordConf.trim().isEmpty()) {

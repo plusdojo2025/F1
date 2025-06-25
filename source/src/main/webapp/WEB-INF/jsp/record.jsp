@@ -30,7 +30,7 @@
 </div>
 <div class="logList">
 	<table>
-		<tr>
+		<tr class="tr-record">
 			<th class="th-record">タスク内容</th>
 			<th class="th-record">所要時間</th>
 			<th  class="th-record">気分</th>

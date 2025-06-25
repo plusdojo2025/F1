@@ -21,9 +21,12 @@
 	<div class="login-container">
 		<h1>まにまに</h1>
 		<form id="loginForm" method="POST" action="<c:url value='/Signup2Servlet' />" autocomplete="off">
-		<label for="email">メールアドレス</label>
+		<div class="signup-email">
+		<label for="email">メールアドレス</label><span class="sameEmail"><%= request.getAttribute("sameEmail") != null ? request.getAttribute("sameEmail"): "" %></span>
+		</div>
 		<input type="text" name="email" id="email" autocomplete="off" value="<%= request.getAttribute("beforeEmail") != null ? request.getAttribute("beforeEmail") : ""%>">
 		<a style="font-size: 0.8em;">【条件】有効なメールアドレス形式（例：example@example.com）</a>
+		
 		
 		<label for="pw">パスワード</label>
 		<input type="password" name="password" id="password" autocomplete="new-password" value="<%= request.getAttribute("beforePassword") != null ? request.getAttribute("beforePassword") : ""%>">

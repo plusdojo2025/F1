@@ -56,9 +56,9 @@
 
 /*タスク一覧表示の外枠スタイル*/
 .task-view-body {
-	margin: 20px;
-  overflow: auto;
-  height: 702px;
+    margin: 20px;
+    overflow: auto;
+    height: 618px;
 }
 .TaskViewOutline{ 
 	margin: 20px 40px 10px 40px;

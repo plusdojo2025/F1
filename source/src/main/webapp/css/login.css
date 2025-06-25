@@ -295,9 +295,17 @@ td {
 
 
 
+.signup-email{
+	display:flex;
+	
+}
 
-
-
+.sameEmail{
+    font-size: 0.7rem;
+    color: red;
+    text-align: right;
+    margin: 5px 0 0 50px;
+}
 
 
 
