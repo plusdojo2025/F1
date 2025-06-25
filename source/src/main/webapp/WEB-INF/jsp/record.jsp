@@ -14,12 +14,18 @@
                 <img src="<c:url value='/images/smile.svg' />">
             </p>
             <p class="statisticsData"><c:out value="${mostMood.moodTitle}"/></p>
+            <c:if test="${empty history}">
+		<p class="statisticsData">まだありません</p>
+		</c:if>
         </div>
 	<div class="mostMood">
         <p class="statisticsCategory">よく行う作業ジャンル
              <img src="<c:url value='/images/work.svg' />">
         </p>
         <p class="statisticsData"><c:out value="${mostCategory.categoryTitle}"/></p> 
+        <c:if test="${empty history}">
+		<p class="statisticsData">まだありません</p>
+		</c:if>
     </div>
 </div>
 <div class="logList">
