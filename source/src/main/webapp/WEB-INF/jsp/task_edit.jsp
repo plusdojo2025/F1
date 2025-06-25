@@ -19,7 +19,7 @@
 					<input type="text" class="account-input w-form" name="title">
 					<span class="account-error-msg task-regist-rule">【条件】タスクタイトルは20文字以内</span>
 				</div>
-				<div class="task-edidel-item task-formsection align-i-c">
+				<div class="task-edidel-item task-formsection align-i-c" id="taskEditTimeSpan">
 					<p class="task-title-tips">所要時間</p>
 					<input type="number" class="account-input task-regist-input" name="timeSpan" min="1" max ="2147483647">
 				</div>

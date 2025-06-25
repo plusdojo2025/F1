@@ -67,13 +67,68 @@ function closeEditModal() {
 // 変更内容の確認モーダル
 function confirmEditTask() {
   const isPrivate = document.querySelector('input[name="isPrivate"]').checked;
-
+  const titleInput = document.querySelector('#editModal input[name="title"]');
+  const titleValue = titleInput.value.trim();
   const alertModal = document.getElementById("editAlertModal");
   const alertText = document.getElementById("editAlertText");
+  
+  let hasError = false;
+  
+  // タイトルのエラーメッセージ処理
+  let titleError = titleInput.parentElement.querySelector('.edit-title-error-msg');
+  if (!titleError) {
+    titleError = document.createElement('div');
+    titleError.classList.add('account-error-msg', 'edit-title-error-msg');
+    titleError.style.color = 'red';
+    titleError.style.marginBottom = '5px';
+    titleInput.parentElement.insertBefore(titleError, titleInput);
+  }
+  
+  if (titleValue === "") {
+    titleError.textContent = 'タスクタイトルを入力してください。';
+    titleError.style.display = 'block';
+    hasError = true;
+  } else if (titleValue.length > 20) {
+    titleError.textContent = 'タスクタイトルは20文字以内です。';
+    titleError.style.display = 'block';
+    hasError = true;
+  } else {
+    titleError.style.display = 'none';
+  }
+  
+    // 所要時間のエラーメッセージ処理
+  const timeSpanContainer = document.getElementById('taskEditTimeSpan');
+  const timeSpanInput = timeSpanContainer.querySelector('input[name="timeSpan"]');
+  const timeSpanValue = timeSpanInput.value.trim();
+  const parentContainer = timeSpanContainer.parentElement; // この中にtaskEditTimeSpanがある
 
-  // 背景をロックし、編集モーダルは一時的に非活性
+  let timeSpanError = parentContainer.querySelector('.edit-time-error-msg');
+
+  if (!timeSpanError) {
+    timeSpanError = document.createElement('span');
+    timeSpanError.classList.add('account-error-msg', 'edit-time-error-msg');
+    timeSpanError.style.color = 'red';
+    timeSpanError.style.marginBottom = '5px';
+    parentContainer.insertBefore(timeSpanError, timeSpanContainer);
+  }
+
+  if (timeSpanValue === "" || isNaN(timeSpanValue)) {
+    timeSpanError.textContent = '所要時間を入力してください。';
+    timeSpanError.style.display = 'block';
+    hasError = true;
+  } else if (parseInt(timeSpanValue) <= 0) {
+    timeSpanError.textContent = '所要時間は1以上の数値を入力してください。';
+    timeSpanError.style.display = 'block';
+    hasError = true;
+  } else {
+    timeSpanError.style.display = 'none';
+  }
+
+  // エラーがあれば確認モーダルを表示しない
+  if (hasError) return;
+  
+  // モーダル表示
   document.getElementById("editModal").style.pointerEvents = "none";
-
   if (isPrivate) {
     alertText.textContent = "タスクをこの内容に変更しますか？\nこのタスクは他のユーザーに公開されます。";
   } else {
