@@ -9,7 +9,9 @@ public class TaskList implements Serializable {
     private String title;			// タスクタイトル
     private int timeSpan;			// 所要時間
     private String moodTitle;		// 気分名
+    private int moodId;
     private String categoryTitle;	//　作業カテゴリ名
+    private int categoryId;
 	private boolean isPrivate;		// 公開設定
 	
 	// コンストラクタ
@@ -71,6 +73,26 @@ public class TaskList implements Serializable {
 	}
 
 	public void setIsPrivate(boolean isPrivate) {
+		this.isPrivate = isPrivate;
+	}
+
+	public int getMoodId() {
+		return moodId;
+	}
+
+	public void setMoodId(int moodId) {
+		this.moodId = moodId;
+	}
+
+	public int getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
+	}
+
+	public void setPrivate(boolean isPrivate) {
 		this.isPrivate = isPrivate;
 	}
 	

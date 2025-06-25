@@ -141,16 +141,12 @@
 				}
 			}
 			
-			//目標内容未入力・文字数チェック
-			if(!goalDetail){
-				goalDetailError.textContent = "この項目を入力してください";
-				event.preventDefault();//フォーム送信中止
-			} else{
-				if(goalDetail.length > 25) {
-			    	goalDetailError.textContent = "入力できるのは25文字までです";
-			    	event.preventDefault();
-				}
+			//目標内容文字数チェック
+			if(goalDetail.length > 25) {
+			   	goalDetailError.textContent = "入力できるのは25文字までです";
+			   	event.preventDefault();
 			}
+
 			
 			
 			// Password入力欄に入力がある場合
