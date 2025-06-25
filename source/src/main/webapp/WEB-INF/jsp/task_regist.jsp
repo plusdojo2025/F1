@@ -112,8 +112,8 @@ window.addEventListener('DOMContentLoaded', function () {
         if(!allowSubmit){
         	e.preventDefault();
         	modalMsg.innerHTML = privateCheckbox.checked
-        		? 'このタスクを<span class="highlight" style="font-size: 25px;">公開</span>します。よろしいですか？'
-        		: 'このタスクは非公開として登録されます。よろしいですか？';
+        		? 'このタスクは他のユーザに<span class="highlight" style="font-size: 25px;">公開</span>されます。<br>登録しますか？'
+        		: 'このタスクを登録します。よろしいですか？';
         	modal.showModal();
         } 
     });
