@@ -24,6 +24,16 @@ import dto.Task;
 public class SuggestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+        // 文字コード・コンテンツタイプを設定
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
+        
+        // ログインページへフォワード
+        response.sendRedirect(request.getContextPath() + "/LoginServlet");
+	}
+	
 	 /**
 	  * POSTリクエスト時の処理
 	  */

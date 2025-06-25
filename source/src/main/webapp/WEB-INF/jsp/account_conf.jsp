@@ -16,17 +16,17 @@
                 <div class="account-view-section">
                     <div class="account-section account-view-section under-line">
                         <p class="account-view-title">ニックネーム</p>
-                        <p class="account-view-text">：${login_user.nickname}</p>
+                        <p class="account-view-text">：${update_user.nickname}</p>
                     </div>
                     <div class="account-section account-view-section under-line">
                         <p class="account-view-title">メールアドレス</p>
-                        <p class="account-view-text">：${login_user.email}</p>
+                        <p class="account-view-text">：${update_user.email}</p>
                     </div>
                     <div class="account-section account-view-section under-line">
                         <p class="account-view-title">パスワード</p>
                         <c:choose>
 							<c:when test="${passwordCheck == true}">
-								<p class="account-view-text">：${login_user.password}</p>
+								<p class="account-view-text">：${update_user.password}</p>
 							</c:when>
 							<c:otherwise>
 								<p class="account-view-text">：パスワードの変更はありません。</p>
@@ -36,11 +36,11 @@
                     </div>
                     <div class="account-section account-view-section under-line">
                         <p class="account-view-title">目標ジャンル</p>
-                        <p class="account-view-text">：${login_user.category.categoryTitle}</p>
+                        <p class="account-view-text">：${update_user.category.categoryTitle}</p>
                     </div>
                     <div class="account-section account-view-section">
                         <p class="account-view-title">目標内容</p>
-                        <p class="account-view-text">：${login_user.goalDetail}</p>
+                        <p class="account-view-text">：${update_user.goalDetail}</p>
                     </div>
                 </div>
             </div>

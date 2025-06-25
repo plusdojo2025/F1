@@ -21,6 +21,16 @@ import dto.Category;
 @WebServlet("/AccountConfServlet")
 public class AccountConfServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+        // 文字コード・コンテンツタイプを設定
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
+        
+        // ログインページへフォワード
+        response.sendRedirect(request.getContextPath() + "/LoginServlet");
+	}
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 文字コード・コンテンツタイプを設定
@@ -36,6 +46,14 @@ public class AccountConfServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/LoginServlet");
             return; // ここで処理終了
         }
+        
+        //login_userのIDなど変更しない情報をコピー
+        Account update_user = new Account();
+        update_user.setAccountId(login_user.getAccountId());
+        update_user.setCreatedAt(login_user.getCreatedAt());
+        update_user.setLoginAt(login_user.getLoginAt());
+        update_user.setConsecutiveLogins(login_user.getConsecutiveLogins());
+        update_user.setPassword(login_user.getPassword());
 		
 		//リクエストパラメーターを取得する
 		String nickname = request.getParameter("nickname").trim();
@@ -77,22 +95,22 @@ public class AccountConfServlet extends HttpServlet {
 			}
 
 			// 一致：login_user のパスワードを一時的に更新
-			login_user.setPassword(newPassword);
+			update_user.setPassword(newPassword);
 		}
 		
 		// login_userの情報を更新
-		login_user.setEmail(email);
-		login_user.setNickname(nickname);
-		login_user.setCategoryId(categoryId);
-		login_user.setGoalDetail(goalDetail);
+		update_user.setEmail(email);
+		update_user.setNickname(nickname);
+		update_user.setCategoryId(categoryId);
+		update_user.setGoalDetail(goalDetail);
 		
 		// login_userオブジェクトにカテゴリーオブジェクトを格納する
 		CategoryDAO cDao = new CategoryDAO();
 		Category category = cDao.getCategory(categoryId);
-		login_user.setCategory(category);
+		update_user.setCategory(category);
 		
 		// セッションスコープに更新処理に必要な情報を格納
-		session.setAttribute("login_user", login_user);
+		session.setAttribute("update_user", update_user);
 		session.setAttribute("emailCheck", emailCheck);
 		session.setAttribute("passwordCheck", passwordCheck);
 		
