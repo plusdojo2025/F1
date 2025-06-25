@@ -30,7 +30,7 @@
 		
 		<label for="pw">パスワード</label>
 		<input type="password" name="password" id="password" autocomplete="new-password" value="<%= request.getAttribute("beforePassword") != null ? request.getAttribute("beforePassword") : ""%>">
-		<a style="font-size: 0.8em;">【条件】8文字以上、英小文字・英小文字、数字を含める</a>
+		<a style="font-size: 0.8em;">【条件】8文字以上、英大文字・英小文字、数字を含める</a>
 		
 		<label for="passwordConf">パスワード（確認用）</label>
 		<input type="password" name="passwordConf" id="passwordConf" autocomplete="new-password" value="<%= request.getAttribute("beforePasswordConf") != null ? request.getAttribute("beforePasswordConf") : "" %>">
