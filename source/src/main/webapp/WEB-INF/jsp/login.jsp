@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>まにまに</title>
+<title>まにまに｜ログイン</title>
 <link rel="stylesheet" href="<c:url value='/css/login.css' />">
 <style>
 	.error{
