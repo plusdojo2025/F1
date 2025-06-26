@@ -29,7 +29,8 @@ public class TasksDAO {
 					+ "FROM tasks AS t "
 					+ "INNER JOIN mood As m ON t.mood_id = m.mood_id "
 					+ "INNER JOIN category As c ON t.category_id = c.category_id "
-					+ "WHERE account_id = ?;";
+					+ "WHERE account_id = ? "
+					+ "ORDER BY task_id DESC;";
 			PreparedStatement pStmtSelect = conn.prepareStatement(sqlSelect);
 			
 			//タスク全件取得SQlに挿入するプリペアードステートメント
