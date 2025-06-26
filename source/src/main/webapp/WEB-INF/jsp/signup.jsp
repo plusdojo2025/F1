@@ -30,7 +30,7 @@
 		
 		<label for="pw">パスワード</label>
 		<input type="password" name="password" id="password" autocomplete="new-password" value="<%= request.getAttribute("beforePassword") != null ? request.getAttribute("beforePassword") : ""%>">
-		<a style="font-size: 0.8em;">【条件】8文字以上、英大文字・英小文字、数字を含める、記号を含めない</a>
+		<a style="font-size: 0.7rem;">【条件】8文字以上、英大文字・英小文字・数字を含める、記号を含めない</a>
 		
 		<label for="passwordConf">パスワード（確認用）</label>
 		<input type="password" name="passwordConf" id="passwordConf" autocomplete="new-password" value="<%= request.getAttribute("beforePasswordConf") != null ? request.getAttribute("beforePasswordConf") : "" %>">
@@ -89,7 +89,7 @@
 			const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
 			// パスワード強度チェック
 			if (!passwordRegex.test(password)) {
-			    formError.textContent = "パスワードは8文字以上で、英大文字・小文字・数字を含め、記号を含めないでください";
+			    formError.textContent = "パスワードは8文字以上で、英大文字・英小文字・数字を含め、記号を含めないでください";
 			    event.preventDefault();
 			    return;
 			}
