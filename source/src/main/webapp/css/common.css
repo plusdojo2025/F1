@@ -119,6 +119,7 @@ body {
     color: #ffffff;
     width: 100%;
     text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 .green-title {
     margin: 10px;
@@ -129,6 +130,9 @@ body {
     color: #0B6446;
     width: 100%;
     text-align: center;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    
 }
 .white-title {
     margin: 10px;

@@ -69,8 +69,13 @@ function closeEditModal() {
   let timeSpanError = parentContainer.querySelector('.edit-time-error-msg');
   let titleError = titleInput.parentElement.querySelector('.edit-title-error-msg');
 
-  titleError.textContent = "";
-  timeSpanError.textContent = "";
+	if (titleError) {
+	  titleError.textContent = "";
+	}
+	if (timeSpanError) {
+	  timeSpanError.textContent = "";
+	}
+  
   //編集モーダルを閉じる
   document.getElementById("editModal").style.display = "none";
 }
@@ -141,7 +146,7 @@ function confirmEditTask() {
   // モーダル表示
   document.getElementById("editModal").style.pointerEvents = "none";
   if (isPrivate) {
-    alertText.textContent = "タスクをこの内容に変更しますか？\nこのタスクは他のユーザーに公開されます。";
+    alertText.textContent = "タスクをこの内容に変更しますか？\n このタスクは他のユーザーに公開されます。";
   } else {
     alertText.textContent = "タスクをこの内容に変更しますか？";
   }

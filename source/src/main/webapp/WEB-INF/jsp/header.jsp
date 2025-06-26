@@ -1,16 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="<c:url value='/css/common.css' />">
-<link rel="stylesheet" href="<c:url value='/css/account.css' />">
-<link rel="stylesheet" href="<c:url value='/css/record.css' />">
-<link rel="stylesheet" href="<c:url value='/css/suggest.css' />">
-<link rel="stylesheet" href="<c:url value='/css/support.css' />">
-<link rel="stylesheet" href="<c:url value='/css/task.css' />">
-
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="<c:url value='/css/common.css' />">
+	<link rel="stylesheet" href="<c:url value='/css/account.css' />">
+	<link rel="stylesheet" href="<c:url value='/css/record.css' />">
+	<link rel="stylesheet" href="<c:url value='/css/suggest.css' />">
+	<link rel="stylesheet" href="<c:url value='/css/support.css' />">
+	<link rel="stylesheet" href="<c:url value='/css/task.css' />">
+	<link rel="icon" href="<c:url value='/images/manimani-favicon.png' />" type="image/png">
+	<title>${pageTitle != null ? pageTitle : 'まにまに'}</title>
 </head>
 <body>
 

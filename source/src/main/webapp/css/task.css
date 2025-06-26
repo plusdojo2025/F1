@@ -73,6 +73,8 @@
     position: sticky;
     top: 0;
     z-index: 1;
+    height: 50px;
+    font-size: 1.3rem;
 }
 
 /*tableBodyのスタイル*/
@@ -104,6 +106,12 @@
     display: flex;
     justify-content: center;
 }
+/* タスク一覧の編集削除ボタンのtdのスタイル */
+.task-view-edidel-td {
+	display: flex;
+    justify-content: space-evenly;
+}
+
 /*汎用css*/
 /*ボタンを横並べにする為にボタンを囲っているdivに設定するスタイル*/
 .BtnSideBy{
@@ -141,6 +149,8 @@
 	background-color: #006432;
 	border: 1px solid #0B6446;
 	border-radius: 50px;
+	font-size: 1.1rem;
+    padding: 5px 12px;
 }
 
 /*タスク一覧内のタスク削除ボタンのスタイル*/
@@ -149,6 +159,8 @@
 	background-color: #ff9800;
 	border: 1px solid #ff9800;
 	border-radius: 50px;
+	font-size: 1.1rem;
+    padding: 5px 12px;
 }
 
 .RightPositionBtn{

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<c:set var="pageTitle" value="まにまに｜タスク一覧" />
 <%@ include file="header.jsp" %><!-- ヘッダー＆グローバルナビ -->
 
 <main>
@@ -27,10 +27,10 @@
 					<td>${e.categoryTitle}</td><!-- 作業ジャンル -->
 					<td>
 					<c:if test="${ e.isPrivate == true }" >
-						check
+						<img src="<c:url value='/images/check-mark.svg' />" class="task-create-icon" alt="チェックマーク">
 					</c:if>
 					</td><!-- 公開判定チェックマーク -->
-					<td>
+					<td class="task-view-edidel-td">
 					<button type="button" class="edit-button" onclick="openEditModal(${e.taskId}, '${e.title}', ${e.timeSpan}, 
 					'${e.moodId}', '${e.categoryId}', '${e.isPrivate}')">変更</button>
 					<button type="button" class="delete-button" onclick="openDeleteModal(${e.taskId}, '${e.title}', '${e.timeSpan}',
