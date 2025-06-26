@@ -162,7 +162,7 @@
 				const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
 				// パスワード強度チェック
 				if (!passwordRegex.test(newPassword)) {
-				    formError.textContent = "パスワードは8文字以上で、英大文字・小文字・数字を含めてください";
+				    formError.textContent = "パスワードは8文字以上で、英大文字・小文字・数字を含めてください。（記号を含めない）";
 				    event.preventDefault();
 				    return;
 				}
