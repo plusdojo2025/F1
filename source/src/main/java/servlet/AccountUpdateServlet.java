@@ -50,7 +50,7 @@ public class AccountUpdateServlet extends HttpServlet {
 			AccountDAO aDao = new AccountDAO();
 			if(aDao.updateAccount(update_user, emailCheck, passwordCheck)) {
 				// 更新成功
-				session.setAttribute("login_user", login_user);
+				session.setAttribute("login_user", update_user);
 				
 				session.setAttribute("update_user",null);
 				
