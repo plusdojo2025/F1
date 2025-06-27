@@ -5,17 +5,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>まにまに</title>
-<link rel="stylesheet" href="<c:url value='/css/login.css' />">
-<style>
-	.error {
-		color: red;
-		font-size: 0.85em;
-		margin-top: 5px;
-	}
-
-</style>
+	<meta charset="UTF-8">
+	<title>まにまに | 新規作成</title>
+	<link rel="stylesheet" href="<c:url value='/css/login.css' />">
+	<link rel="icon" href="<c:url value='/images/manimani-favicon.png' />" type="image/png">
+	<style>
+		.error {
+			color: red;
+			font-size: 0.85em;
+			margin-top: 5px;
+		}
+	</style>
 </head>
 <body>
 	<div class="login-container">

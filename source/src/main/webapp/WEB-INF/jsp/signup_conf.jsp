@@ -5,9 +5,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>まにまに｜新規作成</title>
-<link rel="stylesheet" href="<c:url value='/css/login.css' />">
+	<meta charset="UTF-8">
+	<title>まにまに｜新規作成 | 確認</title>
+	<link rel="stylesheet" href="<c:url value='/css/login.css' />">
+	<link rel="icon" href="<c:url value='/images/manimani-favicon.png' />" type="image/png">
 </head>
 <body>
 	<div class="login-container2">

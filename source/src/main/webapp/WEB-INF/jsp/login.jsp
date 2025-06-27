@@ -4,16 +4,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>まにまに</title>
-<link rel="stylesheet" href="<c:url value='/css/login.css' />">
-<style>
-	.error{
-		color: red;
-		font-size: 0.9em;
-		white-space: nowrap;
-	}
-</style>
+	<meta charset="UTF-8">
+	<title>まにまに | ログイン</title>
+	<link rel="stylesheet" href="<c:url value='/css/login.css' />">
+	<link rel="icon" href="<c:url value='/images/manimani-favicon.png' />" type="image/png">
+	<style>
+		.error{
+			color: red;
+			font-size: 0.9em;
+			white-space: nowrap;
+		}
+	</style>
 </head>
 <body>
 
