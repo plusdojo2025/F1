@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>まにまに｜ログイン</title>
+<title>まにまに</title>
 <link rel="stylesheet" href="<c:url value='/css/login.css' />">
 <style>
 	.error{
@@ -18,7 +18,9 @@
 <body>
 
 	<div class="login-container">
-	<h1>まにまに</h1>
+	<h1 id="login-logo">
+		<img src="<c:url value='/images/manimani-logo.svg'/>" alt="まにまにロゴ">
+    </h1>
 	<form id="loginForm" method="POST" action="<c:url value='/LoginServlet' />">
 		<label for="email">メールアドレス</label>
 		<input type="text" name="email" id="email" value="<%= request.getAttribute("beforeEmail") != null ? request.getAttribute("beforeEmail") : ""%>">

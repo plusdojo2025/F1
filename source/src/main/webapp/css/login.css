@@ -293,6 +293,10 @@ td {
   margin-bottom: 10px;
 }
 
+#login-logo img {
+  width: 300px; /* お好みで調整。例：200px、または 100% など */
+  height: auto; /* アスペクト比を保ったまま高さを自動調整 */
+}
 
 
 .signup-email{

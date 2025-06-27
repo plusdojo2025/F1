@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%> 
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>まにまに｜新規作成</title>
+<title>まにまに</title>
 <link rel="stylesheet" href="<c:url value='/css/login.css' />">
 <style>
 	.error {
@@ -18,7 +19,9 @@
 </head>
 <body>
 	<div class="login-container">
-		<h1>まにまに</h1>
+		<h1 id="login-logo">
+		<img src="<c:url value='/images/manimani-logo.svg'/>" alt="まにまにロゴ">
+        </h1>
 		<form id="loginForm" method="POST" action="<c:url value='/Signup2Servlet' />" autocomplete="off">
 		<div class="signup-email">
 		<label for="email">メールアドレス</label><span class="sameEmail"><%= request.getAttribute("sameEmail") != null ? request.getAttribute("sameEmail"): "" %></span>
