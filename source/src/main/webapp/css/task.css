@@ -59,6 +59,7 @@
     margin: 20px;
     overflow: auto;
     height: 618px;
+    width: 95%;
 }
 .TaskViewOutline{ 
 	margin: 20px 40px 10px 40px;

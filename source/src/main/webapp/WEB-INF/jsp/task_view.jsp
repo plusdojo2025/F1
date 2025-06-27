@@ -4,7 +4,7 @@
 <c:set var="pageTitle" value="まにまに｜タスク一覧" />
 <%@ include file="header.jsp" %><!-- ヘッダー＆グローバルナビ -->
 
-<main>
+<main class="main-wrapper">
 <div class="green-l-body task-view-body">
 	<table>
 		<thead><!-- テーブルトップ -->
