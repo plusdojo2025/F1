@@ -292,6 +292,9 @@ td {
   color: white;
   margin-bottom: 10px;
 }
+#login-logo {
+	margin: 0;
+}
 
 #login-logo img {
   width: 300px; /* お好みで調整。例：200px、または 100% など */
